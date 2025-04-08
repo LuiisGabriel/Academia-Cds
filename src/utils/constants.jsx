@@ -1,4 +1,4 @@
-const API_URL = 'https://academia-cds-back-end.vercel.app/'
+const API_URL = 'https://academia-cds-back-end.vercel.app'
 export const API_ROUTES = {
   SIGN_UP: `${API_URL}/auth/signup`,
   SIGN_IN: `${API_URL}/auth/signin`,
