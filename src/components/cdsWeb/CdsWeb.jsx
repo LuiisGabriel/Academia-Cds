@@ -2,8 +2,8 @@ import React from 'react';
 import { useUser } from '../../lib/customHooks';
 import Navbar from '../Navbar';
 import { APP_ROUTES } from '../../utils/constants';
-import Retaguarda from '../../assets/retaguarda.jpg';
-import FrenteDeLoja from '../../assets/frentedeloja.jpg';
+import Retaguarda from '../../assets/Retaguarda.jpg';
+import FrenteDeLoja from '../../assets/FrenteDeLoja.jpg';
 
 const modulos = [
     {
