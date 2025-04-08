@@ -47,9 +47,7 @@ const SignIn = () => {
     }
     catch (err) {
         alert(err.response.data.message);
-        console.log(err);
-      console.log(email,password)
-      
+        console.log(err);  
     }
     finally {
       setIsLoading(false);
