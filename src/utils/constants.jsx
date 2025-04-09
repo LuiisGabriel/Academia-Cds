@@ -1,10 +1,10 @@
 const API_URL = 'https://academia-cds-back-end.vercel.app/'
 export const API_ROUTES = {
-  SIGN_UP: `${API_URL}/auth/signup`,
-  SIGN_IN: `${API_URL}/auth/signin`,
-  CREATE_VIDEO: `${API_URL}/auth/createVideo`,
-  GET_USER: `${API_URL}/auth/me`,
-  GET_VIDEOS: `${API_URL}/auth/getVideos`,
+  SIGN_UP: `${API_URL}auth/signup`,
+  SIGN_IN: `${API_URL}auth/signin`,
+  CREATE_VIDEO: `${API_URL}auth/createVideo`,
+  GET_USER: `${API_URL}auth/me`,
+  GET_VIDEOS: `${API_URL}auth/getVideos`,
 }
 
 export const APP_ROUTES = {
