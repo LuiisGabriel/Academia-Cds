@@ -1,10 +1,10 @@
-const API_URL = 'https://academia-cds-back-end.onrender.com'
+const API_URL = 'https://academia-cds-back-end.onrender.com/'
 export const API_ROUTES = {
-  SIGN_UP: `${API_URL}/auth/signUp`,
-  SIGN_IN: `${API_URL}/auth/signIn`,
-  CREATE_VIDEO: `${API_URL}/auth/createVideo`,
-  GET_USER: `${API_URL}/auth/me`,
-  GET_VIDEOS: `${API_URL}/auth/getVideos`,
+  SIGN_UP: `https://academia-cds-back-end.onrender.com/auth/signUp`,
+  SIGN_IN: `https://academia-cds-back-end.onrender.com/auth/signIn`,
+  CREATE_VIDEO: `https://academia-cds-back-end.onrender.com/auth/createVideo`,
+  GET_USER: `https://academia-cds-back-end.onrender.com/auth/me`,
+  GET_VIDEOS: `https://academia-cds-back-end.onrender.com/auth/getVideos`,
 }
 
 export const APP_ROUTES = {
