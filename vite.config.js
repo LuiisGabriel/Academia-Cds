@@ -10,7 +10,7 @@ export default defineConfig({
   ],
   base: "/",
     server: {
-    port: 9537
-      allowedHosts: ['academia-cds.onrender.com'],
+    port: 9537,
+    allowedHosts: ['academia-cds.onrender.com'],
   },
 })
