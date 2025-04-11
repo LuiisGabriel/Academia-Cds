@@ -14,8 +14,7 @@ function classNames(...classes) {
 export default function VisitNavbar() {
   const navigation = [
     { name: 'Sobre', href: APP_ROUTES.ABOUT },
-    { name: 'Sobre', href: APP_ROUTES.ABOUT },
-    { name: 'Sobre', href: APP_ROUTES.ABOUT },
+    { name: 'Cadastre-se', href: APP_ROUTES.SIGN_UP },
 
   ];
   const navigate = useNavigate();
