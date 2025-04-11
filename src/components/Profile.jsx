@@ -42,24 +42,6 @@ const LandingPage = () => {
             {user.email}
           </h1>
           <div className="flex flex-1 flex-col justify-evenly">
-
-            <input
-              className="border-2 outline-none p-2 rounded-md"
-              type="text"
-              placeholder="modulo"
-            />
-            <input
-              className="border-2 outline-none p-2 rounded-md"
-              type="text"
-              placeholder="Sub-módulo"
-              required
-            />
-            <input
-              className="border-2 outline-none p-2 rounded-md"
-              type="text"
-              placeholder="Video id"
-              required
-            />
           </div>
         </div>
       </div>
