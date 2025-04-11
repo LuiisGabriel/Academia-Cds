@@ -115,9 +115,9 @@ const RetaguardaWebCadastros = () => {
 
                 <div className='w-full px-16 flex justify-center'>
                     <div className=" pt-16 min-h-200 w-full">
-                        <div className="w-full justify-center items-center flex flex-col grid grid-cols-1 gap-y-10 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 xl:gap-x-1 gap-y-32">
+                        <div className="w-full justify-center items-center flex flex-col grid grid-cols-1 gap-y-10 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 xl:gap-x-1 gap-y-24">
                             {data.videos.map((video) => (
-                                <div className=" min-h-50 max-h-180" key={video.id}>
+                                <div className=" max-h-180 aspect-video" key={video.id}>
                                     <ReactPlayer
                                         url={video.url}
                                         width='100%'
