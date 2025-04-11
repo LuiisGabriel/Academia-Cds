@@ -123,7 +123,7 @@ const LandingPage = () => {
               Bem vindo ao CDS academy.
             </h2>
             <p className="mt-6 text-lg/8 text-pretty text-white">
-              teste teste teste teste teste teste teste teste teste teste teste teste.
+              Neste ambiente você vai encontrar tudo oque precisa para utilizar o sistema CDS.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6 ">
               <a
