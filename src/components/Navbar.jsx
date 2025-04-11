@@ -52,7 +52,7 @@ export default function Navbar() {
     navigation.push(
       { name: 'Página inicial', href: APP_ROUTES.USER_HOME_PAGE },
       { name: 'Treinamentos', href: APP_ROUTES.TRAINMENTS },
-      { name: 'Avaliações', href: APP_ROUTES.VALUATIONS },
+     // { name: 'Avaliações', href: APP_ROUTES.VALUATIONS },
     )
   }
 
