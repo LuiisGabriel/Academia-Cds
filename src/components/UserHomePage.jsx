@@ -22,14 +22,14 @@ const funcoes = [
 
   },
 
-  {
-    id: 2,
-    name: 'Avaliações',
-    href: APP_ROUTES.VALUATIONS,
-    imageSrc: CdsDesktop,
-    imageAlt: 'Avaliações',
+//  {
+  //  id: 2,
+ //   name: 'Avaliações',
+  //  href: APP_ROUTES.VALUATIONS,
+  //  imageSrc: CdsDesktop,
+  //  imageAlt: 'Avaliações',
 
-  },
+ // },
 
   {
     id: 3,
