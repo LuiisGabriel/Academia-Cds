@@ -13,6 +13,8 @@ import PetShop from '../assets/PetShop.jpg';
 import Nfe from '../assets/MóduloNfe.jpg';
 import Light from '../assets/Light.jpg';
 import LandingImage from '../assets/image.jpg';
+import CDSDESKTOP from '../assets/CDSDESKTOP.png';
+import GitHubWhite from '../assets/github-mark-white.png';
 
 const imagens = [
   {
@@ -82,8 +84,10 @@ const LandingPage = () => {
 
 
   const [navColor, setnavColor] = useState("transparent");
+  const [textSize, settextSize] = useState("");
   const listenScrollEvent = () => {
     window.scrollY > 10 ? setnavColor("#1e2939") : setnavColor("transparent");
+    window.scrollY > 10 ? settextSize("") : setsettextSize("");
   };
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
@@ -114,7 +118,7 @@ const LandingPage = () => {
         <div
           style={{ '--image-url': `url(${LandingImage})` }}
           className="fixed h-auto h-screen w-screen top-0 py-70 px-16 items-center justify-center bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center">
-          <div className=" text-center ">
+          <div className="text-center">
             <h2 className="text-6xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
               Bem vindo ao CDS academy.
             </h2>
@@ -149,9 +153,8 @@ const LandingPage = () => {
                   {new Array(length).fill("").map((_, i) => (
                     <span
                       key={i}
-                      className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
-                        activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
-                      }`}
+                      className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+                        }`}
                       onClick={() => setActiveIndex(i)}
                     />
                   ))}
@@ -196,12 +199,85 @@ const LandingPage = () => {
             </Carousel>
           </div>
 
-          <div className='h-200 bg-gray-300 flex flex-col items-center text-black'>
-            conteúdo
+          <div className='h-100 w-full py-16 bg-gray-300 flex justify-end pointer-events-auto'>
 
-            <a href={APP_ROUTES.ABOUT} className="h-10 text-black pointer-events-auto py-30">
-              index test
-            </a>
+            <div className=' w-1/2 flex justify-center items-center'>
+              <img src={CDSDESKTOP} />
+            </div>
+
+            <div className='rounded-l-[10vw] bg-gray-800 transition-all duration-300 ease-in-out w-2/4 hover:w-3/5 h-full flex flex-col items-center justify-center shadow-lg/30'>
+              <h1 className='text-4xl font-bold text-center text-gray-300'>Ambiente Web</h1>
+            </div>
+
+          </div>
+
+          <div className='h-100 bg-gray-300 py-16 flex pointer-events-auto'>
+
+            <div className='rounded-r-[10vw] bg-gray-800 transition-all duration-300 ease-in-out w-2/4  hover:w-3/5 h-full flex flex-col items-center justify-center shadow-lg/30'>
+              <h1 className='text-4xl font-bold text-center text-gray-300'>Ambiente Desktop</h1>
+            </div>
+
+            <div className='w-1/2 flex justify-center items-center'>
+              <img src={CDSDESKTOP} />
+            </div>
+
+          </div>
+
+          <div className='bg-gray-300 h-100 py-16 flex items-center justify-center pointer-events-auto'>
+
+            <h1>Mais conteúdo em breve!</h1>
+
+          </div>
+
+          <div className="bg-gray-800 h-full flex pointer-events-auto justify-start py-16 text-gray-300 font-medium antialised">
+            <div className='w-1/4 flex-col flex items-center gap-8'>
+              <img src={Logo} className='size-30' />
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+            </div>
+
+            <div className='w-1/4 flex-col flex items-center gap-8'>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+            </div>
+
+            <div className='w-1/4 flex-col flex items-center gap-8'>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+            </div>
+
+            <div className='w-1/4 flex-col flex items-center gap-8'>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+              <h1>asdasdasdsad</h1>
+            </div>
+          </div>
+
+          <div className=" bg-gray-800 pointer-events-auto flex flex-col items-center justify-center text-gray-300 font-medium antialised">
+            <div className="w-1/4 text-center ">
+              <h1 className="font-medium text-sm">
+                Cds Academy © 2025. Todos os direitos reservados.
+              </h1>
+            </div>
+            <div className='flex items-center justify-center'>
+              <h1 className='text-sm'>desenvolvido por:</h1>
+              <a className='flex flex-col items-center p-4 gap-1 hover:scale-105 transition-all duration-50 ease-in-out antialised' href='https://github.com/LuiisGabriel' >
+                <img src={GitHubWhite} className='size-5'></img>
+                <h1 className='text-xs'>Luis Gabriel</h1>
+              </a>
+            </div>
           </div>
 
         </div>
