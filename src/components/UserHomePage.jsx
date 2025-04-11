@@ -31,14 +31,14 @@ const funcoes = [
 
  // },
 
-  {
-    id: 3,
-    name: 'Sobre',
-    href: APP_ROUTES.ABOUT,
-    imageSrc: Otica,
-    imageAlt: 'Sobre',
+//  {
+//    id: 3,
+  //  name: 'Sobre',
+  //  href: APP_ROUTES.ABOUT,
+ //   imageSrc: Otica,
+ //   imageAlt: 'Sobre',
 
-  },
+ // },
 ]
 
 const UserHomePage = () => {
