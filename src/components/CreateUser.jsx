@@ -73,7 +73,7 @@ const CreateUser = () => {
         <>
             <nav className="sticky top-0 z-50"><Navbar /></nav>
             <div className="w-full h-screen flex justify-center items-center bg-gray-300">
-                <div className="w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
+                <div className=" w-2/3 sm:w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
                     <h2 className="text-center font-medium text-2xl mb-4">
                         Cadastre um novo usuário
                     </h2>
