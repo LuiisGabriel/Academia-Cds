@@ -260,7 +260,7 @@ const LandingPage = () => {
 
           <div className="bg-gray-800 h-full flex pointer-events-auto justify-start py-16 text-gray-300 font-medium">
             <div className='w-1/4 flex-col flex items-center gap-8'>
-              <a href='https://cdssistemas.com/'>
+              <a href='https://cdssistemas.com/' className='hover:scale-105 transition-all duration-150 ease-in-out'>
                 <img src={Logo} className='size-30' />
               </a>
               <h1>asdasdasdsad</h1>
