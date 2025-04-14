@@ -295,7 +295,8 @@ const LandingPage = () => {
                 <img src={Youtube} className='size-8 hover:scale-105' />
               </a>
             </div>
-        </div>
+         </div>
+       </div>
       </div>
     </>
   );
