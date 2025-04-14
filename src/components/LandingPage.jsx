@@ -267,7 +267,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className='bg-gray-800 flex flex-col items-center justify-center pointer-events-auto px-4'>
+          <div className='bg-gray-800 flex flex-col items-center justify-center pointer-events-auto px-4 pb-16'>
             <div className='size-20 py-6 hover:scale-102'>
               <a href='https://cdssistemas.com/'>
                 <img src={Logo} />
