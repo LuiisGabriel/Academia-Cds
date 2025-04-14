@@ -47,7 +47,8 @@ const SignIn = () => {
     }
     catch (err) {
         alert(err.response.data.message);
-        console.log(err);  
+        console.log(err);
+      
     }
     finally {
       setIsLoading(false);
@@ -59,7 +60,7 @@ const SignIn = () => {
     <div 
     style={{ '--image-url': `url(${CdsSistemas})` }}
     className="w-full h-screen flex justify-center items-center bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center">
-      <div className="w-1/2 h-1/2 shadow-lg rounded-md bg-white p-8 flex flex-col ">
+      <div className="h-1/2 shadow-lg rounded-md bg-white p-8 flex flex-col w-2/3 sm:w-1/2">
         <h2 className="text-center font-medium text-2xl mb-4 ">
           Entre na sua conta
         </h2>
