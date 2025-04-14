@@ -31,7 +31,7 @@ const imagens = [
     id: 2,
     Src: Retaguarda,
     Alt: 'Retaguarda',
-    titulo: 'Frente de loja',
+    titulo: 'Retaguarda',
     descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     href1: APP_ROUTES.CDSWEB,
     href2: APP_ROUTES.CDSDESKTOP,
