@@ -274,11 +274,11 @@ const LandingPage = () => {
               </a>
             </div>
             <div className=" h-full flex pointer-events-auto justify-center text-white gap-4 sm:gap-8 py-6">
-              <a className='hover:scale-102' href={APP_ROUTES.ABOUT}>Sobre</a>
-              <a className='hover:scale-102' href=''>dfgdfgd</a>
-              <a className='hover:scale-102' href=''>sdfdsfd</a>
-              <a className='hover:scale-102' href=''>asdasdas</a>
-              <a className='hover:scale-102' href=''>asdasdsa</a>
+              <a className='hover:scale-105' href={APP_ROUTES.ABOUT}>Sobre</a>
+              <a className='hover:scale-105' href=''>dfgdfgd</a>
+              <a className='hover:scale-105' href=''>sdfdsfd</a>
+              <a className='hover:scale-105' href=''>asdasdas</a>
+              <a className='hover:scale-105' href=''>asdasdsa</a>
             </div>
 
             <div className=" h-full flex pointer-events-auto justify-center items-center text-white gap-10 pt-4">
@@ -295,8 +295,8 @@ const LandingPage = () => {
                 <img src={Youtube} className='size-8 hover:scale-105' />
               </a>
             </div>
-         </div>
-       </div>
+          </div>
+        </div>
       </div>
     </>
   );
