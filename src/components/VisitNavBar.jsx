@@ -15,7 +15,6 @@ export default function VisitNavbar() {
   const navigation = [
     { name: 'Sobre', href: APP_ROUTES.ABOUT },
     { name: 'Cadastre-se', href: APP_ROUTES.SIGN_UP },
-
   ];
   const navigate = useNavigate();
 
@@ -47,7 +46,7 @@ export default function VisitNavbar() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className='text-white hover:scale-105 hover:text-gray-300 rounded-md px-3 py-2 text-md font-medium'
+                    className='text-white hover:scale-105 rounded-md px-3 py-2 text-md font-medium'
                   >
                     {item.name}
                   </a>
@@ -57,7 +56,7 @@ export default function VisitNavbar() {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 ">
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 ">
-              <a href={APP_ROUTES.SIGN_IN} className="text-md font-semibold text-white hover:scale-105 hover:text-gray-300 min-w-15">
+              <a href={APP_ROUTES.SIGN_IN} className="text-md font-semibold text-white hover:scale-105 min-w-15">
                 Login <span aria-hidden="true">→</span>
               </a>
             </div>
