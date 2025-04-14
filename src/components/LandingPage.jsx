@@ -295,19 +295,6 @@ const LandingPage = () => {
                 <img src={Youtube} className='size-8 hover:scale-105' />
               </a>
             </div>
-
-            <div className=" bg-gray-800 pointer-events-auto px-2 pt-4 flex  items-center justify-center text-gray-300 font-medium antialised">
-
-              <div className='flex items-center justify-center'>
-                <h1 className='text-sm'>desenvolvido por:</h1>
-                <a className='flex flex-col items-center p-4 gap-1 hover:scale-105 transition-all duration-50 ease-in-out antialised' href='https://github.com/LuiisGabriel' >
-                  <img src={GitHubWhite} className='size-5'></img>
-                  <h1 className='text-xs'>Luis Gabriel</h1>
-                </a>
-              </div>
-            </div>
-
-          </div>
         </div>
       </div>
     </>
