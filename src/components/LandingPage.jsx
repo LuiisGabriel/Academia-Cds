@@ -84,10 +84,12 @@ const LandingPage = () => {
 
 
   const [navColor, setnavColor] = useState("transparent");
-  const [textSize, settextSize] = useState("");
+  const [opacityValue, setopacityValue] = useState("100");
+
   const listenScrollEvent = () => {
-    window.scrollY > 10 ? setnavColor("#1e2939") : setnavColor("transparent");
-    window.scrollY > 10 ? settextSize("") : setsettextSize("");
+    window.scrollY > 370 ? setnavColor("#1e2939") : setnavColor("transparent");
+    window.scrollY < 370 ? setopacityValue("100") : setopacityValue("0");
+
   };
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
@@ -117,8 +119,13 @@ const LandingPage = () => {
       <div className='flex items-center justify-center'>
         <div
           style={{ '--image-url': `url(${LandingImage})` }}
-          className="fixed h-auto h-screen w-screen top-0 py-70 px-16 items-center justify-center bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center">
-          <div className="text-center">
+          className="fixed h-auto h-screen w-screen top-0 py-70 flex flex-col items-center justify-center bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center">
+          <div
+            style={{
+              '--opacity-value': `${opacityValue}`,
+              transition: "all 1s"
+            }}
+            className="text-center flex flex-col justify-center items-center opacity-[opacity:var(--opacity-value)] ">
             <h2 className="text-6xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
               Bem vindo ao CDS academy.
             </h2>
@@ -223,13 +230,35 @@ const LandingPage = () => {
 
           </div>
 
-          <div className='bg-gray-300 h-100 py-16 flex items-center justify-center pointer-events-auto'>
+          <div className='bg-black/70 py-16 px-16 pointer-events-auto'>
+            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 ">
+              {imagens.map((imagem) => (
+                <div
+                  key={imagem.id}
+                  href={imagem.href1}
+                  className="bg-gray-300 transition-all duration-300 ease-in-out bg-cover bg-no-repeat bg-center aspect-square w-full rounded-lg xl:aspect-7/8 items-center  flex flex-col text-gray-800"
+                >
 
-            <h1>Mais conteúdo em breve!</h1>
+                  <img
+                    src={imagem.Src}
+                    className='rounded-t-lg'
+                  />
 
+                  <h1 className='p-8 text-2xl'>{imagem.titulo}</h1>
+                  <h1 className='px-4'>{imagem.descricao}</h1>
+                  <div className='py-6'>
+                    <a
+                      href={imagem.href1}
+                      className='px-4 py-2 bg-gray-800 rounded-full text-gray-300 items-center justify-center flex text-md hover:scale-102 shadow-sm/40 '>
+                      Saiba mais
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="bg-gray-800 h-full flex pointer-events-auto justify-start py-16 text-gray-300 font-medium antialised">
+          <div className="bg-gray-800 h-full flex pointer-events-auto justify-start py-16 text-gray-300 font-medium">
             <div className='w-1/4 flex-col flex items-center gap-8'>
               <img src={Logo} className='size-30' />
               <h1>asdasdasdsad</h1>
