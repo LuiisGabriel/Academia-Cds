@@ -15,6 +15,10 @@ import Light from '../assets/Light.jpg';
 import LandingImage from '../assets/image.jpg';
 import CDSDESKTOP from '../assets/CDSDESKTOP.png';
 import GitHubWhite from '../assets/github-mark-white.png';
+import Facebook from '../assets/facebook.svg';
+import Instagram from '../assets/instagram.svg';
+import Linkedin from '../assets/linkedin.svg';
+import Youtube from '../assets/youtube.svg';
 
 const imagens = [
   {
@@ -89,7 +93,6 @@ const LandingPage = () => {
   const listenScrollEvent = () => {
     window.scrollY > 370 ? setnavColor("#1e2939") : setnavColor("transparent");
     window.scrollY < 370 ? setopacityValue("100") : setopacityValue("0");
-
   };
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
@@ -114,7 +117,9 @@ const LandingPage = () => {
         style={{
           backgroundColor: navColor,
           transition: "all 1s"
-        }}><VisitNavbar /></nav>
+        }}>
+        <VisitNavbar />
+      </nav>
 
       <div className='flex items-center justify-center'>
         <div
@@ -192,7 +197,7 @@ const LandingPage = () => {
                         {imagem.descricao}
                       </Typography>
                       <div className="flex justify-center gap-2">
-                        <Button size="lg" color="white" className='hover:bg-gray-300 hover:scale-105' onClick={handleHref1Click(imagem.href1)}>
+                        <Button size="lg" color="white" className='hover:scale-105' onClick={handleHref1Click(imagem.href1)}>
                           Descubra
                         </Button>
                         <Button size="lg" color="white" variant="text" className='hover:scale-105' onClick={handleHref2Click(imagem.href2)}>
@@ -213,7 +218,7 @@ const LandingPage = () => {
             </div>
 
             <div className='rounded-l-[10vw] bg-gray-800 transition-all duration-300 ease-in-out w-2/4 hover:w-3/5 h-full flex flex-col items-center justify-center shadow-lg/30'>
-              <h1 className='text-4xl font-bold text-center text-gray-300'>Ambiente Web</h1>
+              <h1 className='text-4xl font-bold text-center text-white'>Ambiente Web</h1>
             </div>
 
           </div>
@@ -221,7 +226,7 @@ const LandingPage = () => {
           <div className='h-100 bg-gray-300 py-16 flex pointer-events-auto'>
 
             <div className='rounded-r-[10vw] bg-gray-800 transition-all duration-300 ease-in-out w-2/4  hover:w-3/5 h-full flex flex-col items-center justify-center shadow-lg/30'>
-              <h1 className='text-4xl font-bold text-center text-gray-300'>Ambiente Desktop</h1>
+              <h1 className='text-4xl font-bold text-center text-white'>Ambiente Desktop</h1>
             </div>
 
             <div className='w-1/2 flex justify-center items-center'>
@@ -231,6 +236,10 @@ const LandingPage = () => {
           </div>
 
           <div className='bg-black/70 py-16 px-16 pointer-events-auto'>
+
+            <div className="flex justify-center items-center pb-16">
+              <h1 className='text-white text-4xl shadow-lg/30'>Conheça mais sobre alguns dos nossos módulos!</h1>
+            </div>
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 ">
               {imagens.map((imagem) => (
                 <div
@@ -249,7 +258,7 @@ const LandingPage = () => {
                   <div className='py-6'>
                     <a
                       href={imagem.href1}
-                      className='px-4 py-2 bg-gray-800 rounded-full text-gray-300 items-center justify-center flex text-md hover:scale-102 shadow-sm/40 '>
+                      className='px-4 py-2 bg-gray-800 rounded-full text-gray-300 items-center justify-center flex text-md hover:scale-102 shadow-sm/40 transition-all duration-150 ease-in-out '>
                       Saiba mais
                     </a>
                   </div>
@@ -258,50 +267,43 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="bg-gray-800 h-full flex pointer-events-auto justify-start py-16 text-gray-300 font-medium">
-            <div className='w-1/4 flex-col flex items-center gap-8'>
-              <a href='https://cdssistemas.com/' className='hover:scale-105 transition-all duration-150 ease-in-out'>
-                <img src={Logo} className='size-30' />
+          <div className='bg-gray-800 flex flex-col items-center justify-center pointer-events-auto'>
+            <div className='size-20 py-6 hover:scale-102'>
+              <a href='https://cdssistemas.com/'>
+              <img src={Logo}/>
               </a>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
+            </div>
+            <div className=" h-full flex pointer-events-auto justify-center text-white gap-8 py-6 ">
+              <a className='hover:scale-102'>Sobre</a>
+              <h1>asdsa</h1>
+              <h1>asdas</h1>
+              <h1>sadsadsa</h1>
+              <h1>sadsadsa</h1>
             </div>
 
-            <div className='w-1/4 flex-col flex items-center gap-8'>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-            </div>
-
-            <div className='w-1/4 flex-col flex items-center gap-8'>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-            </div>
-
-            <div className='w-1/4 flex-col flex items-center gap-8'>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
-              <h1>asdasdasdsad</h1>
+            <div className=" h-full flex pointer-events-auto justify-center items-center text-white gap-10">
+              <a href='https://www.facebook.com/cdssistemas/'>
+              <img src={Facebook} className='size-8 hover:scale-105' />
+              </a>
+              <a href='https://www.instagram.com/cdssistemas/'>
+              <img src={Instagram} className='size-8 hover:scale-105' />
+              </a>
+              <a href='https://pt.linkedin.com/company/cds-consusltoria-e-desenvolvimento-de-sistemas'>
+              <img src={Linkedin} className='size-8 hover:scale-105' />
+              </a>
+              <a href='https://www.youtube.com/channel/UCgRD73BibhKdP4H0bZNjEsQ'>
+              <img src={Youtube} className='size-8 hover:scale-105' />
+              </a>
             </div>
           </div>
 
-          <div className=" bg-gray-800 pointer-events-auto flex flex-col items-center justify-center text-gray-300 font-medium antialised">
+          <div className=" bg-gray-800 pointer-events-auto px-2 pt-8 flex  items-center justify-between text-gray-300 font-medium antialised">
             <div className="w-1/4 text-center ">
               <h1 className="font-medium text-sm">
                 Cds Academy © 2025. Todos os direitos reservados.
               </h1>
             </div>
+            
             <div className='flex items-center justify-center'>
               <h1 className='text-sm'>desenvolvido por:</h1>
               <a className='flex flex-col items-center p-4 gap-1 hover:scale-105 transition-all duration-50 ease-in-out antialised' href='https://github.com/LuiisGabriel' >
