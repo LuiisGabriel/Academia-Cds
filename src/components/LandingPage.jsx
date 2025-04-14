@@ -281,7 +281,7 @@ const LandingPage = () => {
               <a className='hover:scale-102' href=''>asdasdsa</a>
             </div>
 
-            <div className=" h-full flex pointer-events-auto justify-center items-center text-white gap-10">
+            <div className=" h-full flex pointer-events-auto justify-center items-center text-white gap-10 pt-4">
               <a href='https://www.facebook.com/cdssistemas/'>
                 <img src={Facebook} className='size-8 hover:scale-105' />
               </a>
@@ -297,7 +297,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className=" bg-gray-800 pointer-events-auto px-2 pt-8 flex  items-center justify-center text-gray-300 font-medium antialised">
+          <div className=" bg-gray-800 pointer-events-auto px-2 pt-4 flex  items-center justify-center text-gray-300 font-medium antialised">
 
             <div className='flex items-center justify-center'>
               <h1 className='text-sm'>desenvolvido por:</h1>
