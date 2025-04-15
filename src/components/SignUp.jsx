@@ -13,7 +13,7 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
-  const [role]= useState('USER');
+  const [role] = useState('USER');
   const [isLoading, setIsLoading] = useState(false);
 
   const signUp = async () => {
@@ -41,17 +41,17 @@ const SignUp = () => {
       navigate(APP_ROUTES.SIGN_IN);
     }
     catch (err) {
-      if(err.response.data.message == undefined){
+      if (err.response.data.message == undefined) {
         alert('preencha todos os campos!')
       }
-      if(err.response.data.message == 'Este email já está sendo utilizado'){
-         alert('Este email já está sendo utilizado')
+      if (err.response.data.message == 'Este email já está sendo utilizado') {
+        alert('Este email já está sendo utilizado')
       }
-      else{
+      else {
         console.log('Ocorreu algum erro no cadastro: ', err.response.data.message);
       }
     }
-  
+
     finally {
       setIsLoading(false);
     }
@@ -59,14 +59,15 @@ const SignUp = () => {
 
   return (
     <>
-      <div 
-      style={{ '--image-url': `url(${CdsSistemasFrente})` }}
-      className="w-full h-screen flex justify-center items-center bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center">
+      <div
+        style={{ '--image-url': `url(${CdsSistemasFrente})` }}
+        className="w-full h-screen flex justify-center items-center bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center">
         <div className="w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col w-2/3 sm:w-1/2">
           <h2 className="text-center font-medium text-2xl mb-4">
             Cadastre-se
           </h2>
-          <div className="flex flex-1 flex-col justify-evenly">
+
+          <form className='flex flex-1 flex-col justify-evenly'>
             <input
               className="border-2 outline-none p-2 rounded-md"
               type="text"
@@ -99,11 +100,7 @@ const SignUp = () => {
             />
 
             <button
-              className="
-             flex justify-center
-             p-2 rounded-md w-2/3 sm:w-1/2 self-center
-             bg-gray-800  text-white 
-             hover:bg-gray-700"
+              className="flex justify-center p-2 rounded-md w-2/3 sm:w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700"
               onClick={signUp}
             >
               {
@@ -114,7 +111,8 @@ const SignUp = () => {
                 Cadastre-se
               </span>
             </button>
-          </div>
+          </form>
+
           <div className="text-center text-sm">
             Já é cadastrado?
             <Link to="/signin">
