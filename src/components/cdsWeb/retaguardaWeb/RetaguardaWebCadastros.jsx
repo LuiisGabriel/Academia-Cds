@@ -4,7 +4,7 @@ import { getVideos } from '../../../graphQl/Querys';
 import { useUser } from '../../../lib/customHooks';
 import ReactPlayer from 'react-player';
 import { useState, useEffect } from 'react';
-import { Carousel } from '@material-tailwind/react';
+import Fabrica from '../../../assets/fabrica.jpg'; 
 
 const RetaguardaWebCadastros = () => {
     const { user, authenticated } = useUser();
@@ -19,6 +19,8 @@ const RetaguardaWebCadastros = () => {
 
     const [watchedVideos, setWatchedVideos] = useState([]);
     const [videoId, setVideoId] = useState('');
+    const [videoTitulo, setVideoTitulo] = useState('Escolha um vídeo para iniciar o treinamento');
+    const [videoUrl, setVideoUrl] = useState('initialUrl');
 
     useEffect(() => {
         handleCondicao();
@@ -112,32 +114,64 @@ const RetaguardaWebCadastros = () => {
                 <h1>you watched {playedTime} seconds </h1>
                 <h1>você está {condicao} para realizar a prova!!</h1>
                 <h1> video: {videoId} </h1>
-
-                <div className='w-full px-16 flex justify-center'>
-                    <div className=" pt-16 min-h-200 w-full">
-                        <div className="w-full justify-center items-center flex flex-col grid grid-cols-1 gap-y-10 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 xl:gap-x-1 gap-y-24">
-                            {data.videos.map((video) => (
-                                <div className=" max-h-180 aspect-video" key={video.id}>
-                                    <ReactPlayer
-                                        url={video.url}
-                                        width='100%'
-                                        height='100%'
-                                        onEnded={() => {
-                                            handleEnded();
-                                        }
-                                        }
-                                        onPlay={() => setVideoId(video.id)}
-                                        onProgress={handleProgress}
-                                        controls={true}
-                                    />
-                                    <h3 className="mt-4 text-xl ">{video.titulo}</h3>
-                                    <h3 className="mt-4 text-xl">{video.id}</h3>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
             </div>
+
+            <div className=' bg-gray-300 w-full h-auto h-full px-8 pb-16 gap-8 md:flex justify-center'>
+
+                <div className="flex flex-col w-full">
+                    <div className="aspect-video" key={videoId}>
+                        <ReactPlayer
+                            style={{ borderRadius: '50px' }}
+                            url={videoUrl}
+                            width='100%'
+                            height='100%'
+                            onEnded={() => {
+                                handleEnded();
+                            }
+                            }
+                            onProgress={handleProgress}
+                            controls={true}
+                        />
+                    </div>
+                    <div>
+                        <h3 className="mt-4 text-xl ">{videoTitulo}</h3>
+                    </div>
+
+                </div>
+
+                <div className="flex flex-col items-center w-full py-8 md:py-0 md:w-1/4">
+
+                    <div className='text-center text-2xl font-bold tracking-tight pb-8'>
+                        veja abaixo os vídeos diponiveis para o treinamento de {subModulo} do módulo {modulo}
+                    </div>
+
+                    <div className='flex-col flex w-full gap-4'>
+                        {data.videos.map((video) => (
+
+                            <button
+                                className='bg-gray-800 flex items-center justify-center rounded-md h-30 hover:bg-gray-700'
+                                onClick={() => {
+                                    setVideoId(video.id);
+                                    setVideoTitulo(video.titulo);
+                                    setVideoUrl(video.url);
+                                }}
+                                key={video.id}
+                            >
+                                <a className='text-white flex justify-center items-center'>
+                                    <h1>{video.titulo}</h1>
+                                </a>
+                            </button>
+
+                        ))}
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
         </>
     );
 }
