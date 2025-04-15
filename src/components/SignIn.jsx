@@ -37,18 +37,18 @@ const SignIn = () => {
         console.log('Something went wrong during signing in: ', response);
         return;
       }
-        storeTokenInLocalStorage(response.data.token);
-        if(response.data.user.role == 'ADMIN'){
-            navigate(APP_ROUTES.ADMIN_HOME_PAGE);
-        }
-        if(response.data.user.role == 'USER'){
-            navigate(APP_ROUTES.USER_HOME_PAGE)
-        }
+      storeTokenInLocalStorage(response.data.token);
+      if (response.data.user.role == 'ADMIN') {
+        navigate(APP_ROUTES.ADMIN_HOME_PAGE);
+      }
+      if (response.data.user.role == 'USER') {
+        navigate(APP_ROUTES.USER_HOME_PAGE)
+      }
     }
     catch (err) {
-        alert(err.response.data.message);
-        console.log(err);
-      
+      alert(err.response.data.message);
+      console.log(err);
+
     }
     finally {
       setIsLoading(false);
@@ -57,53 +57,51 @@ const SignIn = () => {
 
 
   return (
-    <div 
-    style={{ '--image-url': `url(${CdsSistemas})` }}
-    className="w-full h-screen flex justify-center items-center bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center">
+    <div
+      style={{ '--image-url': `url(${CdsSistemas})` }}
+      className="w-full h-screen flex justify-center items-center bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center">
       <div className="h-1/2 shadow-lg rounded-md bg-white p-8 flex flex-col w-2/3 sm:w-1/2">
         <h2 className="text-center font-medium text-2xl mb-4 ">
           Entre na sua conta
         </h2>
         <div className="flex flex-1 flex-col justify-evenly items-center">
-          <div className="space-y-6 w-2/3 items-center">
-            <div>
-              <input
-                className="border-2 outline-none p-2 rounded-md w-3/3 "
-                type="email"
-                placeholder="Digite seu E-mail"
-                value={email}
-                required
-                onChange={(e) => { setEmail(e.target.value); }}
-              />
-            </div>
-            <div>
-              <input
-                className="border-2 outline-none p-2 rounded-md w-3/3"
-                type="password"
-                placeholder="*******"
-                value={password}
-                required
-                onChange={(e) => { setPassword(e.target.value); }}
-              />
-            </div>
-            <div className="flex flex-col items-center">
-              <button
-                className="
-            flex justify-center
-            p-2 rounded-md w-1/2 self-center
-            bg-gray-800  text-white hover:bg-gray-700"
-                onClick={signIn}
-              >
-                {
-                  isLoading ?
-                    <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : null
-                }
-                <span>
-                  Entrar
-                </span>
-              </button>
-            </div>
-          </div>
+          
+            <form className='space-y-6 w-2/3 items-center'>
+              <div>
+                <input
+                  className="border-2 outline-none p-2 rounded-md w-3/3 "
+                  type="email"
+                  placeholder="Digite seu E-mail"
+                  value={email}
+                  required
+                  onChange={(e) => { setEmail(e.target.value); }}
+                />
+              </div>
+              <div>
+                <input
+                  className="border-2 outline-none p-2 rounded-md w-3/3"
+                  type="password"
+                  placeholder="*******"
+                  value={password}
+                  required
+                  onChange={(e) => { setPassword(e.target.value); }}
+                />
+              </div>
+              <div className="flex flex-col items-center">
+                <button
+                  className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700"
+                  onClick={signIn}
+                >
+                  {
+                    isLoading ?
+                      <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : null
+                  }
+                  <span>
+                    Entrar
+                  </span>
+                </button>
+              </div>
+            </form>
         </div>
         <div className="text-center text-sm">
           Não é cadastrado?
