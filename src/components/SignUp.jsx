@@ -19,7 +19,6 @@ const SignUp = () => {
   const signUp = async () => {
     try {
       if (!validator.isEmail(email)) {
-        alert('Digite um email válido')
         return;
       }
       setIsLoading(true);
@@ -81,6 +80,7 @@ const SignUp = () => {
               type="text"
               placeholder="Sobre Nome"
               value={lastname}
+              required
               onChange={(e) => { setLastname(e.target.value); }}
             />
             <input
