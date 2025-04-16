@@ -92,7 +92,6 @@ import Navbar from '../../Navbar';
      return (
          <>
              <nav className="sticky top-0 z-50"><Navbar /></nav>
-             length: {length}
              <div className=" flex flex-col bg-gray-300 h-auto h-full items-center justify-center pt-16 pb-32 ">
                  <div className=" sm:text-5xl pb-10 text-center">
                      <h1 className="text-4xl font-bold tracking-tight text-gray-900">
