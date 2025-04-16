@@ -4,7 +4,6 @@ import Navbar from '../../Navbar';
  import { useUser } from '../../../lib/customHooks';
  import ReactPlayer from 'react-player';
  import { useState, useEffect } from 'react';
- import Fabrica from '../../../assets/fabrica.jpg'; 
  
  const RetaguardaWebCadastros = () => {
      const { user, authenticated } = useUser();
