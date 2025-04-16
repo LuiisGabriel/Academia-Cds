@@ -92,7 +92,7 @@ import Navbar from '../../Navbar';
      return (
          <>
              <nav className="sticky top-0 z-50"><Navbar /></nav>
-             <div className=" flex flex-col bg-gray-300 h-auto h-full items-center justify-center pt-16 pb-32 ">
+             <div className=" flex flex-col bg-gray-300 h-auto h-full items-center justify-center pt-16 pb-32 select-none ">
                  <div className=" sm:text-5xl pb-10 text-center">
                      <h1 className="text-4xl font-bold tracking-tight text-gray-900">
                          Bem-vindo ao treinamento de {subModulo} do módulo {modulo}
@@ -114,7 +114,7 @@ import Navbar from '../../Navbar';
                  <h1> video: {videoId} </h1>
              </div>
  
-             <div className=' bg-gray-300 w-full h-auto h-full px-8 pb-16 gap-8 md:flex justify-center'>
+             <div className=' bg-gray-300 w-full h-auto h-full px-8 pb-16 gap-8 md:flex justify-center select-none'>
  
                  <div className="flex flex-col w-full">
                      <div className="aspect-video" key={videoId}>
