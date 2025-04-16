@@ -17,6 +17,7 @@ const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const signUp = async () => {
+    event.preventDefault();
     try {
       if (!validator.isEmail(email)) {
         return;
@@ -37,6 +38,7 @@ const SignUp = () => {
         console.log('Algo deu errado durante o cadstro: ', response);
         return;
       }
+      alert('Cadastro realizado com sucesso!');
       navigate(APP_ROUTES.SIGN_IN);
     }
     catch (err) {
