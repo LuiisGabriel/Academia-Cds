@@ -70,20 +70,12 @@ import Navbar from '../../Navbar';
          const isVideo = watchedVideos.find((video) => video.id === videoId);
  
          if (isVideo) {
-             console.log('video já assistido')
              return;
          } else {
              setWatchedVideos(prev => ([
                  ...prev,
                  { id: videoId, playedTime: playedTime, ambiente: ambiente, modulo: modulo, subModulo: subModulo }
              ]),
- 
-                 console.log('----------------------------------------------------'),
-                 console.log(watchedVideos),
-                 console.log(isVideo),
-                 console.log(videoId),
-                 console.log('----------------------------------------------------'),
- 
              );
          }
      };
