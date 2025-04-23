@@ -130,7 +130,7 @@ const LandingPage = () => {
               '--opacity-value': `${opacityValue}`,
               transition: "all 1s"
             }}
-            className="text-center flex flex-col justify-center items-center opacity-[opacity:var(--opacity-value)] backdrop-brightness-30 ">
+            className="text-center w-full h-full flex flex-col justify-center items-center opacity-[opacity:var(--opacity-value)] backdrop-brightness-30 ">
             <h2 className="text-6xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
               Bem vindo à Academia CDS.
             </h2>
