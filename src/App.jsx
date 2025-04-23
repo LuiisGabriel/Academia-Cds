@@ -8,12 +8,8 @@ import About from './components/About';
 import Trainments from './components/trainments';
 import Valuations from './components/Valuations';
 
-import CdsWeb from './components/cdsWeb/CdsWeb';
-import CdsDesktop from './components/cdsDesktop/CdsDesktop';
-import RetaguardaWeb from './components/cdsWeb/retaguardaWeb/RetaguardaWeb';
-import FrenteDeLojaWeb from './components/cdsWeb/frenteDeLojaWeb/FrenteDeLojaWeb';
-import FrenteDeLojaDesktop from './components/cdsDesktop/frenteDeLojaDesktop/FrenteDeLojaDesktop';
-import RetaguardaDesktop from './components/cdsDesktop/retaguardaDesktop/RetaguardaDesktop';
+
+
 import RetaguardaWebCadastros from './components/cdsWeb/retaguardaWeb/RetaguardaWebCadastros';
 import RetaguardaWebOperacoes from './components/cdsWeb/retaguardaWeb/RetaguardaWebOperacoes';
 import RetaguardaWebFinanceiro from './components/cdsWeb/retaguardaWeb/RetaguardaWebFinanceiro';
@@ -49,21 +45,19 @@ function App() {
         <Route path={APP_ROUTES.TRAINMENTS} element={<Trainments />} />
         <Route path={APP_ROUTES.VALUATIONS} element={<Valuations />} />
         <Route path={APP_ROUTES.CREATEVIDEO} element={<CreateVideo />} />
-        <Route path={APP_ROUTES.CDSWEB} element={<CdsWeb />} />
-        <Route path={APP_ROUTES.CDSDESKTOP} element={<CdsDesktop />} />
-        <Route path={APP_ROUTES.WEB_RETAGUARDA} element={<RetaguardaWeb />} />
+
         <Route path={APP_ROUTES.WEB_RETAGUARDA_CADASTROS} element={<RetaguardaWebCadastros />} />
         <Route path={APP_ROUTES.WEB_RETAGUARDA_OPERACOES} element={<RetaguardaWebOperacoes />} />
         <Route path={APP_ROUTES.WEB_RETAGUARDA_FINANCEIRO} element={<RetaguardaWebFinanceiro />} />
-        <Route path={APP_ROUTES.WEB_FRENTEDELOJA} element={<FrenteDeLojaWeb />} />
+
         <Route path={APP_ROUTES.WEB_FRENTEDELOJA_CADASTROS} element={<FrenteDeLojaWebCadastros />} />
         <Route path={APP_ROUTES.WEB_FRENTEDELOJA_OPERACOES} element={<FrenteDeLojaWebOperacoes />} />
-        <Route path={APP_ROUTES.DESKTOP_RETAGUARDA} element={<RetaguardaDesktop />} />
+
         <Route path={APP_ROUTES.DESKTOP_RETAGUARDA_CADASTROS} element={<RetaguardaDesktopCadastros />} />
         <Route path={APP_ROUTES.DESKTOP_RETAGUARDA_FERRAMENTAS} element={<RetaguardaDesktopFerramentas />} />
         <Route path={APP_ROUTES.DESKTOP_RETAGUARDA_OPERACOES} element={<RetaguardaDesktopOperacoes />} />
         <Route path={APP_ROUTES.DESKTOP_RETAGUARDA_FINANCEIRO} element={<RetaguardaDesktopFinanceiro />} />
-        <Route path={APP_ROUTES.DESKTOP_FRENTEDELOJA} element={<FrenteDeLojaDesktop />} />
+
         <Route path={APP_ROUTES.DESKTOP_FRENTEDELOJA_CADASTROS} element={<FrenteDeLojaDesktopCadastros />} />
         <Route path={APP_ROUTES.DESKTOP_FRENTEDELOJA_OPERACOES} element={<FrenteDeLojaDesktopOperacoes/>} />
         <Route path={APP_ROUTES.DESKTOP_FRENTEDELOJA_FERRAMENTAS} element={<FrenteDeLojaDesktopFerramentas />} />
