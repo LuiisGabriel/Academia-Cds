@@ -213,7 +213,7 @@ const LandingPage = () => {
 
           <div className='h-100 w-full py-16 bg-gray-300 flex justify-end pointer-events-auto'>
 
-            <div className=' w-1/2 flex justify-center items-center'>
+            <div className=' transition-all duration-300 ease-in-out w-2/4  hover:w-3/5 flex justify-center items-center'>
               <img src={CDSDESKTOP} />
             </div>
 
@@ -229,7 +229,7 @@ const LandingPage = () => {
               <h1 className='text-4xl font-bold text-center text-white'>Ambiente Desktop</h1>
             </div>
 
-            <div className='w-1/2 flex justify-center items-center'>
+            <div className='transition-all duration-300 ease-in-out w-2/4  hover:w-3/5 flex justify-center items-center'>
               <img src={CDSDESKTOP} />
             </div>
 
