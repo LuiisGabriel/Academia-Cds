@@ -13,7 +13,7 @@ function classNames(...classes) {
 
 export default function VisitNavbar() {
   const navigation = [
-    { name: 'Página inicial', href: APP_ROUTES.LANDINGPAGE },
+    { name: 'Home', href: APP_ROUTES.LANDINGPAGE },
     { name: 'Sobre', href: APP_ROUTES.ABOUT },
     { name: 'Cadastre-se', href: APP_ROUTES.SIGN_UP },
   ];

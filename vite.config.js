@@ -8,9 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: "/",
-    server: {
-    port: 9537,
-    allowedHosts: ['academia-cds.onrender.com'],
-  },
+
 })

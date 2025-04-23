@@ -132,7 +132,7 @@ const LandingPage = () => {
             }}
             className="text-center flex flex-col justify-center items-center opacity-[opacity:var(--opacity-value)] ">
             <h2 className="text-6xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
-              Bem vindo ao CDS academy.
+              Bem vindo ao CDS Academy.
             </h2>
             <p className="mt-6 text-lg/8 text-pretty text-white">
               Neste ambiente você vai encontrar tudo oque precisa para utilizar o sistema CDS.
@@ -140,11 +140,11 @@ const LandingPage = () => {
             <div className="mt-10 flex items-center justify-center gap-x-6 ">
               <a
                 href={APP_ROUTES.SIGN_UP}
-                className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white "
+                className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-300 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white "
               >
                 Comece
               </a>
-              <a href={APP_ROUTES.ABOUT} className="text-sm/6 font-bold text-white hover:scale-105">
+              <a href={APP_ROUTES.ABOUT} className="text-sm/6 font-bold text-white hover:scale-105 hover:text-gray-300">
                 Sobre nós <span aria-hidden="true">→</span>
               </a>
             </div>

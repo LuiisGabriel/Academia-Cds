@@ -1,7 +1,7 @@
-const API_URL = 'https://academia-cds-back-end.vercel.app'
+const API_URL = 'http://localhost:4000'
 export const API_ROUTES = {
-  SIGN_UP: `${API_URL}/auth/signUp`,
-  SIGN_IN: `${API_URL}/auth/signIn`,
+  SIGN_UP: `${API_URL}/auth/signup`,
+  SIGN_IN: `${API_URL}/auth/signin`,
   CREATE_VIDEO: `${API_URL}/auth/createVideo`,
   GET_USER: `${API_URL}/auth/me`,
   GET_VIDEOS: `${API_URL}/auth/getVideos`,

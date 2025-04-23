@@ -20,6 +20,7 @@ const SignUp = () => {
     event.preventDefault();
     try {
       if (!validator.isEmail(email)) {
+        
         return;
       }
       setIsLoading(true);

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { getAuthenticatedUser } from './common';
 import { APP_ROUTES } from '../utils/constants';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { API_ROUTES } from '../utils/constants';
 
 export function useUser() {
   const [user, setUser] = useState(null);
@@ -20,7 +22,34 @@ export function useUser() {
     }
     getUserDetails();
   }, []);
-
   return { user, authenticated };
+}
+
+export function useVideos(ambiente, modulo, subModulo) {
+  const [videos, setVideos] = useState([]);
+  useEffect(() => {
+    async function fetchVideos() {
+      try {
+        const response = await axios({
+          method: 'post',
+          url: API_ROUTES.GET_VIDEOS,
+          data: {
+            ambiente,
+            modulo,
+            subModulo,
+          },
+        });
+        if (response?.data?.videos) {
+          setVideos(response.data.videos.videos);
+        } else {
+          console.log('Videos não encontrados:', response);
+        }
+      } catch (err) {
+        console.error('Erro buscando videos:', err);
+      }
+    }
+    fetchVideos();
+  }, [ambiente, modulo, subModulo]);
+  return videos;
 }
 

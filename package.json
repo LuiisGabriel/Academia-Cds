@@ -7,9 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@apollo/client": "^3.13.4",
@@ -18,16 +16,12 @@
     "@material-tailwind/react": "^2.1.10",
     "@tailwindcss/vite": "^4.1.1",
     "axios": "^1.8.2",
-    "depcheck": "^1.4.7",
-    "git": "^0.1.5",
     "graphql": "^16.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.1.0",
     "react-player": "^2.16.0",
-    "react-router-dom": "^7.5.0",
-    "tailwindcss": "^4.1.1",
-    "validator": "^13.15.0",
-    "yarn": "^1.22.22"
+    "react-router-dom": "^7.3.0",
+    "validator": "^13.15.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
@@ -35,8 +29,7 @@
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
-    "gh-pages": "^6.3.0",
     "globals": "^15.15.0",
-    "vite": "^6.2.0"
+    "vite": "^6.3.2"
   }
 }
