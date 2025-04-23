@@ -124,13 +124,13 @@ const LandingPage = () => {
       <div className='flex items-center justify-center'>
         <div
           style={{ '--image-url': `url(${LandingImage})` }}
-          className="fixed h-auto h-screen w-screen top-0 py-70 flex flex-col items-center justify-center bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center">
+          className="fixed h-auto h-screen w-screen top-0 flex flex-col items-center justify-center bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center">
           <div
             style={{
               '--opacity-value': `${opacityValue}`,
               transition: "all 1s"
             }}
-            className="text-center flex flex-col justify-center items-center opacity-[opacity:var(--opacity-value)] ">
+            className="text-center flex flex-col justify-center items-center opacity-[opacity:var(--opacity-value)] backdrop-brightness-30 ">
             <h2 className="text-6xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
               Bem vindo à Academia CDS.
             </h2>
