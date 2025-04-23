@@ -17,7 +17,7 @@ export default function Navbar() {
   const [profilePhoto, setProfilePhoto] = useState('');
   const photoUrl = user?.photo?.url; 
   let bgColor = 'bg-gray-800';
-  let btnHover = 'text-gray-300 hover:scale-105 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium';
+  let btnHover = 'text-white hover:scale-105 rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 ease-in-out';
   const navigation = [];
   const navigate = useNavigate();
 
@@ -44,7 +44,7 @@ export default function Navbar() {
       { name: 'Cadastrar vídeo', href: APP_ROUTES.CREATEVIDEO },
     )
      bgColor = 'bg-red-800';
-     btnHover = 'text-gray-300 hover:bg-red-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium';
+     btnHover = 'transition-all duration-300 ease-in-out text-gray-300 hover:bg-red-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium';
   }
 
   if(user.role == 'USER'){
@@ -102,7 +102,7 @@ export default function Navbar() {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 ">
             <Menu as="div" className="relative ml-3">
               <div>
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm hover:scale-105 focus:ring-offset-gray-800 focus:outline-hidden">
+                <MenuButton className=" transition-all duration-300 ease-in-out relative flex rounded-full bg-gray-800 text-sm hover:scale-105 focus:ring-offset-gray-800 focus:outline-hidden">
                   <span className="absolute -inset-1.5" />
                   <img
                     alt={photoUrl}
@@ -113,7 +113,7 @@ export default function Navbar() {
               </div>
               <MenuItems
                 transition
-                className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-500 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
               >
                 <MenuItem>
                   <a
