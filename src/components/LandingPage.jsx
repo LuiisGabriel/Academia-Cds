@@ -132,7 +132,7 @@ const LandingPage = () => {
             }}
             className="text-center flex flex-col justify-center items-center opacity-[opacity:var(--opacity-value)] ">
             <h2 className="text-6xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
-              Bem vindo ao CDS Academy.
+              Bem vindo à Academia CDS.
             </h2>
             <p className="mt-6 text-lg/8 text-pretty text-white">
               Neste ambiente você vai encontrar tudo oque precisa para utilizar o sistema CDS.
