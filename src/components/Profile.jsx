@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
 import defaultProfilePhoto from '../assets/profile.png';
 
-const LandingPage = () => {
+const Profile = () => {
   const { user, authenticated } = useUser();
   const [profilePhoto, setProfilePhoto] = useState('');
   const photoUrl = user?.photo?.url;
@@ -41,29 +41,9 @@ const LandingPage = () => {
           <h1 className='flex justify-center text-2xl mb-4 text-gray-400'>
             {user.email}
           </h1>
-          <div className="flex flex-1 flex-col justify-evenly">
-
-            <input
-              className="border-2 outline-none p-2 rounded-md"
-              type="text"
-              placeholder="modulo"
-            />
-            <input
-              className="border-2 outline-none p-2 rounded-md"
-              type="text"
-              placeholder="Sub-módulo"
-              required
-            />
-            <input
-              className="border-2 outline-none p-2 rounded-md"
-              type="text"
-              placeholder="Video id"
-              required
-            />
-          </div>
         </div>
       </div>
     </>
   );
 }
-export default LandingPage;
+export default Profile;
