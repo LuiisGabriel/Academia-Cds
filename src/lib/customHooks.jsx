@@ -40,7 +40,7 @@ export function useVideos(ambiente, modulo, subModulo) {
           },
         });
         if (response?.data?.videos) {
-          setVideos(response.data.videos.videos);
+          setVideos(response.data.videos);
         } else {
           console.log('Videos não encontrados:', response);
         }
