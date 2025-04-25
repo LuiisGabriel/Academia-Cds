@@ -2,9 +2,12 @@ import Navbar from '../../Navbar';
 import { useUser, useVideos } from '../../../lib/customHooks';
 import ReactPlayer from 'react-player';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API_ROUTES } from '../../../utils/constants';
 
 const RetaguardaWebCadastros = () => {
     const { user, authenticated } = useUser();
+    const email = user?.email;
 
     const pathname = location.pathname.split('/');
     const ambiente = pathname[1];
@@ -22,7 +25,7 @@ const RetaguardaWebCadastros = () => {
     const [videoUrl, setVideoUrl] = useState('initialUrl');
 
     useEffect(() => {
-        if (videos.length > 0) {
+        if (videos?.length > 0) {
             setLength(videos.length);
         }
     }, [videos]);
@@ -47,31 +50,39 @@ const RetaguardaWebCadastros = () => {
         }
     }
 
-    const handleEnded = () => {
-        const isVideo = watchedVideos.find((video) => video.id === videoId);
-        if (!isVideo) {
-            setWatchedVideos((prev) => [
-                ...prev,
-                { id: videoId, playedTime: playedTime, ambiente: ambiente, modulo: modulo, subModulo: subModulo },
-            ]);
-        }
+    const handleEnded = async () => {
+        
+    const isVideo = user.watchedvideos.indexOf(videoId);
+    let updatedWatchedVideos = [...watchedVideos];
+
+    if (user?.watchedvideos?.length > 0) {
+        updatedWatchedVideos = [...new Set([...updatedWatchedVideos, ...user.watchedvideos])];
+    }
+
+    if (isVideo <= -1) {
+        updatedWatchedVideos.push(videoId);
+    } else {
+        console.log("Vídeo já assistido");
+        return;
+    }
+    setWatchedVideos(updatedWatchedVideos);
+    try {
+        const response = await axios.post(API_ROUTES.UPDATE_USER_WATCHED_VIDEOS, {
+            email,
+            watchedvideos: updatedWatchedVideos,
+        });
+
+        if (response?.data) {
+            return;
+        } 
+    } catch (error) {
+        console.error('Error updating videos:', error);
+    }
     };
 
     return (
         <>
             <nav className="sticky top-0 z-50"><Navbar /></nav>
-
-            <div className='flex w-full gap-2justify-center items-center p-4 gap-2'>
-                {watchedVideos.map((watchedVideo)=>(
-                    <div className='bg-gray-800 flex flex-col items-center justify-center rounded-md text-white w-1/4 gap-1 p-2'>
-                    <h1>id: {watchedVideo.id}</h1>
-                    <h1>playedTime: {watchedVideo.playedTime}</h1>
-                    <h1>ambiente: {watchedVideo.ambiente}</h1>
-                    <h1>modulo: {watchedVideo.modulo}</h1>
-                    <h1>subModulo: {watchedVideo.subModulo}</h1>
-                    </div>
-                ))}
-            </div>
             <div className="flex flex-col bg-gray-300 h-auto h-full items-center justify-center pt-16 pb-32 select-none">
                 <div className="sm:text-5xl pb-10 text-center">
                     <h1 className="text-4xl font-bold tracking-tight text-gray-900">
@@ -88,7 +99,7 @@ const RetaguardaWebCadastros = () => {
                         Assista os vídeos até o final!!
                     </h1>
                 </div>
-                <h1>Você assistiu {watchedVideos.length} vídeos</h1>
+                <h1>Você assistiu {user.watchedvideos.length} vídeos</h1>
                 <h1>Você assistiu {playedTime} segundos</h1>
                 <h1>Você está {condicao} para realizar a prova!!</h1>
                 <h1>Vídeo: {videoId}</h1>
@@ -118,7 +129,7 @@ const RetaguardaWebCadastros = () => {
                     </div>
 
                     <div className="flex-col flex w-full gap-4">
-                        {videos.map((video) => (
+                        {videos?.map((video) => (
                             <button
                                 className="bg-gray-800 flex items-center justify-center rounded-md h-30 hover:bg-gray-700"
                                 onClick={() => {

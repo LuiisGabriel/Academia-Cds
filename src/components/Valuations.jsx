@@ -2,6 +2,8 @@ import React from 'react';
 import { useUser } from '../lib/customHooks';
 import Navbar from './Navbar';
 
+// neededVideos.every(r => watchedVideos.includes(r))
+
 const Valuations = () => {
   const { user, authenticated } = useUser();
   if (!user || !authenticated) {

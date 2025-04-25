@@ -31,9 +31,9 @@ export function useVideos(ambiente, modulo, subModulo) {
     async function fetchVideos() {
       try {
         const response = await axios({
-          method: 'post',
+          method: 'GET',
           url: API_ROUTES.GET_VIDEOS,
-          data: {
+          params: {
             ambiente,
             modulo,
             subModulo,
@@ -52,4 +52,5 @@ export function useVideos(ambiente, modulo, subModulo) {
   }, [ambiente, modulo, subModulo]);
   return videos;
 }
+
 
