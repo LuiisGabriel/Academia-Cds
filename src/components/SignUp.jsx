@@ -20,7 +20,7 @@ const SignUp = () => {
     event.preventDefault();
     try {
       if (!validator.isEmail(email)) {
-        
+        alert("Insira um e-mail válido");
         return;
       }
       setIsLoading(true);
