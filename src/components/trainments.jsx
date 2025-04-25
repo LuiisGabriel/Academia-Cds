@@ -245,10 +245,11 @@ const Trainments = () => {
     return (
         <>
             <nav className="sticky top-0 z-50"><Navbar /></nav>
-            <div className="bg-gray-300  h-auto h-full py-8 flex justify-center w-full">
-                <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                    <h2 className="sr-only">Treinamentos</h2>
-                    <div className='flex justify-center items-center py-16 w-full gap-8'>
+            <div className="bg-gray-300  h-auto h-full flex flex-col justify-center items-center w-full">
+
+                <div className='py-32 flex flex-col justify-center items-center'>
+
+                    <div className='flex justify-start items-center w-8/9 max-w-screen overflow-x-auto gap-2 sm:gap-4'>
                         {filtros.map((filtro) => (
                             <div
                                 onClick={() => {
@@ -271,19 +272,18 @@ const Trainments = () => {
                                 style={{
                                     '--color': filtro.tipo === 'limpar' ? '#dc2626' : filterColor,
                                     '--hoverColor': filtro.tipo === 'limpar' ? '#f87171' : filterHoverColor,
-                                  }}
-                                className="bg-(--color) text-white rounded-lg p-2 cursor-pointer hover:bg-(--hoverColor) transition duration-300 ease-in-out">
+                                }}
+                                className="bg-(--color) text-white text-nowrap rounded-lg max-h-10 w-full flex justify-center p-2 cursor-pointer hover:bg-(--hoverColor) transition duration-300 ease-in-out">
 
                                 <h1>{filtro.titulo}</h1>
-
                             </div>
                         ))}
-
                     </div>
 
-                    <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 ">
+
+                    <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 py-8 px-8">
                         {treinamentosteste.map((treinamento) => (
-                            <a key={treinamento.id} href={treinamento.href} className="group">
+                            <a key={treinamento.id} href={treinamento.href} className="group flex flex-col items-center justify-center">
                                 <img
                                     alt={treinamento.imageAlt}
                                     src={treinamento.imageSrc}
@@ -296,7 +296,7 @@ const Trainments = () => {
                         ))}
                     </div>
                 </div>
-            </div >
+            </div>
         </>
     );
 }
