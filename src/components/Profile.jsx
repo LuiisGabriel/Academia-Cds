@@ -39,7 +39,7 @@ const Profile = () => {
     <>
       <nav className="sticky top-0 z-50"><Navbar /></nav>
       <div className="w-full h-screen flex justify-center items-center bg-gray-300">
-        <div className="w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
+        <div className="sm:w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
           <div className='flex justify-center items-center'>
             <img
               alt={photoUrl}
