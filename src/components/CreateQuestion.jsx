@@ -104,8 +104,6 @@ const CreateQuestion = () => {
     return (
         <>
             <nav className="sticky top-0 z-50"><Navbar /></nav>
-            <div className='flex flex-col'>
-            </div>
             <div className="w-full h-full h-auto py-16 flex justify-center items-center bg-gray-300">
                 <div className=" w-3/4 sm:w-1/2 shadow-lg rounded-md bg-white p-8 flex flex-col">
                     <h2 className="text-center font-medium text-2xl mb-4">
@@ -215,7 +213,7 @@ const CreateQuestion = () => {
 
                             <div className='pt-8 w-full flex items-center justify-center'>
                                 <button
-                                    className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700"
+                                    className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
                                     onClick={addAnswerOption}
                                 >
                                     <span>
@@ -240,7 +238,7 @@ const CreateQuestion = () => {
                                 >
                                     <h1>{answerOption.answerTitle}</h1>
                                     <button
-                                        className='text-2xl hover:scale-115'
+                                        className='text-2xl hover:scale-115 transition-all duration-300 ease-in-out'
                                         onClick={() => {
                                             removeAnswerOption(index)
                                         }}
@@ -255,7 +253,7 @@ const CreateQuestion = () => {
                         </div>
 
                         <button
-                            className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700"
+                            className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
                             onClick={createQuestion}
                         >
                             {
