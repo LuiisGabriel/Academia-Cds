@@ -40,6 +40,7 @@ const CreateQuestion = () => {
     const addAnswerOption = () => {
         if (!answerTitle) {
             alert("insira uma resposta válida");
+            return;
         }
         setAnswerOptions(prev => ([
             ...prev,
