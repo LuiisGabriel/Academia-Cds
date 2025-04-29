@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import { useQuery } from '@apollo/client';
 import { getAmbientes, getModulos, getSubModulos } from '../graphQl/Querys';
 import { useUser } from '../lib/customHooks';
+import lixeira from '../assets/lixeira.svg'
 
 const CreateQuestion = () => {
 
@@ -243,7 +244,11 @@ const CreateQuestion = () => {
                                         onClick={() => {
                                             removeAnswerOption(index)
                                         }}
-                                    >-</button>
+                                    >
+                                        <img
+                                        className='size-5' 
+                                        src={lixeira}/>
+                                    </button>
 
                                 </div>
                             ))}
