@@ -22,6 +22,12 @@ const CreateVideo = () => {
   const [subModulo, setSubModulo] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  if (!user || !authenticated || user.role !== 'ADMIN') {
+    return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
+      <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
+    </div>;
+  }
+
   const createVideo = async () => {
     try {
       setIsLoading(true);
@@ -56,17 +62,13 @@ const CreateVideo = () => {
     }
   };
 
-  if (!user || !authenticated || user.role !== 'ADMIN') {
-    return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
-      <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
-    </div>;
-  }
+
 
   return (
     <>
       <nav className="sticky top-0 z-50"><Navbar /></nav>
       <div className="w-full h-screen flex justify-center items-center bg-gray-300">
-        <div className=" w-2/3 sm:w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
+        <div className=" w-3/4 sm:w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
           <h2 className="text-center font-medium text-2xl mb-4">
             Cadastre um vídeo
           </h2>
@@ -134,11 +136,7 @@ const CreateVideo = () => {
             />
 
             <button
-              className="
-             flex justify-center
-             p-2 rounded-md w-1/2 self-center
-             bg-gray-800  text-white 
-             hover:bg-gray-700"
+              className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800 text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
               onClick={createVideo}
             >
               {
