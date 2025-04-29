@@ -28,6 +28,7 @@ import FrenteDeLojaWebRelatorios from './components/cdsWeb/frenteDeLojaWeb/Frent
 import RetaguardaDesktopRelatorios from './components/cdsDesktop/retaguardaDesktop/RetaguardaDesktopRelatorios';
 import FrenteDeLojaDesktopRelatorios from './components/cdsDesktop/frenteDeLojaDesktop/FrenteDeLojaDesktopRelatorios';
 import CreateQuestion from './components/CreateQuestion';
+import Registers from './components/Registers';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path={APP_ROUTES.VALUATIONS} element={<Valuations />} />
         <Route path={APP_ROUTES.CREATEVIDEO} element={<CreateVideo />} />
         <Route path={APP_ROUTES.CREATEQUESTION} element={<CreateQuestion />} />
+        <Route path={APP_ROUTES.REGISTERS} element={<Registers />} />
 
         <Route path={APP_ROUTES.WEB_RETAGUARDA_CADASTROS} element={<RetaguardaWebCadastros />} />
         <Route path={APP_ROUTES.WEB_RETAGUARDA_OPERACOES} element={<RetaguardaWebOperacoes />} />

@@ -23,6 +23,7 @@ export const APP_ROUTES = {
   VALUATIONS: '/valuations',
   CREATEVIDEO: '/createvideo',
   CREATEQUESTION: '/createquestion',
+  REGISTERS: '/registers',
 
   WEB_RETAGUARDA_CADASTROS: '/Web/Retaguarda/Cadastros',
   WEB_RETAGUARDA_FINANCEIRO: '/Web/Retaguarda/Financeiro',
