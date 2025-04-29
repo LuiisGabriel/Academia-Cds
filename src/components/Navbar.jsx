@@ -40,6 +40,8 @@ export default function Navbar() {
     navigation.splice(0, navigation.length);
     navigation.push(
       { name: 'Página inicial', href: APP_ROUTES.ADMIN_HOME_PAGE },
+      { name: 'Treinamentos', href: APP_ROUTES.TRAINMENTS },
+      { name: 'Avaliações', href: APP_ROUTES.VALUATIONS },
       { name: 'Cadastrar usuário', href: APP_ROUTES.CREATE_USER },
       { name: 'Cadastrar vídeo', href: APP_ROUTES.CREATEVIDEO },
       { name: 'Cadastrar questão', href: APP_ROUTES.CREATEQUESTION },
