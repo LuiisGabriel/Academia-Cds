@@ -3,6 +3,7 @@ export const API_ROUTES = {
   SIGN_UP: `${API_URL}/auth/signup`,
   SIGN_IN: `${API_URL}/auth/signin`,
   CREATE_VIDEO: `${API_URL}/auth/createVideo`,
+  CREATE_QUESTION: `${API_URL}/auth/createQuestion`,
   GET_USER: `${API_URL}/auth/me`,
   GET_VIDEOS: `${API_URL}/auth/getVideos`,
   UPDATE_USER_WATCHED_VIDEOS: `${API_URL}/auth/updateUserWatchedVideos`,
@@ -21,6 +22,7 @@ export const APP_ROUTES = {
   TRAINMENTS: '/trainments',
   VALUATIONS: '/valuations',
   CREATEVIDEO: '/createvideo',
+  CREATEQUESTION: '/createquestion',
 
   WEB_RETAGUARDA_CADASTROS: '/Web/Retaguarda/Cadastros',
   WEB_RETAGUARDA_FINANCEIRO: '/Web/Retaguarda/Financeiro',
