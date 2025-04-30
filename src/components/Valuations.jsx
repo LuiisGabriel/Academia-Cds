@@ -63,8 +63,8 @@ const Valuations = () => {
               </h2>
 
               <div className="flex flex-1 flex-col justify-center items-start">
-                <h1 className='p-8 flex '>
-                  {questionIndex + 1} ) {questionTitle}
+                <h1 className='p-8 flex text-lg'>
+                   {questionTitle}
                 </h1>
                 <form className='space-y-10 flex flex-col justify-start'>
                   {answerOptions.map((answerOption) => (
