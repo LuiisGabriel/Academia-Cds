@@ -14,6 +14,7 @@ const FrenteDeLojaDesktopFerramentas = () => {
     const modulo = pathname[2];
     const subModulo = pathname[3];
     const videos = useVideos(ambiente, modulo, subModulo);
+    const firstVideo = videos?.length > 0 ? videos[0] : null;
 
     const [length, setLength] = useState(0);
     const [playedTime, setPlayedTime] = useState(0);
@@ -22,7 +23,7 @@ const FrenteDeLojaDesktopFerramentas = () => {
     const [watchedVideos, setWatchedVideos] = useState([]);
     const [videoId, setVideoId] = useState('');
     const [videoTitulo, setVideoTitulo] = useState('Escolha um vídeo para iniciar o treinamento');
-    const [videoUrl, setVideoUrl] = useState('initialUrl');
+    const [videoUrl, setVideoUrl] = useState('asdasd');
 
     useEffect(() => {
         if (videos?.length > 0) {
@@ -83,29 +84,29 @@ const FrenteDeLojaDesktopFerramentas = () => {
     return (
         <>
             <nav className="sticky top-0 z-50"><Navbar /></nav>
-            <div className="flex flex-col bg-gray-300 h-auto h-full items-center justify-center pt-16 pb-32 select-none">
-                <div className="sm:text-5xl pb-10 text-center">
-                    <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-                        Bem-vindo ao treinamento de {subModulo} do módulo {modulo}
-                    </h1>
-                </div>
-                <div className="sm:text-4xl w-2/3 text-center pb-8">
-                    <h1 className="text-3xl font-normal tracking-tight text-gray-700">
-                        Aqui você vai encontrar os treinamentos necessários para realizar os cadastros de retaguarda do sistema CDS.
-                    </h1>
-                </div>
-                <div className="sm:text-4xl pb-16 w-2/3 text-center">
-                    <h1 className="text-2xl font-normal tracking-tight text-black">
-                        Assista os vídeos até o final!!
-                    </h1>
-                </div>
-                <h1>Você assistiu {user.watchedvideos.length} vídeos</h1>
-                <h1>Você assistiu {playedTime} segundos</h1>
-                <h1>Você está {condicao} para realizar a prova!!</h1>
-                <h1>Vídeo: {videoId}</h1>
-            </div>
+            <div className="bg-gray-300 w-full h-auto h-full px-8 py-16 gap-8 md:flex justify-center select-none">
 
-            <div className="bg-gray-300 w-full h-auto h-full px-8 pb-16 gap-8 md:flex justify-center select-none">
+                <div className="flex flex-col items-center w-full py-8 md:py-0 md:w-1/4">
+                    <div className="flex-col flex w-full gap-4">
+                        {videos?.map((video, index) => (
+                            <button
+                                className="bg-gray-800 flex items-center p-2 justify-center rounded-md h-30 hover:bg-gray-700"
+                                onClick={() => {
+                                    setVideoId(video.id);
+                                    setVideoTitulo(video.titulo);
+                                    setVideoUrl(video.url);
+                                }}
+                                key={video.id}
+                            >
+                                <a className="text-white flex justify-center items-center gap-4">
+                                    <h1>{video.titulo}</h1>
+                                    <h1>{index + 1}</h1>
+                                </a>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="flex flex-col w-full">
                     <div className="aspect-video" key={videoId}>
                         <ReactPlayer
@@ -123,29 +124,6 @@ const FrenteDeLojaDesktopFerramentas = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col items-center w-full py-8 md:py-0 md:w-1/4">
-                    <div className="text-center text-2xl font-bold tracking-tight pb-8">
-                        Veja abaixo os vídeos disponíveis para o treinamento de {subModulo} do módulo {modulo}
-                    </div>
-
-                    <div className="flex-col flex w-full gap-4">
-                        {videos?.map((video) => (
-                            <button
-                                className="bg-gray-800 flex items-center justify-center rounded-md h-30 hover:bg-gray-700"
-                                onClick={() => {
-                                    setVideoId(video.id);
-                                    setVideoTitulo(video.titulo);
-                                    setVideoUrl(video.url);
-                                }}
-                                key={video.id}
-                            >
-                                <a className="text-white flex justify-center items-center">
-                                    <h1>{video.titulo}</h1>
-                                </a>
-                            </button>
-                        ))}
-                    </div>
-                </div>
             </div>
         </>
     );
