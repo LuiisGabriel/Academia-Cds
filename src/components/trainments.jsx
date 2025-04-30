@@ -280,7 +280,7 @@ const Trainments = () => {
                         ))}
                     </div>
 
-                    <div className=" grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 py-8 px-8">
+                    <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 py-8 px-8">
                         {treinamentosteste.map((treinamento) => (
                             <a key={treinamento.id} href={treinamento.href} className="group flex flex-col items-center justify-center">
                                 <div className='bg-white h-full flex flex-col rounded-lg pb-8 group-hover:scale-102 shadow-lg/30'>
