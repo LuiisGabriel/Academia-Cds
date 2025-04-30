@@ -244,57 +244,66 @@ const Trainments = () => {
 
     return (
         <>
+            
+            <div className="bg-gray-300 h-auto min-h-screen ">
             <nav className="sticky top-0 z-50"><Navbar /></nav>
-            <div className="bg-gray-300  h-auto h-full flex flex-col justify-center items-center w-full">
+                <div className='flex flex-col justify-center items-center w-full'>
+                    <div className='py-28 flex flex-col justify-center items-center w-full'>
 
-                <div className='py-32 flex flex-col justify-center items-center'>
+                        <div className='flex justify-start items-center w-8/9 max-w-screen overflow-x-auto gap-2 sm:gap-4'>
+                            {filtros.map((filtro) => {
+                                const isActive =
+                                    filtro.titulo === ambiente ||
+                                    filtro.titulo === modulo ||
+                                    filtro.titulo === submodulo;
 
-                    <div className='flex justify-start items-center w-8/9 max-w-screen overflow-x-auto gap-2 sm:gap-4'>
-                        {filtros.map((filtro) => (
-                            <div
-                                onClick={() => {
-                                    if (filtro.tipo === 'limpar') {
-                                        setAmbiente('');
-                                        setModulo('');
-                                        setSubmodulo('');
-                                    }
-                                    if (filtro.tipo === 'ambiente') {
-                                        setAmbiente(filtro.titulo);
-                                    }
-                                    if (filtro.tipo === 'modulo') {
-                                        setModulo(filtro.titulo);
-                                    }
-                                    if (filtro.tipo === 'submodulo') {
-                                        setSubmodulo(filtro.titulo);
-                                    }
-                                }}
-                                key={filtro.id}
-                                style={{
-                                    '--color': filtro.tipo === 'limpar' ? '#dc2626' : filterColor,
-                                    '--hoverColor': filtro.tipo === 'limpar' ? '#f87171' : filterHoverColor,
-                                }}
-                                className="bg-(--color) text-white text-nowrap rounded-lg max-h-10 w-full flex justify-center p-2 cursor-pointer hover:bg-(--hoverColor) transition duration-300 ease-in-out">
+                                return (
+                                    <div
+                                        onClick={() => {
+                                            if (filtro.tipo === 'limpar') {
+                                                setAmbiente('');
+                                                setModulo('');
+                                                setSubmodulo('');
+                                            }
+                                            if (filtro.tipo === 'ambiente') {
+                                                setAmbiente(filtro.titulo);
+                                            }
+                                            if (filtro.tipo === 'modulo') {
+                                                setModulo(filtro.titulo);
+                                            }
+                                            if (filtro.tipo === 'submodulo') {
+                                                setSubmodulo(filtro.titulo);
+                                            }
+                                        }}
+                                        key={filtro.id}
+                                        style={{
+                                            '--color': filtro.tipo === 'limpar' ? '#dc2626' : isActive ? '#10b981' : filterColor,
+                                            '--hoverColor': filtro.tipo === 'limpar' ? '#f87171' : isActive ? '#34d399' : filterHoverColor,
+                                        }}
+                                        className="bg-(--color) text-white text-nowrap rounded-lg max-h-10 w-full flex justify-center p-2 cursor-pointer hover:bg-(--hoverColor) transition duration-300 ease-in-out"
+                                    >
+                                        <h1>{filtro.titulo}</h1>
+                                    </div>
+                                );
+                            })}
+                        </div>
 
-                                <h1>{filtro.titulo}</h1>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 py-8 px-8">
-                        {treinamentosteste.map((treinamento) => (
-                            <a key={treinamento.id} href={treinamento.href} className="group flex flex-col items-center justify-center">
-                                <div className='bg-white h-full flex flex-col rounded-lg pb-8 group-hover:scale-102 shadow-lg/30'>
-                                <img
-                                    alt={treinamento.imageAlt}
-                                    src={treinamento.imageSrc}
-                                    className="aspect-square w-full rounded-t-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8"
-                                />
-                                <h3 className="text-center mt-4 text-sm text-gray-700">{treinamento.ambiente} </h3>
-                                <h3 className="text-center mt-4 text-sm text-gray-700">{treinamento.modulo} </h3>
-                                <h3 className="text-center mt-4 text-sm text-gray-700">{treinamento.submodulo} </h3>
-                                </div>
-                            </a>
-                        ))}
+                        <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8 py-8 px-8">
+                            {treinamentosteste.map((treinamento) => (
+                                <a key={treinamento.id} href={treinamento.href} className="group flex flex-col items-center justify-center">
+                                    <div className='bg-white h-full flex flex-col rounded-lg pb-8 group-hover:scale-102 shadow-lg/30'>
+                                        <img
+                                            alt={treinamento.imageAlt}
+                                            src={treinamento.imageSrc}
+                                            className="aspect-square w-full rounded-t-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8"
+                                        />
+                                        <h3 className="text-center mt-4 text-sm text-gray-700">{treinamento.ambiente} </h3>
+                                        <h3 className="text-center mt-4 text-sm text-gray-700">{treinamento.modulo} </h3>
+                                        <h3 className="text-center mt-4 text-sm text-gray-700">{treinamento.submodulo} </h3>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
