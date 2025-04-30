@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_ROUTES } from '../../../utils/constants';
 
-const RetaguardaWebCadastros = () => {
+const RetaguardaWebOperacoes = () => {
     const { user, authenticated } = useUser();
     const email = user?.email;
 
