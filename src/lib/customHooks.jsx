@@ -53,4 +53,28 @@ export function useVideos(ambiente, modulo, subModulo) {
   return videos;
 }
 
+export function useQuestions() {
+  const [questions, setQuestions] = useState([]);
+  useEffect(() => {
+    async function fetchQuestions() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: API_ROUTES.GET_QUESTIONS,
+          params:{},
+        });
+        if (response?.data?.questions) {
+          setQuestions(response.data.questions);
+        } else {
+          console.log('Questões não encontradas:', response);
+        }
+      } catch (err) {
+        console.error('Erro buscando questões:', err);
+      }
+    }
+    fetchQuestions();
+  },[]);
+  return questions;
+}
+
 

@@ -6,6 +6,7 @@ export const API_ROUTES = {
   CREATE_QUESTION: `${API_URL}/auth/createQuestion`,
   GET_USER: `${API_URL}/auth/me`,
   GET_VIDEOS: `${API_URL}/auth/getVideos`,
+  GET_QUESTIONS: `${API_URL}/auth/getQuestions`,
   UPDATE_USER_WATCHED_VIDEOS: `${API_URL}/auth/updateUserWatchedVideos`,
 }
 
