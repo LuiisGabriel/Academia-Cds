@@ -62,7 +62,7 @@ const Valuations = () => {
                 Questão {questionIndex + 1}
               </h2>
 
-              <div className="flex flex-1 flex-col justify-center items-start">
+              <div className="flex flex-1 flex-col justify-start items-start py-8">
                 <h1 className='p-8 flex text-lg'>
                    {questionTitle}
                 </h1>
