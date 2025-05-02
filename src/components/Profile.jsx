@@ -37,25 +37,31 @@ const Profile = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-50"><Navbar /></nav>
-      <div className="w-full h-screen flex justify-center items-center bg-gray-300">
-        <div className="sm:w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
-          <div className='flex justify-center items-center'>
-            <img
-              alt={photoUrl}
-              src={profilePhoto}
-              className="size-24 rounded-full"
-            />
+
+      <div className="w-full h-auto min-h-screen  bg-gray-300">
+        <nav className="sticky top-0 z-50"><Navbar /></nav>
+        <div className='flex justify-center items-center pt-16'>
+          <div className="sm:w-1/2 h-full shadow-lg rounded-md bg-white p-8 flex flex-col">
+            <div className='flex justify-center items-center'>
+              <img
+                alt={photoUrl}
+                src={profilePhoto}
+                className="size-24 rounded-full"
+              />
+            </div>
+            <h2 className="text-center font-medium text-2xl ">
+              {user.firstname} {user.lastname}
+            </h2>
+            <h1 className='flex justify-center text-2xl mb-4 text-gray-400'>
+              {user.email}
+            </h1>
+            <h3 className='text-center font-medium text-2xl'>
+              {watchedvideosmesage}
+            </h3>
+            <div className='h-80'>
+
+            </div>
           </div>
-          <h2 className="text-center font-medium text-2xl ">
-            {user.firstname} {user.lastname}
-          </h2>
-          <h1 className='flex justify-center text-2xl mb-4 text-gray-400'>
-            {user.email}
-          </h1>
-          <h3 className='text-center font-medium text-2xl'>
-            {watchedvideosmesage}
-          </h3>
         </div>
       </div>
     </>

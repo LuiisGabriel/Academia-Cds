@@ -66,87 +66,90 @@ const CreateVideo = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-50"><Navbar /></nav>
-      <div className="w-full h-screen flex justify-center items-center bg-gray-300">
-        <div className=" w-3/4 sm:w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
-          <h2 className="text-center font-medium text-2xl mb-4">
-            Cadastre um vídeo
-          </h2>
-          <div className="flex flex-1 flex-col justify-evenly">
-            <input
-              className="border-2 outline-none p-2 rounded-md"
-              type="email"
-              placeholder="titulo"
-              value={titulo}
-              required
-              onChange={(e) => { setTitulo(e.target.value); }}
-            />
-            <select
-              type="text"
-              onChange={(e) => { setAmbiente(e.target.value); }}
-              value={ambiente}
-              className="border-2 outline-none p-2 rounded-md"
-            >
-              <option disabled={true} value="">Escolha um ambiente</option>
-              {ambientes.data?.ambientes?.map((ambiente) => (
-                <option
-                  value={ambiente.nome}
-                >
-                  {ambiente.nome}
-                </option>
-              ))}
-            </select>
-            <select
-              type="text"
-              onChange={(e) => { setModulo(e.target.value); }}
-              value={modulo}
-              className="border-2 outline-none p-2 rounded-md"
-            >
-              <option disabled={true} value="">Escolha um módulo</option>
-              {modulos.data?.modulos?.map((modulo) => (
-                <option
-                  value={modulo.nome}
-                >
-                  {modulo.nome}
-                </option>
-              ))}
-            </select>
-            <select
-              type="text"
-              onChange={(e) => { setSubModulo(e.target.value); }}
-              value={subModulo}
-              className="border-2 outline-none p-2 rounded-md"
-            >
-              <option disabled={true} value="">Escolha um sub-módulo</option>
-              {subModulos.data?.subModulos?.map((subModulo) => (
-                <option
-                  value={subModulo.nome}
-                >
-                  {subModulo.nome}
-                </option>
-              ))}
-            </select>
-            <input
-              className="border-2 outline-none p-2 rounded-md"
-              type="email"
-              placeholder="Url" 
-              value={url}
-              required
-              onChange={(e) => { setUrl(e.target.value); }}
-            />
 
-            <button
-              className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800 text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
-              onClick={createVideo}
-            >
-              {
-                isLoading ?
-                  <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : null
-              }
-              <span>
-                Cadastrar
-              </span>
-            </button>
+      <div className="w-full h-screen  bg-gray-300">
+        <nav className="sticky top-0 z-50"><Navbar /></nav>
+        <div className='flex justify-center items-center pt-16'>
+          <div className=" w-3/4 sm:w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
+            <h2 className="text-center font-medium text-2xl mb-8">
+              Cadastre um vídeo
+            </h2>
+            <form className="flex flex-1 flex-col justify-evenly gap-8">
+              <input
+                className="border-2 outline-none p-2 rounded-md"
+                type="email"
+                placeholder="titulo"
+                value={titulo}
+                required
+                onChange={(e) => { setTitulo(e.target.value); }}
+              />
+              <select
+                type="text"
+                onChange={(e) => { setAmbiente(e.target.value); }}
+                value={ambiente}
+                className="border-2 outline-none p-2 rounded-md"
+              >
+                <option disabled={true} value="">Escolha um ambiente</option>
+                {ambientes.data?.ambientes?.map((ambiente) => (
+                  <option
+                    value={ambiente.nome}
+                  >
+                    {ambiente.nome}
+                  </option>
+                ))}
+              </select>
+              <select
+                type="text"
+                onChange={(e) => { setModulo(e.target.value); }}
+                value={modulo}
+                className="border-2 outline-none p-2 rounded-md"
+              >
+                <option disabled={true} value="">Escolha um módulo</option>
+                {modulos.data?.modulos?.map((modulo) => (
+                  <option
+                    value={modulo.nome}
+                  >
+                    {modulo.nome}
+                  </option>
+                ))}
+              </select>
+              <select
+                type="text"
+                onChange={(e) => { setSubModulo(e.target.value); }}
+                value={subModulo}
+                className="border-2 outline-none p-2 rounded-md"
+              >
+                <option disabled={true} value="">Escolha um sub-módulo</option>
+                {subModulos.data?.subModulos?.map((subModulo) => (
+                  <option
+                    value={subModulo.nome}
+                  >
+                    {subModulo.nome}
+                  </option>
+                ))}
+              </select>
+              <input
+                className="border-2 outline-none p-2 rounded-md"
+                type="email"
+                placeholder="Url"
+                value={url}
+                required
+                onChange={(e) => { setUrl(e.target.value); }}
+              />
+
+              <button
+                className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800 text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
+                onClick={createVideo}
+              >
+                {
+                  isLoading ?
+                    <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : null
+                }
+                <span>
+                  Cadastrar
+                </span>
+              </button>
+            </form>
           </div>
         </div>
       </div>

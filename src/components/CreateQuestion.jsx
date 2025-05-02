@@ -104,167 +104,169 @@ const CreateQuestion = () => {
 
     return (
         <>
-            <nav className="sticky top-0 z-50"><Navbar /></nav>
-            <div className="w-full h-full h-auto py-16 flex justify-center items-center bg-gray-300">
-                <div className=" w-3/4 sm:w-1/2 shadow-lg rounded-md bg-white p-8 flex flex-col">
-                    <h2 className="text-center font-medium text-2xl mb-4">
-                        Cadastre uma nova questão
-                    </h2>
-                    <div className="flex flex-1 flex-col justify-evenly py-8 gap-8">
-                        <input
-                            className="border-2 outline-none p-2 rounded-md"
-                            type="email"
-                            placeholder="titulo"
-                            value={questionTitle}
-                            required
-                            onChange={(e) => { setQuestionTitle(e.target.value); }}
-                        />
-                        <select
-                            type="text"
-                            onChange={(e) => { setAmbiente(e.target.value); }}
-                            value={ambiente}
-                            className="border-2 outline-none p-2 rounded-md"
-                        >
-                            <option disabled={true} value="">Escolha um ambiente</option>
-                            {ambientes.data?.ambientes?.map((ambiente) => (
-                                <option
-                                    key={ambiente.nome}
-                                    value={ambiente.nome}
-                                >
-                                    {ambiente.nome}
-                                </option>
-                            ))}
-                        </select>
-                        <select
-                            type="text"
-                            onChange={(e) => { setModulo(e.target.value); }}
-                            value={modulo}
-                            className="border-2 outline-none p-2 rounded-md"
-                        >
-                            <option disabled={true} value="">Escolha um módulo</option>
-                            {modulos.data?.modulos?.map((modulo) => (
-                                <option
-                                    key={modulo.nome}
-                                    value={modulo.nome}
-                                >
-                                    {modulo.nome}
-                                </option>
-                            ))}
-                        </select>
-                        <select
-                            type="text"
-                            onChange={(e) => { setSubModulo(e.target.value); }}
-                            value={subModulo}
-                            className="border-2 outline-none p-2 rounded-md"
-                        >
-                            <option disabled={true} value="">Escolha um sub-módulo</option>
-                            {subModulos.data?.subModulos?.map((subModulo) => (
-                                <option
-                                    key={subModulo.nome}
-                                    value={subModulo.nome}
-                                >
-                                    {subModulo.nome}
-                                </option>
-                            ))}
-                        </select>
-                        <select
-                            type="text"
-                            onChange={(e) => { setNivel(e.target.value); }}
-                            value={nivel}
-                            className="border-2 outline-none p-2 rounded-md"
-                            required
-                        >
-                            <option disabled={true} value="">Selecione um nível para a questão</option>
-                            <option
-                                value={1}
+            <div className="w-full h-full h-auto  bg-gray-300">
+                <nav className="sticky top-0 z-50"><Navbar /></nav>
+                <div className='py-16 flex justify-center items-center'>
+                    <div className=" w-3/4 sm:w-1/2 shadow-lg rounded-md bg-white p-8 flex flex-col">
+                        <h2 className="text-center font-medium text-2xl mb-4">
+                            Cadastre uma nova questão
+                        </h2>
+                        <form className="flex flex-1 flex-col justify-evenly py-8 gap-8">
+                            <input
+                                className="border-2 outline-none p-2 rounded-md"
+                                type="email"
+                                placeholder="titulo"
+                                value={questionTitle}
+                                required
+                                onChange={(e) => { setQuestionTitle(e.target.value); }}
+                            />
+                            <select
+                                type="text"
+                                onChange={(e) => { setAmbiente(e.target.value); }}
+                                value={ambiente}
+                                className="border-2 outline-none p-2 rounded-md"
                             >
-                                1
-                            </option>
-                            <option
-                                value={2}
-                            >
-                                2
-                            </option>
-
-                        </select>
-
-                        <div className='flex flex-col justify-center items-center w-full'>
-
-                            <div className='w-full md:flex justify-start items-center gap-8'>
-                                <input
-                                    className="border-2 outline-none p-2 rounded-md w-full mb-8 sm:mb-0"
-                                    type="text"
-                                    placeholder="resposta"
-                                    value={answerTitle}
-                                    required
-                                    onChange={(e) => { setAnswerTitle(e.target.value); }}
-                                />
-                                <div className='flex justify-center items-center md:w-1/2'>
-                                    <h1 className='px-2'>
-                                        é a resposta certa?
-                                    </h1>
-                                    <input
-                                        className='rounded-full size-3'
-                                        type='checkbox'
-                                        checked={isCorrect}
-                                        onChange={(e) => setIsCorrect(e.target.checked)}
-                                    />
-                                </div>
-                            </div>
-
-                            <div className='pt-8 w-full flex items-center justify-center'>
-                                <button
-                                    className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
-                                    onClick={addAnswerOption}
-                                >
-                                    <span>
-                                        Inserir resposta
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-
-
-                        <div className='flex flex-col justify-center items-center gap-2 '>
-                            <h1 className='mb-4'>
-                                Respostas para esta questão:
-                            </h1>
-                            {answerOptions?.map((answerOption, index) => (
-                                <div
-                                    key={index}
-                                    style={{
-                                        '--color': answerOption.isCorrect === true ? '#84cc16' : isCorrectColor,
-                                    }}
-                                    className=' bg-(--color)/40 rounded-lg w-full p-2 flex justify-between items-center'
-                                >
-                                    <h1>{answerOption.answerTitle}</h1>
-                                    <button
-                                        className='text-2xl hover:scale-115 transition-all duration-300 ease-in-out'
-                                        onClick={() => {
-                                            removeAnswerOption(index)
-                                        }}
+                                <option disabled={true} value="">Escolha um ambiente</option>
+                                {ambientes.data?.ambientes?.map((ambiente) => (
+                                    <option
+                                        key={ambiente.nome}
+                                        value={ambiente.nome}
                                     >
-                                        <img
-                                        className='size-5' 
-                                        src={lixeira}/>
-                                    </button>
+                                        {ambiente.nome}
+                                    </option>
+                                ))}
+                            </select>
+                            <select
+                                type="text"
+                                onChange={(e) => { setModulo(e.target.value); }}
+                                value={modulo}
+                                className="border-2 outline-none p-2 rounded-md"
+                            >
+                                <option disabled={true} value="">Escolha um módulo</option>
+                                {modulos.data?.modulos?.map((modulo) => (
+                                    <option
+                                        key={modulo.nome}
+                                        value={modulo.nome}
+                                    >
+                                        {modulo.nome}
+                                    </option>
+                                ))}
+                            </select>
+                            <select
+                                type="text"
+                                onChange={(e) => { setSubModulo(e.target.value); }}
+                                value={subModulo}
+                                className="border-2 outline-none p-2 rounded-md"
+                            >
+                                <option disabled={true} value="">Escolha um sub-módulo</option>
+                                {subModulos.data?.subModulos?.map((subModulo) => (
+                                    <option
+                                        key={subModulo.nome}
+                                        value={subModulo.nome}
+                                    >
+                                        {subModulo.nome}
+                                    </option>
+                                ))}
+                            </select>
+                            <select
+                                type="text"
+                                onChange={(e) => { setNivel(e.target.value); }}
+                                value={nivel}
+                                className="border-2 outline-none p-2 rounded-md"
+                                required
+                            >
+                                <option disabled={true} value="">Selecione um nível para a questão</option>
+                                <option
+                                    value={1}
+                                >
+                                    1
+                                </option>
+                                <option
+                                    value={2}
+                                >
+                                    2
+                                </option>
 
+                            </select>
+
+                            <div className='flex flex-col justify-center items-center w-full'>
+
+                                <div className='w-full md:flex justify-start items-center gap-8'>
+                                    <input
+                                        className="border-2 outline-none p-2 rounded-md w-full mb-8 sm:mb-0"
+                                        type="text"
+                                        placeholder="resposta"
+                                        value={answerTitle}
+                                        required
+                                        onChange={(e) => { setAnswerTitle(e.target.value); }}
+                                    />
+                                    <div className='flex justify-center items-center md:w-1/2'>
+                                        <h1 className='px-2'>
+                                            é a resposta certa?
+                                        </h1>
+                                        <input
+                                            className='rounded-full size-3'
+                                            type='checkbox'
+                                            checked={isCorrect}
+                                            onChange={(e) => setIsCorrect(e.target.checked)}
+                                        />
+                                    </div>
                                 </div>
-                            ))}
-                        </div>
 
-                        <button
-                            className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
-                            onClick={createQuestion}
-                        >
-                            {
-                                isLoading ?
-                                    <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : null
-                            }
-                            <span>
-                                Cadastrar questão
-                            </span>
-                        </button>
+                                <div className='pt-8 w-full flex items-center justify-center'>
+                                    <button
+                                        className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
+                                        onClick={addAnswerOption}
+                                    >
+                                        <span>
+                                            Inserir resposta
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+
+
+                            <div className='flex flex-col justify-center items-center gap-2 '>
+                                <h1 className='mb-4'>
+                                    Respostas para esta questão:
+                                </h1>
+                                {answerOptions?.map((answerOption, index) => (
+                                    <div
+                                        key={index}
+                                        style={{
+                                            '--color': answerOption.isCorrect === true ? '#84cc16' : isCorrectColor,
+                                        }}
+                                        className=' bg-(--color)/40 rounded-lg w-full p-2 flex justify-between items-center'
+                                    >
+                                        <h1>{answerOption.answerTitle}</h1>
+                                        <button
+                                            className='text-2xl hover:scale-115 transition-all duration-300 ease-in-out'
+                                            onClick={() => {
+                                                removeAnswerOption(index)
+                                            }}
+                                        >
+                                            <img
+                                                className='size-5'
+                                                src={lixeira} />
+                                        </button>
+
+                                    </div>
+                                ))}
+                            </div>
+
+                            <button
+                                className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
+                                onClick={createQuestion}
+                            >
+                                {
+                                    isLoading ?
+                                        <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : null
+                                }
+                                <span>
+                                    Cadastrar questão
+                                </span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

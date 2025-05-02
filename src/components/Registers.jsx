@@ -37,26 +37,29 @@ const Registers = () => {
 
     return (
         <>
-            <nav className="sticky top-0 z-50"><Navbar /></nav>
-            <div className="bg-gray-300 flex flex-col items-center h-full h-auto min-h-screen pt-16">
-                <div className=" sm:text-5xl pb-10">
-                    <h1 className="text-5xl text-center font-bold tracking-tight p-8">
-                        Aqui estão disponiveis os cadastros para o CDS Academy!
-                    </h1>
-                </div>
-                <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 py-8 px-8">
-                    {cadastros.map((cadastro) => (
-                        <a key={cadastro.id} href={cadastro.href} className="group">
-                            <div className="bg-white h-full flex flex-col rounded-lg pb-8 group-hover:scale-102">
-                            <img
-                                className="aspect-video w-full rounded-t-lg group-hover:opacity-75 xl:aspect-video"
-                                src={cadastro.imageSrc}
-                            />
-                            <h3 className="text-center mt-8">{cadastro.name}</h3>
-                            <h1 className="text-center text-sm text-gray-700 mt-4 px-4">{cadastro.descricao}</h1>
-                            </div>
-                        </a>
-                    ))}
+
+            <div className="bg-gray-300  h-auto min-h-screen ">
+                <nav className="sticky top-0 z-50"><Navbar /></nav>
+                <div className="flex flex-col items-center pt-16">
+                    <div className=" sm:text-5xl pb-10">
+                        <h1 className="text-5xl text-center font-bold tracking-tight p-8">
+                            Aqui estão disponiveis os cadastros para o CDS Academy!
+                        </h1>
+                    </div>
+                    <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 py-8 px-8">
+                        {cadastros.map((cadastro) => (
+                            <a key={cadastro.id} href={cadastro.href} className="group">
+                                <div className="bg-white h-full flex flex-col rounded-lg pb-8 group-hover:scale-102 shadow-xl/30">
+                                    <img
+                                        className="aspect-video w-full rounded-t-lg group-hover:opacity-75 xl:aspect-video"
+                                        src={cadastro.imageSrc}
+                                    />
+                                    <h3 className="text-center mt-8">{cadastro.name}</h3>
+                                    <h1 className="text-center text-sm text-gray-700 mt-4 px-4">{cadastro.descricao}</h1>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
                 </div>
             </div>
         </>

@@ -71,73 +71,76 @@ const CreateUser = () => {
 
     return (
         <>
-            <nav className="sticky top-0 z-50"><Navbar /></nav>
-            <div className="w-full h-screen flex justify-center items-center bg-gray-300">
-                <div className=" w-3/4 sm:w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
-                    <h2 className="text-center font-medium text-2xl mb-4">
-                        Cadastre um novo usuário
-                    </h2>
-                    <div className="flex flex-1 flex-col justify-evenly">
-                        <input
-                            className="border-2 outline-none p-2 rounded-md"
-                            type="text"
-                            placeholder="Nome"
-                            value={firstname}
-                            required
-                            onChange={(e) => { setFirstname(e.target.value); }}
-                        />
-                        <input
-                            className="border-2 outline-none p-2 rounded-md"
-                            type="text"
-                            placeholder="Sobre Nome"
-                            value={lastname}
-                            onChange={(e) => { setLastname(e.target.value); }}
-                        />
-                        <input
-                            className="border-2 outline-none p-2 rounded-md"
-                            type="email"
-                            placeholder="Digite seu E-mail"
-                            value={email}
-                            required
-                            onChange={(e) => { setEmail(e.target.value); }}
-                        />
-                        <input
-                            className="border-2 outline-none p-2 rounded-md"
-                            type="password"
-                            placeholder="*******" value={password}
-                            required
-                            onChange={(e) => { setPassword(e.target.value); }}
-                        />
 
-                        <select
-                            type="text"
-                            onChange={(e) => { setRole(e.target.value); }}
-                            value={role}
-                            className="border-2 outline-none p-2 rounded-md"
-                        >
-                            <option disabled={true} value="">Defina o tipo do usuário</option>
+            <div className="w-full min-h-screen h-auto h-full bg-gray-300">
+                <nav className="sticky top-0 z-50"><Navbar /></nav>
+                <div className='flex flex-col items-center pt-16'>
+                    <div className=" w-3/4 sm:w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
+                        <h2 className="text-center font-medium text-2xl mb-8">
+                            Cadastre um novo usuário
+                        </h2>
+                        <form className="flex flex-1 flex-col justify-evenly gap-8">
+                            <input
+                                className="border-2 outline-none p-2 rounded-md"
+                                type="text"
+                                placeholder="Nome"
+                                value={firstname}
+                                required
+                                onChange={(e) => { setFirstname(e.target.value); }}
+                            />
+                            <input
+                                className="border-2 outline-none p-2 rounded-md"
+                                type="text"
+                                placeholder="Sobre Nome"
+                                value={lastname}
+                                onChange={(e) => { setLastname(e.target.value); }}
+                            />
+                            <input
+                                className="border-2 outline-none p-2 rounded-md"
+                                type="email"
+                                placeholder="Digite seu E-mail"
+                                value={email}
+                                required
+                                onChange={(e) => { setEmail(e.target.value); }}
+                            />
+                            <input
+                                className="border-2 outline-none p-2 rounded-md"
+                                type="password"
+                                placeholder="*******" value={password}
+                                required
+                                onChange={(e) => { setPassword(e.target.value); }}
+                            />
 
-                            <option value='USER'>
-                                Usuário
-                            </option>
+                            <select
+                                type="text"
+                                onChange={(e) => { setRole(e.target.value); }}
+                                value={role}
+                                className="border-2 outline-none p-2 rounded-md"
+                            >
+                                <option disabled={true} value="">Defina o tipo do usuário</option>
 
-                            <option value='ADMIN'>
-                                Administrador
-                            </option>
+                                <option value='USER'>
+                                    Usuário
+                                </option>
 
-                        </select>
-                        <button
-                            className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800 text-white hover:bg-gray-700 transition-all duration-300 ease-in-out" 
-                            onClick={signUp}
-                        >
-                            {
-                                isLoading ?
-                                    <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : null
-                            }
-                            <span>
-                                Cadastrar
-                            </span>
-                        </button>
+                                <option value='ADMIN'>
+                                    Administrador
+                                </option>
+
+                            </select>
+                            <button
+                                className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800 text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
+                                onClick={signUp}
+                            >
+                                {
+                                    isLoading ?
+                                        <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : null
+                                }
+                                <span>
+                                    Cadastrar
+                                </span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
