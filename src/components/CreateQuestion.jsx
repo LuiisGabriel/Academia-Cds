@@ -201,7 +201,7 @@ const CreateQuestion = () => {
                                     />
                                     <div className='flex justify-center items-center md:w-1/2'>
                                         <h1 className='px-2'>
-                                            é a resposta certa?
+                                            É a resposta certa?
                                         </h1>
                                         <input
                                             className='rounded-full size-3'
