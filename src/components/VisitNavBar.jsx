@@ -10,7 +10,7 @@ function classNames(...classes) {
 
 export default function VisitNavbar() {
   const navigation = [
-    { name: 'Home', href: APP_ROUTES.LANDINGPAGE },
+    { name: 'Página inicial', href: APP_ROUTES.LANDINGPAGE },
     { name: 'Sobre', href: APP_ROUTES.ABOUT },
     { name: 'Cadastre-se', href: APP_ROUTES.SIGN_UP },
   ];
@@ -43,7 +43,7 @@ export default function VisitNavbar() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className='text-white hover:scale-105 rounded-md px-3 py-2 text-md font-medium transition-all duration-300 ease-in-out'
+                    className='text-white hover:scale-105 rounded-md px-3 py-2 text-md font-semibold transition-all duration-300 ease-in-out'
                   >
                     {item.name}
                   </a>
