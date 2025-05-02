@@ -77,7 +77,7 @@ const CreateVideo = () => {
             <form className="flex flex-1 flex-col justify-evenly gap-8">
               <input
                 className="border-2 outline-none p-2 rounded-md"
-                type="email"
+                type="text"
                 placeholder="titulo"
                 value={titulo}
                 required
@@ -130,7 +130,7 @@ const CreateVideo = () => {
               </select>
               <input
                 className="border-2 outline-none p-2 rounded-md"
-                type="email"
+                type="text"
                 placeholder="Url"
                 value={url}
                 required
