@@ -17,7 +17,7 @@ export default function Navbar() {
   const [profilePhoto, setProfilePhoto] = useState('');
   const photoUrl = user?.photo?.url; 
   let bgColor = 'bg-gray-800';
-  let btnHover = 'text-white hover:scale-105 rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 ease-in-out';
+  let btnHover = 'text-white hover:scale-105 rounded-md px-3 py-2 text-sm font-semibold transition-all duration-300 ease-in-out';
   const navigation = [];
   const navigate = useNavigate();
 
