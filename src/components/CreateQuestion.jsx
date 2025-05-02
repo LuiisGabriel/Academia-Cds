@@ -111,7 +111,7 @@ const CreateQuestion = () => {
                         <h2 className="text-center font-medium text-2xl mb-4">
                             Cadastre uma nova questão
                         </h2>
-                        <form className="flex flex-1 flex-col justify-evenly py-8 gap-8">
+                        <div className="flex flex-1 flex-col justify-evenly py-8 gap-8">
                             <input
                                 className="border-2 outline-none p-2 rounded-md"
                                 type="text"
@@ -265,7 +265,7 @@ const CreateQuestion = () => {
                                     Cadastrar questão
                                 </span>
                             </button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
