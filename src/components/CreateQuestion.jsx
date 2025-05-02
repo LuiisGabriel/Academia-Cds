@@ -197,7 +197,6 @@ const CreateQuestion = () => {
                                         type="text"
                                         placeholder="resposta"
                                         value={answerTitle}
-                                        required
                                         onChange={(e) => { setAnswerTitle(e.target.value); }}
                                     />
                                     <div className='flex justify-center items-center md:w-1/2'>
