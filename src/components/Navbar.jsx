@@ -45,7 +45,7 @@ export default function Navbar() {
       { name: 'Cadastros', href: APP_ROUTES.REGISTERS },
     )
      bgColor = 'bg-red-800';
-     btnHover = 'transition-all duration-300 ease-in-out text-gray-300 hover:bg-red-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium';
+     btnHover = 'text-white hover:scale-105 rounded-md px-3 py-2 text-sm font-semibold transition-all duration-300 ease-in-out';
   }
 
   if(user.role == 'USER'){

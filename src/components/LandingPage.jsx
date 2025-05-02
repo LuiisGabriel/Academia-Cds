@@ -197,10 +197,10 @@ const LandingPage = () => {
                         {imagem.descricao}
                       </Typography>
                       <div className="flex justify-center gap-2">
-                        <Button size="lg" color="white" className='hover:scale-105' onClick={handleHref1Click(imagem.href1)}>
+                        <Button size="lg" color="white" className='hover:scale-102 transition-all duration-300 ease-in-out' onClick={handleHref1Click(imagem.href1)}>
                           Descubra
                         </Button>
-                        <Button size="lg" color="white" variant="text" className='hover:scale-105' onClick={handleHref2Click(imagem.href2)}>
+                        <Button size="lg" color="white" variant="text" className='transition-all duration-300 ease-in-out' onClick={handleHref2Click(imagem.href2)}>
                           Sei lá
                         </Button>
                       </div>
@@ -268,31 +268,31 @@ const LandingPage = () => {
           </div>
 
           <div className='bg-gray-800 flex flex-col items-center justify-center pointer-events-auto px-4 pb-16'>
-            <div className='size-20 py-6 hover:scale-102'>
+            <div className='size-20 py-6 hover:scale-105 transition-all duration-150 ease-in-out'>
               <a href='https://cdssistemas.com/'>
                 <img src={Logo} />
               </a>
             </div>
             <div className=" h-full flex pointer-events-auto justify-center text-white gap-4 sm:gap-8 py-6">
-              <a className='hover:scale-105' href={APP_ROUTES.ABOUT}>Sobre</a>
-              <a className='hover:scale-105' href=''>dfgdfgd</a>
-              <a className='hover:scale-105' href=''>sdfdsfd</a>
-              <a className='hover:scale-105' href=''>asdasdas</a>
-              <a className='hover:scale-105' href=''>asdasdsa</a>
+              <a className='hover:scale-105 transition-all duration-150 ease-in-out' href={APP_ROUTES.ABOUT}>Sobre</a>
+              <a className='hover:scale-105 transition-all duration-150 ease-in-out' href=''>dfgdfgd</a>
+              <a className='hover:scale-105 transition-all duration-150 ease-in-out' href=''>sdfdsfd</a>
+              <a className='hover:scale-105 transition-all duration-150 ease-in-out' href=''>asdasdas</a>
+              <a className='hover:scale-105 transition-all duration-150 ease-in-out' href=''>asdasdsa</a>
             </div>
 
-            <div className=" h-full flex pointer-events-auto justify-center items-center text-white gap-10 pt-4">
+            <div className=" h-full flex pointer-events-auto justify-center items-center text-white gap-10 pt-4 ">
               <a href='https://www.facebook.com/cdssistemas/'>
-                <img src={Facebook} className='size-8 hover:scale-105' />
+                <img src={Facebook} className='size-8 hover:scale-105 transition-all duration-150 ease-in-out' />
               </a>
               <a href='https://www.instagram.com/cdssistemas/'>
-                <img src={Instagram} className='size-8 hover:scale-105' />
+                <img src={Instagram} className='size-8 hover:scale-105 transition-all duration-150 ease-in-out' />
               </a>
               <a href='https://pt.linkedin.com/company/cds-consusltoria-e-desenvolvimento-de-sistemas'>
-                <img src={Linkedin} className='size-8 hover:scale-105' />
+                <img src={Linkedin} className='size-8 hover:scale-105 transition-all duration-150 ease-in-out' />
               </a>
               <a href='https://www.youtube.com/channel/UCgRD73BibhKdP4H0bZNjEsQ'>
-                <img src={Youtube} className='size-8 hover:scale-105' />
+                <img src={Youtube} className='size-8 hover:scale-105 transition-all duration-150 ease-in-out' />
               </a>
             </div>
           </div>

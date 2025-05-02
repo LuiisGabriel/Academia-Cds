@@ -138,7 +138,7 @@ const CreateVideo = () => {
               />
 
               <button
-                className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800 text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
+                className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800 text-white hover:bg-gray-700 hover:scale-102 transition-all duration-300 ease-in-out"
                 onClick={createVideo}
               >
                 {

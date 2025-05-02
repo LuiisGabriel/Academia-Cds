@@ -68,7 +68,7 @@ const UserHomePage = () => {
               <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 items-center">
                 {funcoes.map((funcao) => (
                   <a key={funcao.id} href={funcao.href} className="group">
-                    <img className="aspect-video w-full rounded-lg group-hover:scale-102 group-hover:opacity-75 xl:aspect-video" src={funcao.imageSrc} />
+                    <img className="aspect-video w-full rounded-lg group-hover:scale-102 transition-all duration-300 ease-in-out group-hover:opacity-75 xl:aspect-video" src={funcao.imageSrc} />
                     <h3 className="text-center mt-4 text-sm text-gray-700">{funcao.name}</h3>
                   </a>
                 ))}

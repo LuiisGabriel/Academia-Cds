@@ -114,7 +114,7 @@ const SignUp = () => {
 
               <div className="flex flex-col items-center">
                 <button
-                  className="flex justify-center p-2 rounded-md md:w-1/2 h-auto self-center bg-gray-800  text-white hover:bg-gray-700"
+                  className="flex justify-center p-2 rounded-md md:w-1/2 h-auto self-center bg-gray-800  text-white hover:bg-gray-700 hover:scale-102  transition-all duration-150 ease-in-out "
                   onClick={signUp}
                 >
                   {
@@ -131,7 +131,7 @@ const SignUp = () => {
           <div className="text-center text-sm">
             Já é cadastrado?
             <Link to="/signin">
-              <span className="font-medium text-gray-800 ml-1">
+              <span className="font-semibold text-gray-800 ml-1">
                 Entre
               </span>
             </Link>

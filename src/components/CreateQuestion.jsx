@@ -214,7 +214,7 @@ const CreateQuestion = () => {
 
                                 <div className='pt-8 w-full flex items-center justify-center'>
                                     <button
-                                        className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
+                                        className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 hover:scale-102 transition-all duration-300 ease-in-out"
                                         onClick={addAnswerOption}
                                     >
                                         <span>
@@ -254,7 +254,7 @@ const CreateQuestion = () => {
                             </div>
 
                             <button
-                                className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
+                                className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 hover:scale-102 transition-all duration-300 ease-in-out"
                                 onClick={createQuestion}
                             >
                                 {
