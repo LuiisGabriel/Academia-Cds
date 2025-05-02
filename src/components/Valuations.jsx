@@ -54,7 +54,7 @@ const Valuations = () => {
 
       <div className='bg-gray-300 w-full h-auto min-h-screen'>
         <nav className="sticky top-0 z-50"><Navbar /></nav>
-        <div className='py-16 lg:flex'>
+        <div className='lg:flex'>
 
           <div className='w-full min-w-3/4 md:flex justify-center items-center p-8 order-1 md:order-2'>
             <div className=" h-full shadow-lg rounded-md bg-white flex flex-col justify-center items-start p-8 w-full ">
