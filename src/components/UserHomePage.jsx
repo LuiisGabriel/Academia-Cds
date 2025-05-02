@@ -50,7 +50,7 @@ const UserHomePage = () => {
           <div className="flex flex-col items-center ">
             <div className=" sm:text-5xl pb-10">
               <h1 className="text-5xl text-center font-bold tracking-tight text-gray-900">
-                Bem-vindo ao CDS Academy!
+                Bem-vindo ao CDS Academy {user.firstname}!
               </h1>
             </div>
             <div className=" sm:text-4xl pb-4 w-2/3 text-center pb-16">
