@@ -22,23 +22,14 @@ const funcoes = [
 
   },
 
-//  {
-  //  id: 2,
- //   name: 'Avaliações',
-  //  href: APP_ROUTES.VALUATIONS,
-  //  imageSrc: CdsDesktop,
-  //  imageAlt: 'Avaliações',
+  {
+    id: 2,
+    name: 'Avaliações',
+    href: APP_ROUTES.VALUATIONS,
+    imageSrc: CdsDesktop,
+    imageAlt: 'Avaliações',
 
- // },
-
-//  {
-//    id: 3,
-  //  name: 'Sobre',
-  //  href: APP_ROUTES.ABOUT,
- //   imageSrc: Otica,
- //   imageAlt: 'Sobre',
-
- // },
+  },
 ]
 
 const UserHomePage = () => {
@@ -52,33 +43,36 @@ const UserHomePage = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-50"><Navbar /></nav>
-      <div className="w-full h-auto min-h-screen flex justify-center p-16 bg-gray-300">
-        <div className="flex flex-col items-center ">
-          <div className=" sm:text-5xl pb-10">
-            <h1 className="text-5xl text-center font-bold tracking-tight text-gray-900">
-              Bem-vindo ao CDS Academy!
-            </h1>
-          </div>
-          <div className=" sm:text-4xl pb-4 w-2/3 text-center pb-16">
-            <h1 className="text-3xl font-normal tracking-tight text-gray-700">
-              Aqui você pode aprender sobre o sistema CDS.
-            </h1>
-          </div>
 
-          <div className="flex flex-col shadow-lg rounded-md bg-white p-8 w-3/3">
-            <div className="pb-8">
-              <h1 className="text-2xl font-normal tracking-tight">
-                acesso rápido:
+      <div className="h-auto min-h-screen bg-gray-300">
+        <nav className="sticky top-0 z-50"><Navbar /></nav>
+        <div className='flex justify-center p-16'>
+          <div className="flex flex-col items-center ">
+            <div className=" sm:text-5xl pb-10">
+              <h1 className="text-5xl text-center font-bold tracking-tight text-gray-900">
+                Bem-vindo ao CDS Academy!
               </h1>
             </div>
-            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 items-center">
-              {funcoes.map((funcao) => (
-                <a key={funcao.id} href={funcao.href} className="group">
-                  <img className="aspect-video w-full rounded-lg group-hover:scale-102 group-hover:opacity-75 xl:aspect-video" src={funcao.imageSrc} />
-                  <h3 className="text-center mt-4 text-sm text-gray-700">{funcao.name}</h3>
-                </a>
-              ))}
+            <div className=" sm:text-4xl pb-4 w-2/3 text-center pb-16">
+              <h1 className="text-3xl font-normal tracking-tight text-gray-700">
+                Aqui você pode aprender sobre o sistema CDS.
+              </h1>
+            </div>
+
+            <div className="flex flex-col shadow-lg rounded-md bg-white p-8 w-3/3">
+              <div className="pb-8">
+                <h1 className="text-2xl font-normal tracking-tight">
+                  acesso rápido:
+                </h1>
+              </div>
+              <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 items-center">
+                {funcoes.map((funcao) => (
+                  <a key={funcao.id} href={funcao.href} className="group">
+                    <img className="aspect-video w-full rounded-lg group-hover:scale-102 group-hover:opacity-75 xl:aspect-video" src={funcao.imageSrc} />
+                    <h3 className="text-center mt-4 text-sm text-gray-700">{funcao.name}</h3>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
