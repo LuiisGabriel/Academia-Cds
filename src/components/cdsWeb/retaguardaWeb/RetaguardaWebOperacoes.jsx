@@ -90,7 +90,7 @@ const RetaguardaWebOperacoes = () => {
                 <div className=' px-8 py-8 justify-center select-none'>
                     <div className='md:flex gap-8'>
 
-                        <div className="flex flex-col w-full order-1 md:order-2">
+                        <div className="flex flex-col w-full ">
                             <div className="aspect-video" key={videoId}>
                                 <ReactPlayer
                                     style={{ borderRadius: '50px' }}
@@ -107,7 +107,7 @@ const RetaguardaWebOperacoes = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col items-center w-full py-8 md:py-0 md:w-1/4 order-2 md:order-1">
+                        <div className="flex flex-col items-center w-full py-8 md:py-0 md:w-1/4 ">
                             <div className="flex-col flex w-full gap-4">
                                 {videos?.map((video, index) => (
                                     <button

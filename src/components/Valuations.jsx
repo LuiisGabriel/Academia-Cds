@@ -56,7 +56,7 @@ const Valuations = () => {
         <nav className="sticky top-0 z-50"><Navbar /></nav>
         <div className='lg:flex'>
 
-          <div className='w-full min-w-3/4 md:flex justify-center items-center p-8 order-1 md:order-2'>
+          <div className='w-full min-w-3/4 md:flex justify-center items-center p-8 '>
             <div className=" h-full shadow-lg rounded-md bg-white flex flex-col justify-center items-start p-8 w-full ">
               <h2 className="text-center font-medium text-2xl ">
                 Questão {questionIndex + 1}
@@ -79,7 +79,7 @@ const Valuations = () => {
                 </form>
               </div>
 
-              <div className='w-full flex items-center justify-center pt-16 order-1 md:order-2'>
+              <div className='w-full flex items-center justify-center pt-16 '>
                 <div className='flex items-center justify-center w-full'>
                   <div className=' flex justify-between items-center gap-8'>
                     <button
