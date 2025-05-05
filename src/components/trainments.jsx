@@ -244,9 +244,9 @@ const Trainments = () => {
 
     return (
         <>
-            
+
             <div className="bg-gray-300 h-auto min-h-screen ">
-            <nav className="sticky top-0 z-50"><Navbar /></nav>
+                <nav className="sticky top-0 z-50"><Navbar /></nav>
                 <div className='flex flex-col justify-center items-center w-full'>
                     <div className='py-28 flex flex-col justify-center items-center w-full'>
 
@@ -264,15 +264,12 @@ const Trainments = () => {
                                                 setAmbiente('');
                                                 setModulo('');
                                                 setSubmodulo('');
-                                            }
-                                            if (filtro.tipo === 'ambiente') {
-                                                setAmbiente(filtro.titulo);
-                                            }
-                                            if (filtro.tipo === 'modulo') {
-                                                setModulo(filtro.titulo);
-                                            }
-                                            if (filtro.tipo === 'submodulo') {
-                                                setSubmodulo(filtro.titulo);
+                                            } else if (filtro.tipo === 'ambiente') {
+                                                setAmbiente((prev) => (prev === filtro.titulo ? '' : filtro.titulo));
+                                            } else if (filtro.tipo === 'modulo') {
+                                                setModulo((prev) => (prev === filtro.titulo ? '' : filtro.titulo));
+                                            } else if (filtro.tipo === 'submodulo') {
+                                                setSubmodulo((prev) => (prev === filtro.titulo ? '' : filtro.titulo));
                                             }
                                         }}
                                         key={filtro.id}
