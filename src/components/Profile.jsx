@@ -9,6 +9,7 @@ const Profile = () => {
   const [profilePhoto, setProfilePhoto] = useState('');
   const photoUrl = user?.photo?.url;
   const [watchedvideosmesage, setWatchedvideosmesage] = useState();
+  const isCorrectColor = "#dc2626"
 
   useEffect(() => {
     if (photoUrl == null) {
@@ -63,17 +64,30 @@ const Profile = () => {
                 avaliações respondidas:
               </h1>
               <div className='w-full'>
+                <div className='flex justify-between items-center w-full p-2'>
+                  <h1>
+                    Avaliação
+                  </h1>
+                  <h1>
+                    Nota
+                  </h1>
+                </div>
                 {user?.answeredValuations?.map((valuation) => (
-                  <div 
-                  key={valuation.valuationId}
-                  className='bg-gray-300 p-2 m-2 w-full flex justify-between items-center rounded-md shadow-md'
-                  >
-                    <h1>
-                      {valuation.valuationTitle}
-                    </h1>
-                    <h1>
-                      {valuation.score}
-                    </h1>
+                  <div className='flex justify-between items-center w-full p-2'>
+                    <div
+                      key={valuation.valuationId}
+                      className="flex items-center justify-between p-2 gap-8 bg-(--color)/70 rounded-lg w-full"
+                      style={{
+                        '--color': valuation.score / valuation.results.length > 0.7 ? "#84cc16" : isCorrectColor,
+                      }}
+                    >
+                      <h1>
+                        {valuation.valuationTitle}
+                      </h1>
+                      <h1>
+                        {valuation.score} / {valuation.results.length}
+                      </h1>
+                    </div>
                   </div>
                 ))}
               </div>
