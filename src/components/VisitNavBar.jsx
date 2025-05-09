@@ -53,7 +53,7 @@ export default function VisitNavbar() {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 ">
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 ">
-              <a href={APP_ROUTES.SIGN_IN} className="transition-all duration-300 ease-in-out text-md font-semibold text-white hover:scale-105 min-w-15">
+              <a href={APP_ROUTES.SIGN_IN} className="transition-all duration-300 ease-in-out text-md font-semibold text-white hover:scale-105 text-nowrap">
                 Login <span aria-hidden="true">→</span>
               </a>
             </div>
