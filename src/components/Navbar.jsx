@@ -16,10 +16,10 @@ export default function Navbar() {
   const { user, authenticated } = useUser();
   const [profilePhoto, setProfilePhoto] = useState('');
   const photoUrl = user?.photo?.url;
-  let bgColor = 'bg-gray-800 select-none';
-  let btnHover = 'text-white hover:scale-105 rounded-md px-3 py-2 text-sm font-semibold transition-all duration-300 ease-in-out';
   const navigation = [];
   const navigate = useNavigate();
+  const navColor = "#1f2937"
+
 
   useEffect(() => {
     if (photoUrl == null) {
@@ -43,10 +43,8 @@ export default function Navbar() {
       { name: 'Treinamentos', href: APP_ROUTES.TRAINMENTS },
       { name: 'Avaliações', href: APP_ROUTES.VALUATIONS },
       { name: 'Cadastros', href: APP_ROUTES.REGISTERS },
-      { name: 'Relatórios', href: '' },
+      { name: 'Relatórios', href: APP_ROUTES.REPORTS },
     )
-    bgColor = 'bg-red-800 select-none';
-    btnHover = 'text-white hover:scale-105 rounded-md px-3 py-2 text-sm font-semibold transition-all duration-300 ease-in-out';
   }
 
   if (user.role == 'USER') {
@@ -65,7 +63,13 @@ export default function Navbar() {
   }
 
   return (
-    <Disclosure as="nav" className={bgColor}>
+    <Disclosure
+      as="nav"
+      className='bg-(--color) select-none'
+      style={{
+        '--color': user.role == 'ADMIN' ? "#991b1b" : navColor,
+      }}
+    >
       <div className=" px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16  items-center justify-between ">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -93,7 +97,7 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     aria-current={item.current ? 'page' : undefined}
-                    className={btnHover}
+                    className='text-white hover:scale-105 rounded-md px-3 py-2 text-sm font-semibold transition-all duration-300 ease-in-out'
                   >
                     {item.name}
                   </a>
