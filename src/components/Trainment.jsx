@@ -86,9 +86,6 @@ const Trainment = () => {
 
             <div className="bg-gray-300 h-auto h-full min-h-screen">
                 <nav className="sticky top-0 z-50"><Navbar /></nav>
-                <h1>{ambiente}</h1>
-                <h1>{modulo}</h1>
-                <h1>{subModulo}</h1>
                 <div className=' px-8 py-8 justify-center select-none'>
                     <div className='md:flex gap-8'>
 
