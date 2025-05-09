@@ -44,12 +44,12 @@ const AdminHomePage = () => {
         <div className='flex justify-center p-16'>
           <div className="flex flex-col items-center">
             <div className=" sm:text-5xl pb-10">
-              <h1 className="text-5xl text-center font-bold tracking-tight">
+              <h1 className="text-5xl text-center font-bold tracking-tight whitespace-pre">
                 Bem-vindo ao painel de controle CDS Academy {user.firstname}!
               </h1>
             </div>
             <div className=" sm:text-4xl pb-4 w-2/3 text-center pb-16">
-              <h1 className="text-2xl font-normal tracking-tight text-gray-700">
+              <h1 className="text-2xl font-normal tracking-tight text-gray-700 whitespace-pre">
                 Aqui você pode gerenciar o cadastro de vídeos, usuários, administradores, etc.
               </h1>
             </div>

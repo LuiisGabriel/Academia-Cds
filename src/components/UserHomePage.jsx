@@ -49,15 +49,15 @@ const UserHomePage = () => {
         <div className='flex justify-center p-16 select-none'>
           <div className="flex flex-col items-center ">
             <div className=" sm:text-5xl pb-10">
-              <h1 className="text-5xl text-center font-semibold tracking-tight text-gray-900 pb-4">
+              <h1 className="text-5xl text-center font-semibold tracking-tight text-gray-900 pb-4 whitespace-pre">
                 Você é {user.firstname} não é? 
               </h1>
-              <h1 className='text-5xl text-center font-bold tracking-tight text-gray-900'>
+              <h1 className='text-5xl text-center font-bold tracking-tight text-gray-900 whitespace-pre'>
                 Seja bem-vindo ao CDS Academy!
                 </h1>
             </div>
             <div className=" sm:text-4xl pb-4 w-2/3 text-center pb-16">
-              <h1 className="text-3xl font-normal tracking-tight text-gray-700">
+              <h1 className="text-3xl font-normal tracking-tight text-gray-700 whitespace-pre">
                 Aqui você pode aprender sobre o sistema CDS.
               </h1>
             </div>
