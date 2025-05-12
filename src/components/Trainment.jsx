@@ -27,7 +27,7 @@ const Trainment = () => {
         if (initialVideo) {
             setVideoId(initialVideo.id);
             setVideoTitulo(initialVideo.titulo);
-            setVideoUrl(initialVideo.url)
+            setVideoUrl(initialVideo.url);
         }
     }, [initialVideo])
 
@@ -53,31 +53,30 @@ const Trainment = () => {
 
     const handleEnded = async () => {
 
-        const isVideo = user.watchedvideos.indexOf(videoId);
-        let updatedWatchedVideos = [...watchedVideos];
-
-        if (user?.watchedvideos?.length > 0) {
-            updatedWatchedVideos = [...new Set([...updatedWatchedVideos, ...user.watchedvideos])];
-        }
-
-        if (isVideo <= -1) {
-            updatedWatchedVideos.push(videoId);
-        } else {
-            console.log("Vídeo já assistido");
+        if (user?.watchedVideos?.map((video) => video.videoId).includes(videoId)) {
+            alert("Video há assistido");
             return;
         }
+
+        const updatedWatchedVideos = [
+            ...watchedVideos,
+            { ambiente: ambiente, modulo: modulo, subModulo: subModulo, videoId: videoId, videoTitulo: videoTitulo, videoUrl: videoUrl },
+        ]
         setWatchedVideos(updatedWatchedVideos);
+
         try {
+            const mergedWatchedVideos = [
+                ...(user.watchedVideos || []),
+                ...updatedWatchedVideos,
+            ];
+
             const response = await axios.post(API_ROUTES.UPDATE_USER_WATCHED_VIDEOS, {
                 email,
-                watchedvideos: updatedWatchedVideos,
+                watchedVideos: mergedWatchedVideos,
             });
 
-            if (response?.data) {
-                return;
-            }
         } catch (error) {
-            console.error('Error updating videos:', error);
+            console.error('Error updating watched videos:', error.response?.data || error);
         }
     };
 
@@ -89,7 +88,7 @@ const Trainment = () => {
                 <div className=' px-8 py-8 justify-center select-none'>
                     <div className='md:flex gap-8'>
 
-                        <div className="flex flex-col w-full order-1 md:order-2">
+                        <div className="flex flex-col w-full">
                             <div className="aspect-video" key={videoId}>
                                 <ReactPlayer
                                     style={{ borderRadius: '50px' }}
@@ -106,7 +105,7 @@ const Trainment = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col items-center w-full py-8 md:py-0 md:w-1/4 order-2 md:order-1">
+                        <div className="flex flex-col items-center w-full py-8 md:py-0 md:w-1/4">
                             <div className="flex-col flex w-full gap-4">
                                 {videos?.map((video, index) => (
                                     <button

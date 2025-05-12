@@ -9,6 +9,7 @@ const Profile = () => {
   const [profilePhoto, setProfilePhoto] = useState('');
   const photoUrl = user?.photo?.url;
   const [watchedvideosmesage, setWatchedvideosmesage] = useState();
+  const watchedVideos = user?.watchedVideos?.map((watchedVideo)=>(watchedVideo.id));
   const isCorrectColor = "#dc2626"
 
   useEffect(() => {
@@ -21,10 +22,10 @@ const Profile = () => {
   }, [photoUrl]);
 
   useEffect(() => {
-    if (user?.watchedvideos?.length > 1) {
-      setWatchedvideosmesage(`você assistiu ${user.watchedvideos.length} videos`);
-    } else if (user?.watchedvideos?.length === 1) {
-      setWatchedvideosmesage(`você assistiu ${user.watchedvideos.length} video`);
+    if (watchedVideos?.length > 1) {
+      setWatchedvideosmesage(`você assistiu ${watchedVideos?.length} videos`);
+    } else if (watchedVideos?.length === 1) {
+      setWatchedvideosmesage(`você assistiu ${watchedVideos?.length} video`);
     } else if (user) {
       setWatchedvideosmesage("você não assistiu nenhum video");
     }
@@ -73,9 +74,10 @@ const Profile = () => {
                   </h1>
                 </div>
                 {user?.answeredValuations?.map((valuation) => (
-                  <div className='flex justify-between items-center w-full py-2'>
+                  <div 
+                  key={valuation.valuationId}
+                  className='flex justify-between items-center w-full py-2'>
                     <div
-                      key={valuation.valuationId}
                       className="flex items-center justify-between p-4 gap-8 bg-(--color)/80 rounded-lg w-full hover:bg-(--color)/50 hover:scale-101 transition-all duration-300 ease-in-out"
                       style={{
                         '--color': valuation.score / valuation.results.length > 0.7 ? "#84cc16" : isCorrectColor,
@@ -84,7 +86,7 @@ const Profile = () => {
                       <h1 className='font-semibold'>
                         {valuation.valuationTitle}
                       </h1>
-                      <h1 className='font-semibold'>
+                      <h1 className='font-semibold text-nowrap'>
                         {valuation.score} / {valuation.results.length}
                       </h1>
                     </div>

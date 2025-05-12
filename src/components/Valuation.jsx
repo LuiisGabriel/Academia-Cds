@@ -15,10 +15,16 @@ const Valuation = () => {
     const email = user?.email;
 
     const questions = useQuestions();
+
+    const filteredQuestions = questions.filter((question) =>
+        (question.ambiente === ambiente) &&
+        (question.modulo === modulo) &&
+        (question.subModulo === subModulo)
+    ).sort(() => Math.random() - 0.5).slice(0, 5);
+
     const [dirty, setDirty] = useState(false);
     const [answeredValuation, setAnsweredValuation] = useState([]);
     const [selectedAnswers, setSelectedAnswers] = useState({});
-    const [isSubmitted, setIsSubmitted] = useState(false);
 
     useEffect(() => {
         if (!valuationId) {
@@ -50,7 +56,7 @@ const Valuation = () => {
     }
 
     const handleFormSubmit = async () => {
-        const allAnswered = questions.slice(0, 5).every((_, index) => selectedAnswers[index] !== undefined);
+        const allAnswered = filteredQuestions.every((_, index) => selectedAnswers[index] !== undefined);
 
         if (!allAnswered) {
             alert("Por favor, responda todas as perguntas.");
@@ -66,7 +72,6 @@ const Valuation = () => {
         const correctAnswersCount = results.filter((result) => result.isCorrect).length;
         handleFormClear();
         setDirty(false);
-        setIsSubmitted(true);
 
         const updatedAnsweredValuation = [
             ...answeredValuation,
@@ -90,8 +95,8 @@ const Valuation = () => {
                     state: {
                         score: correctAnswersCount,
                         totalQuestions: results.length,
-                        isSubmitted: true,
                         results: results,
+                        valuationId: valuationId,
                     }
                 });
             }
@@ -110,7 +115,7 @@ const Valuation = () => {
                 <div className='flex flex-col justify-center items-center'>
                     <div className=' w-8/9 py-8'>
                         <form className='flex flex-col justify-start w-full select-none' id='form' >
-                            {questions.slice(0, 5).map((question, questionIndex) => (
+                            {filteredQuestions.map((question, questionIndex) => (
                                 <div className='p-4' key={questionIndex}>
                                     <div className='p-8 bg-white rounded-lg '>
 
