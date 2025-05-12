@@ -27,6 +27,9 @@ const CreateVideo = () => {
   }
 
   const createVideo = async () => {
+
+    // puxar os dados do video da api do youtube
+
     try {
       setIsLoading(true);
       const response = await axios({
@@ -63,9 +66,14 @@ const CreateVideo = () => {
   return (
     <>
 
-      <div className="w-full h-screen  bg-gray-300">
+      <div className="w-full h-auto min-h-screen bg-gray-300">
         <nav className="sticky top-0 z-50"><Navbar /></nav>
-        <div className='flex justify-center items-center pt-16'>
+        <div className='flex flex-col justify-center items-center py-16'>
+          <div className='flex justify-center items-center w-3/4 pb-16'>
+            <h1 className='text-center text-2xl font-medium'>
+              para cadastrar um vídeo, você deve ir á página do vídeo no youtube e clicar em compartilhar, clicar em copiar e depois cole o link aqui no campo url
+            </h1>
+          </div>
           <div className=" w-3/4 sm:w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
             <h2 className="text-center font-medium text-2xl mb-8">
               Cadastre um vídeo
@@ -88,7 +96,7 @@ const CreateVideo = () => {
                 <option disabled={true} value="">Escolha um ambiente</option>
                 {ambientes.map((ambiente) => (
                   <option
-                  key={ambiente.nome}
+                    key={ambiente.nome}
                     value={ambiente.nome}
                   >
                     {ambiente.nome}
@@ -104,7 +112,7 @@ const CreateVideo = () => {
                 <option disabled={true} value="">Escolha um módulo</option>
                 {modulos.map((modulo) => (
                   <option
-                  key={modulo.nome}
+                    key={modulo.nome}
                     value={modulo.nome}
                   >
                     {modulo.nome}
@@ -120,7 +128,7 @@ const CreateVideo = () => {
                 <option disabled={true} value="">Escolha um sub-módulo</option>
                 {subModulos.map((subModulo) => (
                   <option
-                  key={subModulo.nome}
+                    key={subModulo.nome}
                     value={subModulo.nome}
                   >
                     {subModulo.nome}
