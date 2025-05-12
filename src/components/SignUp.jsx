@@ -85,7 +85,7 @@ const SignUp = () => {
                 <input
                   className="border-2 outline-none p-2 rounded-md w-3/3"
                   type="text"
-                  placeholder="Sobre Nome"
+                  placeholder="Sobrenome"
                   value={lastname}
                   required
                   onChange={(e) => { setLastname(e.target.value); }}
