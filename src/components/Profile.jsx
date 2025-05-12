@@ -50,7 +50,7 @@ const Profile = () => {
         <div className='flex justify-center items-center pt-16'>
 
 
-          <Dialog open={open} onClose={setOpen} className="relative z-10">
+          <Dialog open={open} onClose={setOpen} className="relative z-10 select-none">
             <DialogBackdrop
               transition
               className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
@@ -98,7 +98,7 @@ const Profile = () => {
           </Dialog>
 
 
-          <div className="w-4/5 sm:w-8/9 h-full shadow-lg rounded-md bg-white p-8 flex flex-col">
+          <div className="w-4/5 sm:w-8/9 h-full shadow-lg rounded-md bg-white p-8 flex flex-col select-none">
             <div className='flex justify-center items-center'>
               <div className='flex flex-col justify-center items-end'>
                 <img
