@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
 import defaultProfilePhoto from '../assets/profile.png';
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import closeIcon from '../assets/close-x-svgrepo-com.svg';
 
 const Profile = () => {
   const { user, authenticated } = useUser();
@@ -64,22 +64,22 @@ const Profile = () => {
                 >
 
                   <div className='flex justify-end items-end p-4'>
-                    <h1
+                    <img
                       onClick={() => setOpen(false)}
-                      className='hover:scale-110 cursor-pointer text-lg'>
-                      X
-                    </h1>
+                      className='hover:scale-110 size-5 transition-all duration-300 ease-in-out cursor-pointer'
+                      src={closeIcon}
+                      />
                   </div>
                   <div className="flex items-start w-full pb-4">
                     <div className="mt-3 text-center sm:mt-0 sm:text-left px-8 w-full">
                       <DialogTitle as="h3" className="text-base font-semibold text-gray-900">
                         {valuationTitle}
                       </DialogTitle>
-                      <div className="flex flex-col py-4 gap-4">
+                      <div className="flex flex-col py-4 gap-4 ">
                         {answerOptions.map((option, index) => (
                           <div
                             key={index}
-                            className="flex items-center justify-between p-2 gap-8 bg-(--color)/70 rounded-lg"
+                            className="flex items-center justify-between p-2 gap-8 bg-(--color)/70 rounded-lg "
                             style={{
                               '--color': option.isCorrect === true ? "#84cc16" : isCorrectColor,
                             }}
@@ -104,7 +104,7 @@ const Profile = () => {
                 <img
                   alt={photoUrl}
                   src={profilePhoto}
-                  className="size-24 rounded-full hover:scale-105 hover:opacity-80 transition-all duration-300 ease-in-out"
+                  className="size-24 cursor-pointer rounded-full hover:scale-105 hover:opacity-80 transition-all duration-300 ease-in-out"
                 />
               </div>
             </div>
@@ -118,7 +118,7 @@ const Profile = () => {
               {watchedvideosmesage}
             </h1>
             <div className='flex flex-col justify-center items-center h-full w-full'>
-              <h1 className='p-4 pt-8 w-full flex'>
+              <h1 className=' pt-8 w-full flex items-center justify-center'>
                 avaliações respondidas:
               </h1>
               <div className='w-full'>
@@ -141,7 +141,7 @@ const Profile = () => {
                     key={valuation.valuationId}
                     className='flex justify-between items-center w-full py-2'>
                     <div
-                      className="flex items-center justify-between p-4 gap-8 bg-gray-300 rounded-lg w-full hover:scale-101 transition-all duration-300 ease-in-out"
+                      className="flex items-center justify-between p-4 gap-8 bg-gray-300 cursor-pointer rounded-lg w-full hover:scale-101 transition-all duration-300 ease-in-out"
 
                     >
                       <h1 className='font-semibold'>
