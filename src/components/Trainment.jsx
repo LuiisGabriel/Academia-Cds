@@ -54,7 +54,6 @@ const Trainment = () => {
     const handleEnded = async () => {
 
         if (user?.watchedVideos?.map((video) => video.videoId).includes(videoId)) {
-            alert("Video há assistido");
             return;
         }
 
