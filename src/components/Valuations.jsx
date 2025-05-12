@@ -59,7 +59,7 @@ const Valuations = () => {
 
   const handleValuationClick = (ambiente, modulo, subModulo, valuationTitle, valuationDescription, valuationId) => {
 
-    if (user.answeredValuations.map((valuation) => valuation.valuationId).includes(valuationId)) {
+    if (user?.answeredValuations?.map((valuation) => valuation.valuationId).includes(valuationId)) {
       alert("Você já respondeu essa avaliação");
       return;
     }
@@ -72,7 +72,6 @@ const Valuations = () => {
         valuationId: valuationId,
         valuationTitle: valuationTitle,
         valuationDescription: valuationDescription,
-
       }
     });
   };
