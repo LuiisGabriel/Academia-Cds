@@ -21,6 +21,7 @@ const Trainment = () => {
     const [watchedVideos, setWatchedVideos] = useState([]);
     const [videoId, setVideoId] = useState('');
     const [videoTitulo, setVideoTitulo] = useState('');
+    const [videoDescricao, setVideoDescricao] = useState('');
     const [videoUrl, setVideoUrl] = useState('');
 
     const youtubeVideoId = videoUrl
@@ -30,6 +31,7 @@ const Trainment = () => {
             setVideoId(initialVideo.id);
             setVideoTitulo(initialVideo.titulo);
             setVideoUrl(initialVideo.url);
+            setVideoDescricao(initialVideo.descricao);
         }
     }, [initialVideo])
 
@@ -102,7 +104,8 @@ const Trainment = () => {
                                 />
                             </div>
                             <div>
-                                <h3 className="mt-4 text-xl">{videoTitulo}</h3>
+                                <h3 className="py-4 text-xl">{videoTitulo}</h3>
+                                <h1 className='p-2 text-md'>{videoDescricao}</h1>
                             </div>
                         </div>
 
@@ -115,6 +118,7 @@ const Trainment = () => {
                                             setVideoId(video.id);
                                             setVideoTitulo(video.titulo);
                                             setVideoUrl(video.url);
+                                            setVideoDescricao(video.descricao);
                                         }}
                                         key={video.id}
                                     >
