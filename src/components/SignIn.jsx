@@ -90,16 +90,13 @@ const SignIn = () => {
             </div>
             <div className="flex flex-col items-center">
               <button
-                className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800 text-white hover:bg-gray-700 hover:scale-102  transition-all duration-150 ease-in-out"
+                className="flex justify-center items-center p-2 rounded-md w-1/2 self-center bg-gray-800 text-white hover:bg-gray-700 hover:scale-102  transition-all duration-150 ease-in-out"
                 onClick={signIn}
               >
                 {
                   isLoading ?
-                    <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : null
+                    <div className="size-5 border-l-2 rounded-full animate-spin p-2" /> : <span> Entrar </span>
                 }
-                <span>
-                  Entrar
-                </span>
               </button>
             </div>
           </form>
