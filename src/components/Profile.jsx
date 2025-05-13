@@ -49,7 +49,10 @@ const Profile = () => {
         <nav className="sticky top-0 z-50"><Navbar /></nav>
         <div className='flex justify-center items-center pt-16'>
 
-          <Dialog open={open} onClose={setOpen} className="relative z-10 select-none">
+          <Dialog open={open} onClose={() => {
+            setOpen(false);
+          }}
+            className="relative z-10 select-none">
             <DialogBackdrop
               transition
               className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
@@ -61,15 +64,7 @@ const Profile = () => {
                   transition
                   className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 w-5/6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
                 >
-
-                  <div className='flex justify-end items-end p-4'>
-                    <img
-                      onClick={() => setOpen(false)}
-                      className='hover:scale-110 size-5 transition-all duration-300 ease-in-out cursor-pointer'
-                      src={closeIcon}
-                      />
-                  </div>
-                  <div className="flex items-start w-full pb-4">
+                  <div className="flex items-start w-full py-8">
                     <div className="mt-3 text-center sm:mt-0 sm:text-left px-8 w-full">
                       <DialogTitle as="h3" className="text-base font-semibold text-gray-900">
                         {valuationTitle}
