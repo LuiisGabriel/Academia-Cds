@@ -1,10 +1,9 @@
-import React from 'react';
+
 import { useUser } from '../lib/customHooks';
 import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
 import defaultProfilePhoto from '../assets/profile.png';
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
-import closeIcon from '../assets/close-x-svgrepo-com.svg';
 
 const Profile = () => {
   const { user, authenticated } = useUser();
@@ -12,7 +11,6 @@ const Profile = () => {
   const photoUrl = user?.photo?.url;
   const [watchedvideosmesage, setWatchedvideosmesage] = useState();
   const watchedVideos = user?.watchedVideos?.map((watchedVideo) => (watchedVideo.id));
-  const isCorrectColor = "#dc2626";
   const [open, setOpen] = useState(false);
   const [valuationId, setValuationId] = useState('');
   const [valuationTitle, setValuationTitle] = useState('');
@@ -64,8 +62,16 @@ const Profile = () => {
                   transition
                   className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 w-5/6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
                 >
-                  <div className="flex items-start w-full py-8">
+                  <div className="flex items-start w-full py-8 ">
                     <div className="mt-3 text-center sm:mt-0 sm:text-left px-8 w-full">
+                      <div className='flex justify-start items-center gap-2 pb-4 select-text'>
+                        <h1 className='text-sm font-semibold select-none'>
+                          id:
+                        </h1>
+                        <h1 className='text-sm'>
+                          {valuationId}
+                        </h1>
+                      </div>
                       <DialogTitle as="h3" className="text-base font-semibold text-gray-900">
                         {valuationTitle}
                       </DialogTitle>
@@ -75,7 +81,7 @@ const Profile = () => {
                             key={index}
                             className="flex items-center justify-between p-2 gap-8 bg-(--color)/70 rounded-lg "
                             style={{
-                              '--color': option.isCorrect === true ? "#84cc16" : isCorrectColor,
+                              '--color': option.isCorrect === true ? "#84cc16" : "#dc2626",
                             }}
                           >
                             <h1>{option.question}</h1>
