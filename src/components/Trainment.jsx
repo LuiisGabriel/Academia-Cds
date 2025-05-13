@@ -24,8 +24,6 @@ const Trainment = () => {
     const [videoDescricao, setVideoDescricao] = useState('');
     const [videoUrl, setVideoUrl] = useState('');
 
-    const youtubeVideoId = videoUrl
-
     useEffect(() => {
         if (initialVideo) {
             setVideoId(initialVideo.id);
@@ -94,7 +92,6 @@ const Trainment = () => {
                         <div className="flex flex-col w-full">
                             <div className="aspect-video" key={videoId}>
                                 <ReactPlayer
-                                    style={{ borderRadius: '50px' }}
                                     url={videoUrl}
                                     width="100%"
                                     height="100%"
@@ -109,7 +106,7 @@ const Trainment = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col items-center w-full py-8 md:py-0 md:w-1/4">
+                        <div className="flex flex-col items-center w-full py-8 md:py-0 md:w-2/5">
                             <div className="flex-col flex w-full gap-4">
                                 {videos?.map((video, index) => (
                                     <button
