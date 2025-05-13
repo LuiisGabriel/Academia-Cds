@@ -71,6 +71,7 @@ const CreateVideo = () => {
           ambiente,
           modulo,
           url,
+          videoId: videoId,
           subModulo,
         },
       });
