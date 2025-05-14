@@ -52,6 +52,10 @@ const Valuation = () => {
         </div>;
     }
 
+    if(filteredQuestions.length < 1){
+        navigate(APP_ROUTES.VALUATIONS)
+    }
+
     window.onbeforeunload = function () {
         return dirty ? "" : null;
     };
