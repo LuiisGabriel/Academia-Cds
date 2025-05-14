@@ -162,10 +162,7 @@ const Valuations = () => {
                 })}
               </div>
             )}
-            <div className={`grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 md:grid-cols-${Math.min(
-              avaliableValuations.length,
-              4
-            )} xl:gap-x-4 py-8 px-8`}>
+            <div className='grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 md:grid-cols-4 xl:gap-x-4 py-8 px-8'>
               {avaliableValuations.map((valuation) => (
                 <div
                   key={valuation.titulo}
