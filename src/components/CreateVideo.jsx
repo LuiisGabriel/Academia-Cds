@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { API_ROUTES } from '../utils/constants';
 import Navbar from './Navbar';
 import { useAmbientes, useModulos, useSubModulos, useUser } from '../lib/customHooks';
@@ -22,6 +22,12 @@ const CreateVideo = () => {
   const [subModulo, setSubModulo] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSetTitle, setIsSetTitle] = useState(false);
+
+  useEffect(() => {
+    if (!isSetTitle) {
+      setTitulo('');
+    }
+  }, [isSetTitle]);
 
   if (!user || !authenticated || user.role !== 'ADMIN') {
     return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
