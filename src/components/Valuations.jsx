@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Navbar from './Navbar';
 import { APP_ROUTES } from '../utils/constants';
 import CDSWEB from '../assets/CDSWEB.png';
@@ -21,6 +21,7 @@ const Valuations = () => {
 
   const videos = useVideos();
 
+  const userWatchedVideos = user?.watchedVideos?.map((video) => video.videoId);
 
   const [filteredValuations, setFilteredValuations] = useState(valuations);
 
@@ -51,6 +52,7 @@ const Valuations = () => {
           (!subModulo || valuation.subModulo === subModulo)
       );
       setFilteredValuations(filterValuations);
+
     }
   }, [ambiente, modulo, subModulo, valuations]);
 
@@ -60,43 +62,42 @@ const Valuations = () => {
     </div>;
   }
 
-  const handleValuationClick = (ambiente, modulo, subModulo, valuationTitle, valuationDescription, valuationId) => {
+ const handleValuationClick = (ambiente, modulo, subModulo, valuationTitle, valuationDescription, valuationId) => {
+  
+  const hasAnswered = user?.answeredValuations?.some((valuation) => valuation.valuationId === valuationId);
 
-    const userWatchedVideos = user?.watchedVideos?.map((video) => video.id) || [];
+  if (hasAnswered) {
+    alert("Você já respondeu essa avaliação");
+    return;
+  }
 
-    const relatedVideos = videos.filter(
+  const requiredVideos = videos
+    .filter(
       (video) =>
-        (!ambiente || video.ambiente === ambiente) &&
-        (!modulo || video.modulo === modulo) &&
-        (!subModulo || video.subModulo === subModulo)
-    ).map((video) => video.id);
+        video.ambiente === ambiente &&
+        video.modulo === modulo &&
+        video.subModulo === subModulo
+    )
+    .map((video) => video.id);
 
-    const hasWatchedAll = relatedVideos.every((videoId) => userWatchedVideos.includes(videoId));
+  const hasWatchedAllVideos = requiredVideos.every(video => userWatchedVideos.includes(video));
 
-    const hasAnswered = user?.answeredValuations?.some((valuation) => valuation.valuationId === valuationId);
+  if (!hasWatchedAllVideos || requiredVideos.length === 0) {
+    alert("Você precisa assistir a todos os vídeos relacionados antes de acessar esta avaliação.");
+    return;
+  }
 
-    if (hasAnswered) {
-      alert("Você já respondeu essa avaliação");
-      return;
-    }
-
-    if (!hasWatchedAll || relatedVideos.length === 0) {
-      alert('Você precisa assistir a todos os vídeos relacionados antes de realizar esta avaliação.');
-      return;
-    }
-
-
-    navigate(APP_ROUTES.VALUATION, {
-      state: {
-        ambiente: ambiente,
-        modulo: modulo,
-        subModulo: subModulo,
-        valuationId: valuationId,
-        valuationTitle: valuationTitle,
-        valuationDescription: valuationDescription,
-      }
-    });
-  };
+  navigate(APP_ROUTES.VALUATION, {
+    state: {
+      ambiente: ambiente,
+      modulo: modulo,
+      subModulo: subModulo,
+      valuationId: valuationId,
+      valuationTitle: valuationTitle,
+      valuationDescription: valuationDescription,
+    },
+  });
+};
 
   return (
     <>
@@ -104,7 +105,8 @@ const Valuations = () => {
         <nav className="sticky top-0 z-50"><Navbar /></nav>
 
         <div className='flex flex-col justify-center items-center w-full select-none'>
-          <div className='py-28 flex flex-col justify-center items-center w-full'>
+
+          <div className='py-10 flex flex-col justify-center items-center w-full'>
 
             <div className='flex justify-start items-center w-8/9 max-w-screen overflow-x-auto gap-2 sm:gap-4'>
               {filtros.map((filtro) => {
@@ -140,23 +142,30 @@ const Valuations = () => {
               })}
             </div>
 
-            <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-4 xl:gap-x-8 py-8 px-8">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-4 xl:gap-x-8 py-8 px-8">
               {filteredValuations.map((valuation) => (
                 <div
                   key={valuation.titulo}
                   className="group flex flex-col items-center justify-center"
                   onClick={() => {
-                    handleValuationClick(valuation.ambiente, valuation.modulo, valuation.subModulo, valuation.titulo, valuation.descricao, valuation.id);
+                    handleValuationClick(
+                      valuation.ambiente,
+                      valuation.modulo,
+                      valuation.subModulo,
+                      valuation.titulo,
+                      valuation.descricao,
+                      valuation.id
+                    );
                   }}
                 >
-                  <div className='bg-white h-full flex flex-col justify-between rounded-lg pb-8 group-hover:scale-102 transition-all duration-300 ease-in-out shadow-lg/30'>
+                  <div className="bg-white h-full flex flex-col justify-between rounded-lg pb-8 group-hover:scale-102 transition-all duration-300 ease-in-out shadow-lg/30">
                     <img
                       alt={valuation.imageAlt}
                       src={valuation.imageSrc}
                       className="aspect-square w-full rounded-t-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8"
                     />
-                    <h1 className="text-center p-4 text-semibold">{valuation.titulo} </h1>
-                    <h1 className='text-sm px-6'>{valuation.descricao}</h1>
+                    <h1 className="text-center p-4 text-semibold">{valuation.titulo}</h1>
+                    <h1 className="text-sm px-6">{valuation.descricao}</h1>
                   </div>
                 </div>
               ))}
