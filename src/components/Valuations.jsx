@@ -25,6 +25,23 @@ const Valuations = () => {
 
   const [filteredValuations, setFilteredValuations] = useState(valuations);
 
+  const avaliableValuations = filteredValuations.filter((valuation) => {
+
+    const requiredVideos = videos
+      .filter(
+        (video) =>
+          video.ambiente === valuation.ambiente &&
+          video.modulo === valuation.modulo &&
+          video.subModulo === valuation.subModulo
+      )
+      .map((video) => video.id);
+
+    const hasWatchedAllVideos = requiredVideos.every((videoId) =>
+      userWatchedVideos?.includes(videoId)
+    );
+    return hasWatchedAllVideos && requiredVideos.length > 0;
+  })
+
   const filterColor = '#1f2937';
   const filterHoverColor = '#374151';
 
@@ -62,88 +79,91 @@ const Valuations = () => {
     </div>;
   }
 
- const handleValuationClick = (ambiente, modulo, subModulo, valuationTitle, valuationDescription, valuationId) => {
-  
-  const hasAnswered = user?.answeredValuations?.some((valuation) => valuation.valuationId === valuationId);
+  const handleValuationClick = (ambiente, modulo, subModulo, valuationTitle, valuationDescription, valuationId) => {
 
-  if (hasAnswered) {
-    alert("Você já respondeu essa avaliação");
-    return;
-  }
+    const hasAnswered = user?.answeredValuations?.some((valuation) => valuation.valuationId === valuationId);
 
-  const requiredVideos = videos
-    .filter(
-      (video) =>
-        video.ambiente === ambiente &&
-        video.modulo === modulo &&
-        video.subModulo === subModulo
-    )
-    .map((video) => video.id);
+    if (hasAnswered) {
+      alert("Você já respondeu essa avaliação");
+      return;
+    }
 
-  const hasWatchedAllVideos = requiredVideos.every(video => userWatchedVideos.includes(video));
+    const requiredVideos = videos
+      .filter(
+        (video) =>
+          video.ambiente === ambiente &&
+          video.modulo === modulo &&
+          video.subModulo === subModulo
+      )
+      .map((video) => video.id);
 
-  if (!hasWatchedAllVideos || requiredVideos.length === 0) {
-    alert("Você precisa assistir a todos os vídeos relacionados antes de acessar esta avaliação.");
-    return;
-  }
+    const hasWatchedAllVideos = requiredVideos.every(video => userWatchedVideos.includes(video));
 
-  navigate(APP_ROUTES.VALUATION, {
-    state: {
-      ambiente: ambiente,
-      modulo: modulo,
-      subModulo: subModulo,
-      valuationId: valuationId,
-      valuationTitle: valuationTitle,
-      valuationDescription: valuationDescription,
-    },
-  });
-};
+    if (!hasWatchedAllVideos || requiredVideos.length === 0) {
+      alert("Você precisa assistir a todos os vídeos relacionados antes de acessar esta avaliação.");
+      return;
+    }
+
+    navigate(APP_ROUTES.VALUATION, {
+      state: {
+        ambiente: ambiente,
+        modulo: modulo,
+        subModulo: subModulo,
+        valuationId: valuationId,
+        valuationTitle: valuationTitle,
+        valuationDescription: valuationDescription,
+      },
+    });
+  };
 
   return (
     <>
       <div className="bg-gray-300 h-auto min-h-screen ">
         <nav className="sticky top-0 z-50"><Navbar /></nav>
-
         <div className='flex flex-col justify-center items-center w-full select-none'>
-
-          <div className='py-10 flex flex-col justify-center items-center w-full'>
-
-            <div className='flex justify-start items-center w-8/9 max-w-screen overflow-x-auto gap-2 sm:gap-4'>
-              {filtros.map((filtro) => {
-                const isActive =
-                  filtro.titulo === ambiente ||
-                  filtro.titulo === modulo ||
-                  filtro.titulo === subModulo;
-                return (
-                  <div
-                    onClick={() => {
-                      if (filtro.tipo === 'limpar') {
-                        setAmbiente('');
-                        setModulo('');
-                        setSubModulo('');
-                      } else if (filtro.tipo === 'ambiente') {
-                        setAmbiente((prev) => (prev === filtro.titulo ? '' : filtro.titulo));
-                      } else if (filtro.tipo === 'modulo') {
-                        setModulo((prev) => (prev === filtro.titulo ? '' : filtro.titulo));
-                      } else if (filtro.tipo === 'submodulo') {
-                        setSubModulo((prev) => (prev === filtro.titulo ? '' : filtro.titulo));
-                      }
-                    }}
-                    key={filtro.id}
-                    style={{
-                      '--color': filtro.tipo === 'limpar' ? '#dc2626' : isActive ? '#10b981' : filterColor,
-                      '--hoverColor': filtro.tipo === 'limpar' ? '#f87171' : isActive ? '#34d399' : filterHoverColor,
-                    }}
-                    className="bg-(--color) text-white text-nowrap rounded-lg max-h-10 w-full flex justify-center p-2 cursor-pointer hover:bg-(--hoverColor) transition duration-300 ease-in-out"
-                  >
-                    <h1>{filtro.titulo}</h1>
-                  </div>
-                );
-              })}
-            </div>
-
+          <div className='py-20'>
+            <h1 className='text-xl font-semibold'>
+              {avaliableValuations.length > 1 ? "você tem " + avaliableValuations.length + " avaliações disponiveis" : avaliableValuations.length === 1 ? "você tem uma avaliação disponivel" : "Você não tem avaliações disponiveis no momento"}
+            </h1>
+          </div>
+          <div className='flex flex-col justify-center items-center w-full'>
+            {avaliableValuations.length > 4 && (
+              <div className='flex justify-start items-center w-8/9 max-w-screen overflow-x-auto gap-2 sm:gap-4'>
+                {filtros.map((filtro) => {
+                  const isActive =
+                    filtro.titulo === ambiente ||
+                    filtro.titulo === modulo ||
+                    filtro.titulo === subModulo;
+                  return (
+                    <div
+                      onClick={() => {
+                        if (filtro.tipo === 'limpar') {
+                          setAmbiente('');
+                          setModulo('');
+                          setSubModulo('');
+                        } else if (filtro.tipo === 'ambiente') {
+                          setAmbiente((prev) => (prev === filtro.titulo ? '' : filtro.titulo));
+                        } else if (filtro.tipo === 'modulo') {
+                          setModulo((prev) => (prev === filtro.titulo ? '' : filtro.titulo));
+                        } else if (filtro.tipo === 'submodulo') {
+                          setSubModulo((prev) => (prev === filtro.titulo ? '' : filtro.titulo));
+                        }
+                      }}
+                      key={filtro.id}
+                      style={{
+                        '--color': filtro.tipo === 'limpar' ? '#dc2626' : isActive ? '#10b981' : filterColor,
+                        '--hoverColor': filtro.tipo === 'limpar' ? '#f87171' : isActive ? '#34d399' : filterHoverColor,
+                      }}
+                      className="bg-(--color) text-white text-nowrap rounded-lg max-h-10 w-full flex justify-center p-2 cursor-pointer hover:bg-(--hoverColor) transition duration-300 ease-in-out"
+                    >
+                      <h1>{filtro.titulo}</h1>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-4 xl:gap-x-8 py-8 px-8">
-              {filteredValuations.map((valuation) => (
+              {avaliableValuations.map((valuation) => (
                 <div
                   key={valuation.titulo}
                   className="group flex flex-col items-center justify-center"
