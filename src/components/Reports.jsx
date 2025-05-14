@@ -22,7 +22,7 @@ const relatorios = [
         href: '',
         name: "Treinamentos",
         imageSrc: Light,
-        descricao: "Aqui você poderá visualizar e modificar os treinamentos dispiniveis no CDS Academy."
+        descricao: "Aqui você poderá visualizar e modificar os treinamentos disponiveis no CDS Academy."
     },
 
     {
