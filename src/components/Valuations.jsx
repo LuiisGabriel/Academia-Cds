@@ -100,7 +100,7 @@ const Valuations = () => {
     const hasWatchedAllVideos = requiredVideos.every(video => userWatchedVideos.includes(video));
 
     if (!hasWatchedAllVideos || requiredVideos.length === 0) {
-      alert("Você precisa assistir a todos os vídeos relacionados antes de acessar esta avaliação.");
+      alert("Você precisa assistir a todos os vídeos do treinamento relacionado antes de acessar esta avaliação.");
       return;
     }
 
