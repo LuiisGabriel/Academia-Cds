@@ -23,6 +23,7 @@ const UserReports = () => {
     const [userAnsweredValuations, setUserAnsweredValuations] = useState([]);
     const [userWatchedVideos, setUserWatchedVideos] = useState([]);
     const [open, setOpen] = useState(false);
+    const isCorrectColor = "#dc2626"
 
     if (!user || !authenticated) {
         return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
@@ -81,10 +82,10 @@ const UserReports = () => {
                                                 {userAnsweredValuations?.length > 0 ? (
                                                     <div>
                                                         {userAnsweredValuations?.map((valuation) => (
-                                                            <Menu 
-                                                            key={valuation.valuationId}
-                                                            as="div" 
-                                                            className="relative text-left w-full bg-gray-300 p-4 rounded-lg sm:flex justify-between items-center">
+                                                            <Menu
+                                                                key={valuation.valuationId}
+                                                                as="div"
+                                                                className="relative text-left w-full bg-gray-300 p-4 rounded-lg sm:flex justify-between items-center">
                                                                 <div className='flex flex-col sm:w-1/9 py-4 sm:p-0 items-center justify-center text-nowrap sm:order-2 order-1'>
                                                                     <h1 className='text-xs'>
                                                                         nota:
@@ -106,7 +107,7 @@ const UserReports = () => {
                                                                         <div className="flex flex-col gap-2 w-full">
                                                                             {valuation.results.map((result, index) => (
                                                                                 <MenuItem
-                                                                                key={index}
+                                                                                    key={index}
                                                                                 >
                                                                                     <div
                                                                                         className="flex items-center justify-between p-2 gap-8 bg-(--color)/70 rounded-lg"
