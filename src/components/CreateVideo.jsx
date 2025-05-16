@@ -47,7 +47,7 @@ const CreateVideo = () => {
 
     try {
       if (isSetTitle && !titulo) {
-        alert('Você optou por escolher um titulo para o video. Preencha o campo de titulo!')
+        alert('Você optou por escolher um titulo para o video. Preencha o campo de titulo corretamente!')
         return;
       }
       setIsLoading(true);
