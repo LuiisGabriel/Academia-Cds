@@ -184,11 +184,7 @@ const UserReports = () => {
                                             </div>
 
                                         </div>
-                                        <div className='flex items-center justify-center text-3xl font-bold '>
-                                            <h1 className='cursor-pointer hover:scale-105'>
-                                                ...
-                                            </h1>
-                                        </div>
+
                                     </div>
                                 </div>
                             ))}
