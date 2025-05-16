@@ -35,7 +35,7 @@ const Valuations = () => {
       userWatchedVideos?.includes(videoId)
     );
 
-    const hasAnswered = user?.answeredValuations?.some((valuation) => valuation.id === valuation.valuationId);
+    const hasAnswered = user?.answeredValuations?.some((valuation) => valuation.valuationId === valuation.valuationId);
 
     return hasWatchedAllVideos && requiredVideos.length > 0 && !hasAnswered;
   })
