@@ -46,8 +46,11 @@ const CreateVideo = () => {
     }
 
     try {
+      if (isSetTitle && !titulo) {
+        alert('você optou por escolher um titulo para o video. preencha o campo de titulo!')
+        return;
+      }
       setIsLoading(true);
-
       const youtubeResponse = await axios.get(
         `https://www.googleapis.com/youtube/v3/videos`,
         {
@@ -81,24 +84,22 @@ const CreateVideo = () => {
           subModulo,
         },
       });
-
-      if (!response?.data) {
+      if (response.data) {
+        setTitulo('');
+        setAmbiente('');
+        setModulo('');
+        setSubModulo('');
+        setUrl('');
+        setIsSetTitle(false);
+        setIsLoading(false);
+        alert('Vídeo cadastrado com sucesso');
+      }else {
         console.log('Algo deu errado durante o cadastro: ', response);
         return;
-      } else {
-        alert('Vídeo cadastrado com sucesso');
-      }
+      } 
     } catch (err) {
       console.log('Ocorreu algum erro no cadastro: ', err);
-    } finally {
-      setTitulo('');
-      setAmbiente('');
-      setModulo('');
-      setSubModulo('');
-      setUrl('');
-      setIsSetTitle(false);
-      setIsLoading(false);
-    }
+    } 
   };
 
   return (
@@ -200,7 +201,7 @@ const CreateVideo = () => {
                   isLoading ?
                     <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : <span> Cadastrar </span>
                 }
-                
+
               </button>
             </form>
           </div>
