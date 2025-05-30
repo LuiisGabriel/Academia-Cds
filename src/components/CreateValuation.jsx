@@ -261,6 +261,34 @@ const CreateValuation = () => {
         }
     };
 
+    const increaseIndex = (index, question) => {
+        setValuationQuestions(prev => {
+            if (index >= prev.length - 1) return prev;
+            const newArr = [...prev];
+
+            newArr.splice(index, 1);
+
+            newArr.splice(index + 1, 0, question);
+            return newArr;
+        });
+    }
+
+    const decreaseIndex = (index, question) => {
+        setValuationQuestions(prev => {
+            if (index >= prev.length + 1) return prev;
+            const newArr = [...prev];
+
+            newArr.splice(index, 1);
+
+            newArr.splice(index - 1, 0, question);
+            return newArr;
+        });
+    }
+
+    const removeQuestion = (index) => {
+        setValuationQuestions(prev => prev.filter((_, i) => i !== index));
+    };
+
     return (
         <>
             <div className="w-full h-full min-h-screen bg-gray-300">
@@ -506,23 +534,55 @@ const CreateValuation = () => {
                                 {valuationQuestions.map((question, index) => (
                                     <div
                                         key={index}
-                                        className='flex flex-col justify-between w-full bg-gray-300 p-4 rounded-lg gap-4'>
-                                        <h1 className='w-full flex items-center justify-center'>
-                                            {question.questionTitle}
-                                        </h1>
-                                        <div className='flex flex-col gap-2'>
-                                            {question.answerOptions.map((answerOption) => (
-                                                <div
-                                                    key={answerOption.answerTitle}
-                                                    className="flex items-center justify-between p-2 gap-8 bg-(--color)/70 rounded-lg"
+                                        className='flex  justify-between w-full bg-gray-300 p-4 rounded-lg gap-4'>
+                                        <div className='flex flex-col items-center justify-center w-full'>
+                                            <h1 className='w-full flex items-center justify-center p-2'>
+                                                {question.questionTitle}
+                                            </h1>
+                                            <div className='flex flex-col gap-2 w-full pr-2'>
+                                                {question.answerOptions.map((answerOption) => (
+                                                    <div
+                                                        key={answerOption.answerTitle}
+                                                        className="flex items-center justify-between p-2 gap-8 bg-(--color)/70 rounded-lg"
+                                                        style={{
+                                                            '--color': answerOption.isCorrect === true ? "#84cc16" : isCorrectColor,
+                                                        }}
+                                                    >
+                                                        <h1>{answerOption.answerTitle}</h1>
+                                                        <h1>{answerOption.isCorrect === true ? "certa" : "errada"}</h1>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        <div className='flex items-center justify-center gap-8'>
+                                            <img
+                                                className='size-5 hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer'
+                                                onClick={() => removeQuestion(index)}
+                                                src={lixeira} />
+
+                                            <div className=''>
+                                                <h1
                                                     style={{
-                                                        '--color': answerOption.isCorrect === true ? "#84cc16" : isCorrectColor,
+                                                        color: index === 0 ? 'gray' : 'black',
+                                                        pointerEvents: index === 0 ? 'none' : 'auto',
                                                     }}
+                                                    className='hover:scale-115 transition-all duration-300 ease-in-out'
+                                                    onClick={() => decreaseIndex(index, question)}
                                                 >
-                                                    <h1>{answerOption.answerTitle}</h1>
-                                                    <h1>{answerOption.isCorrect === true ? "certa" : "errada"}</h1>
-                                                </div>
-                                            ))}
+                                                    ^
+                                                </h1>
+                                                <h1
+                                                    style={{
+                                                        color: index === valuationQuestions.length - 1 ? 'gray' : 'black',
+                                                        pointerEvents: index === valuationQuestions.length - 1 ? 'none' : 'auto',
+                                                    }}
+                                                    className='hover:scale-115 rotate-180 transition-all duration-100 ease-in-out'
+                                                    onClick={() => increaseIndex(index, question)}
+                                                >
+                                                    ^
+                                                </h1>
+                                            </div>
                                         </div>
 
                                     </div>
