@@ -110,12 +110,10 @@ const TrainmentReports = () => {
     };
 
     const saveTrainmentEdits = async () => {
-
         if (!dirty) {
             setEditTrainmentVideos(false);
             return;
         }
-
         try {
             const response = await axios.post(API_ROUTES.UPDATE_TRAINMENT_VIDEOS, {
                 titulo,
@@ -129,7 +127,7 @@ const TrainmentReports = () => {
         } catch (error) {
             console.error('Error updating trainment videos:', error.response?.data || error);
         } finally {
-            if (!dirty) {
+            if (dirty) {
                 window.location.reload();
             }
         }
@@ -145,7 +143,7 @@ const TrainmentReports = () => {
 
     const addTrainmentVideo = async () => {
         event.preventDefault();
-
+        setIsDirty(true);
         const { id: videoId } = getVideoId(videoUrl);
 
         if (!videoId) {
@@ -203,10 +201,12 @@ const TrainmentReports = () => {
     }
 
     const removeVideo = (index) => {
+        setIsDirty(true);
         setVideos(prev => prev.filter((_, i) => i !== index));
     };
 
     const increaseIndex = (index, video) => {
+        setIsDirty(true);
         setVideos(prev => {
             if (index >= prev.length - 1) return prev;
             const newArr = [...prev];
@@ -219,6 +219,7 @@ const TrainmentReports = () => {
     }
 
     const decreaseIndex = (index, video) => {
+        setIsDirty(true);
         setVideos(prev => {
             if (index >= prev.length + 1) return prev;
             const newArr = [...prev];
