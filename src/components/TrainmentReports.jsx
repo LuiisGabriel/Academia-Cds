@@ -111,6 +111,11 @@ const TrainmentReports = () => {
 
     const saveTrainmentEdits = async () => {
 
+        if (!dirty) {
+            setEditTrainmentVideos(false);
+            return;
+        }
+
         try {
             const response = await axios.post(API_ROUTES.UPDATE_TRAINMENT_VIDEOS, {
                 titulo,
@@ -124,10 +129,10 @@ const TrainmentReports = () => {
         } catch (error) {
             console.error('Error updating trainment videos:', error.response?.data || error);
         } finally {
-            window.location.reload();
+            if (!dirty) {
+                window.location.reload();
+            }
         }
-
-
     };
 
     const closeDialog = () => {
