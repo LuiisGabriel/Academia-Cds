@@ -115,14 +115,19 @@ const TrainmentReports = () => {
             return;
         }
         try {
+            setIsLoading(true);
             const response = await axios.post(API_ROUTES.UPDATE_TRAINMENT_VIDEOS, {
                 titulo,
                 videos,
             });
-            if (response?.data) {
-                alert('Alterações salvas com sucesso!!');
+            if (!response?.data) {
+                alert('Algo deu errado durante o salvamento!')
+                console.log('Algo deu errado durante o salvamento: ', response);
+                return;
+            } else {
                 setIsDirty(false);
                 setEditTrainmentVideos(false);
+                alert('Alterações salvas com sucesso!!');
             }
         } catch (error) {
             console.error('Error updating trainment videos:', error.response?.data || error);
@@ -130,6 +135,7 @@ const TrainmentReports = () => {
             if (dirty) {
                 window.location.reload();
             }
+            setIsLoading(false);
         }
     };
 
