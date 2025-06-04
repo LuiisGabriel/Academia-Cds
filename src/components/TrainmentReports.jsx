@@ -39,6 +39,10 @@ const TrainmentReports = () => {
     }
 
     const publishTrainment = async () => {
+        if (videos.length < 1) {
+            alert('Adicione ao menos um vídeo para este treinamento');
+            return;
+        }
         try {
             setIsLoading(true);
             const publishResponse = await axios.post(API_ROUTES.PUBLISH_TRAINMENT, {
@@ -109,6 +113,10 @@ const TrainmentReports = () => {
             setEditTrainmentVideos(false);
             return;
         }
+        if (stage === 'PUBLISHED' && videos.length < 1) {
+            alert('Este treinamento está publicado, adicione ao menos um vídeo ou torne ele privado.');
+            return;
+        }
         try {
             setIsLoading(true);
             const response = await axios.post(API_ROUTES.UPDATE_TRAINMENT_VIDEOS, {
@@ -137,7 +145,7 @@ const TrainmentReports = () => {
             setEditTrainmentVideos(false);
             setOpen(false);
         } else {
-            if (confirm('Você tem mudanças não salvas (Clique em "Ok" para descarta-las)')) {
+            if (confirm('Você tem mudanças não salvas')) {
                 setEditTrainmentVideos(false);
                 setIsDirty(false);
                 setOpen(false)
