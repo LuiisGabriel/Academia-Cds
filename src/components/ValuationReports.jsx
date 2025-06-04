@@ -200,7 +200,7 @@ const ValuationReports = () => {
             setEditValuationQuestions(false);
             setOpen(false);
         } else {
-            if (confirm('Você tem mudanças não salvas')) {
+            if (confirm('Você tem mudanças não salvas (Clique em "Ok" para descarta-las)')) {
                 setEditValuationQuestions(false);
                 setIsDirty(false);
                 setOpen(false)
