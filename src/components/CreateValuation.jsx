@@ -509,7 +509,7 @@ const CreateValuation = () => {
                                 {valuationQuestions.map((question, index) => (
                                     <div
                                         key={index}
-                                        className='flex  justify-between w-full bg-gray-300 p-4 rounded-lg gap-4'>
+                                        className='flex  justify-between w-full bg-gray-300 p-4 rounded-lg gap-4 sm:flex flex-col'>
                                         <div className='flex flex-col items-center justify-center w-full'>
                                             <h1 className='w-full flex items-center justify-center pb-4'>
                                                 {question.questionTitle}
@@ -523,8 +523,10 @@ const CreateValuation = () => {
                                                             '--color': answerOption.isCorrect === true ? "#84cc16" : isCorrectColor,
                                                         }}
                                                     >
-                                                        <h1>{answerOption.answerTitle}</h1>
-                                                        <h1>{answerOption.isCorrect === true ? "certa" : "errada"}</h1>
+                                                        <div className='w-full flex items-center justify-between gap-4'>
+                                                            <h1 >{answerOption.answerTitle}</h1>
+                                                            <h1 >{answerOption.isCorrect === true ? "certa" : "errada"}</h1>
+                                                        </div>
                                                     </div>
                                                 ))}
                                             </div>
