@@ -88,24 +88,28 @@ const ValuationReports = () => {
     };
 
     const deleteValuation = async (titulo) => {
-        try {
-            setIsLoading(true);
-            const deleteResponse = await axios.post(API_ROUTES.DELETE_VALUATION, {
-                titulo,
-            });
+        if (confirm('Você quer deletar esta avaliação?')) {
+            try {
+                setIsLoading(true);
+                const deleteResponse = await axios.post(API_ROUTES.DELETE_VALUATION, {
+                    titulo,
+                });
 
-            if (!deleteResponse?.data) {
-                alert('Algo deu errado durante a remoção!')
-                console.log('Algo deu errado durante a remoção: ', response);
-                return;
-            } else {
-                window.location.reload();
+                if (!deleteResponse?.data) {
+                    alert('Algo deu errado durante a remoção!')
+                    console.log('Algo deu errado durante a remoção: ', response);
+                    return;
+                } else {
+                    window.location.reload();
+                }
+
+            } catch (err) {
+                console.log('Ocorreu algum erro na remoção: ', err);
+            } finally {
+                setIsLoading(false);
             }
+        } else {
 
-        } catch (err) {
-            console.log('Ocorreu algum erro na remoção: ', err);
-        } finally {
-            setIsLoading(false);
         }
     };
 
@@ -269,10 +273,10 @@ const ValuationReports = () => {
 
                                             <div className='w-full flex justify-end items-center'>
                                                 <h1
-                                                className='font-bold hover:scale-105 transition-all duration-100 ease-in-out'
-                                                onClick={()=>{
-                                                    closeDialog();
-                                                }}
+                                                    className='font-bold hover:scale-105 transition-all duration-100 ease-in-out'
+                                                    onClick={() => {
+                                                        closeDialog();
+                                                    }}
                                                 >X</h1>
                                             </div>
 
