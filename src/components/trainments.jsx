@@ -118,7 +118,7 @@ const Trainments = () => {
                                     }}
                                     className="group flex flex-col items-center justify-center"
                                 >
-                                    <div className="bg-white h-full flex flex-col justify-between rounded-lg pb-8 group-hover:scale-102 transition-all duration-300 ease-in-out shadow-lg/30">
+                                    <div className="bg-white h-full min-w-70 flex flex-col justify-between rounded-lg pb-8 group-hover:scale-102 transition-all duration-300 ease-in-out shadow-lg/30">
                                         <img
                                             alt={treinamento.imageAlt}
                                             src={treinamento.imageSrc}
