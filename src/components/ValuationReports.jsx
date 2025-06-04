@@ -334,7 +334,7 @@ const ValuationReports = () => {
                                                     <Menu
                                                         key={question.questionTitle}
                                                         as="div"
-                                                        className="relative text-left gap-4 w-full bg-gray-300 p-4 rounded-lg sm:flex justify-between items-center"
+                                                        className="relative text-left gap-4 w-full bg-gray-300 p-4 rounded-lg flex justify-between items-center"
                                                     >
                                                         <div className='px-2 w-full'>
                                                             <MenuButton className="inline-flex w-full justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold ring-inset hover:bg-gray-50">
