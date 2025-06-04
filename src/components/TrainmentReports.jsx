@@ -137,7 +137,7 @@ const TrainmentReports = () => {
             setEditTrainmentVideos(false);
             setOpen(false);
         } else {
-            if (confirm('Você tem mudanças não salvas')) {
+            if (confirm('Você tem mudanças não salvas (Clique em "Ok" para descarta-las)')) {
                 setEditTrainmentVideos(false);
                 setIsDirty(false);
                 setOpen(false)
