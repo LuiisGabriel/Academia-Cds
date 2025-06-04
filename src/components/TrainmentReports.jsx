@@ -87,24 +87,28 @@ const TrainmentReports = () => {
     };
 
     const deleteTrainment = async () => {
-        try {
-            setIsLoading(true);
-            const deleteResponse = await axios.post(API_ROUTES.DELETE_TRAINMENT, {
-                titulo,
-            });
+        if (confirm('Você quer deletar este treinamento?')) {
+            try {
+                setIsLoading(true);
+                const deleteResponse = await axios.post(API_ROUTES.DELETE_TRAINMENT, {
+                    titulo,
+                });
 
-            if (!deleteResponse?.data) {
-                alert('Algo deu errado durante a remoção!')
-                console.log('Algo deu errado durante a remoção: ', response);
-                return;
-            } else {
-                window.location.reload();
+                if (!deleteResponse?.data) {
+                    alert('Algo deu errado durante a remoção!')
+                    console.log('Algo deu errado durante a remoção: ', response);
+                    return;
+                } else {
+                    window.location.reload();
+                }
+
+            } catch (err) {
+                console.log('Ocorreu algum erro na remoção: ', err);
+            } finally {
+                setIsLoading(false);
             }
+        } else {
 
-        } catch (err) {
-            console.log('Ocorreu algum erro na remoção: ', err);
-        } finally {
-            setIsLoading(false);
         }
     };
 
