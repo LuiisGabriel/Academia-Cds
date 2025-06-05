@@ -353,7 +353,7 @@ const TrainmentReports = () => {
                                                                             }}
                                                                             className='bg-gray-800 text-white rounded-lg shadow-lg/30 p-2 hover:scale-102 hover:bg-gray-800/70 transition-all duration-300 ease-in-out'
                                                                         >
-                                                                            Copiar url
+                                                                            Copiar mensagem com url
                                                                         </button>
                                                                     </div>
                                                                 </div>
