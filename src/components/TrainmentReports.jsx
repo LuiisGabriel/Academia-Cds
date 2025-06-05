@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-import { useTreinamentos, useUser, useUsers } from '../lib/customHooks';
+import { useState } from 'react';
+import { useTreinamentos, useUser } from '../lib/customHooks';
 import Navbar from '../components/Navbar';
-import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { API_ROUTES } from '../utils/constants';
 import axios from 'axios';
 import getVideoId from 'get-video-id';
@@ -26,6 +25,7 @@ const TrainmentReports = () => {
     const [videos, setVideos] = useState([]);
     const [stage, setStage] = useState('');
     const [editTrainmentVideos, setEditTrainmentVideos] = useState(false);
+    const [copySuccess, setCopySuccess] = useState(false);
 
     const [open, setOpen] = useState(false);
     const [isAddVideos, setIsAddVideos] = useState(false);
@@ -247,6 +247,16 @@ const TrainmentReports = () => {
         });
     }
 
+    const handleCopy = async (url) => {
+        try {
+            await navigator.clipboard.writeText(url);
+            setCopySuccess(true);
+            setTimeout(() => setCopySuccess(false), 500);
+        } catch (err) {
+            console.error("Failed to copy text:", err);
+        }
+    };
+
     return (
         <>
             <div className='bg-gray-300 w-full h-auto min-h-screen'>
@@ -343,14 +353,10 @@ const TrainmentReports = () => {
                                                                     <h1 className='text-wrap'>
                                                                         {video.titulo}
                                                                     </h1>
-                                                                    <div className='flex items-center justify-start gap-2 text-wrap'>
+                                                                    <div className='flex-col flex items-center justify-center gap-2 text-wrap'>
                                                                         <button
                                                                             onClick={() => {
-                                                                                navigator.clipboard.writeText(
-                                                                                    'Temos um vídeo que explica esse procedimento passo à passo.\nCaso haja alguma dúvida enquanto assiste é só perguntar. \nSegue o Link:\n\n' +
-                                                                                    video.url
-                                                                                );
-                                                                                alert('Copiado com sucesso!');
+                                                                                handleCopy(video.url);
                                                                             }}
                                                                             className='bg-gray-800 text-white rounded-lg shadow-lg/30 p-2 hover:scale-102 hover:bg-gray-800/70 transition-all duration-300 ease-in-out'
                                                                         >
@@ -544,7 +550,28 @@ const TrainmentReports = () => {
                         </div>
                     </Dialog>
 
+                    <Dialog open={copySuccess} onClose={() => {
+                        setCopySuccess(false);
+                    }}
+                        className="relative z-10 select-none">
+                        <DialogBackdrop
+                            transition
+                            className="fixed inset-0 h-full bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+                        />
 
+                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto ">
+                            <div className="flex min-h-screen justify-center text-center items-center">
+                                <DialogPanel
+                                    transition
+                                    className="relative transform overflow-hidden rounded-lg bg-white p-8 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in my-8 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+                                >
+                                    <h1 className='w-full flex items-center justify-center text-center text-lg font-semibold'>
+                                        Mensagem copiada com sucesso!
+                                    </h1>
+                                </DialogPanel>
+                            </div>
+                        </div>
+                    </Dialog>
 
                     <div className=' w-8/9 py-8'>
                         <div className='flex flex-col items-center justify-center p-8'>
