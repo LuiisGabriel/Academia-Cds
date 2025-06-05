@@ -350,6 +350,7 @@ const TrainmentReports = () => {
                                                                                     'Temos um vídeo que explica esse procedimento passo à passo.\nCaso haja alguma dúvida enquanto assiste é só perguntar. \nSegue o Link:\n\n' +
                                                                                     video.url
                                                                                 );
+                                                                                alert('Copiado com sucesso!');
                                                                             }}
                                                                             className='bg-gray-800 text-white rounded-lg shadow-lg/30 p-2 hover:scale-102 hover:bg-gray-800/70 transition-all duration-300 ease-in-out'
                                                                         >
