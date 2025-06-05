@@ -249,7 +249,10 @@ const TrainmentReports = () => {
 
     const handleCopy = async (url) => {
         try {
-            await navigator.clipboard.writeText(url);
+            await navigator.clipboard.writeText(
+                'Temos um vídeo que explica esse procedimento passo à passo.\nCaso haja alguma dúvida enquanto assiste é só perguntar. \nSegue o Link:\n\n' +
+                url
+            );
             setCopySuccess(true);
             setTimeout(() => setCopySuccess(false), 500);
         } catch (err) {
@@ -556,7 +559,7 @@ const TrainmentReports = () => {
                         className="relative z-10 select-none">
                         <DialogBackdrop
                             transition
-                            className="fixed inset-0 h-full bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+                            className="fixed inset-0 h-full bg-gray-500/50 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
                         />
 
                         <div className="fixed inset-0 z-10 w-screen overflow-y-auto ">
