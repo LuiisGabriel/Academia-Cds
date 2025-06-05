@@ -347,7 +347,7 @@ const TrainmentReports = () => {
                                                                         <button
                                                                             onClick={() => {
                                                                                 navigator.clipboard.writeText(
-                                                                                    'Temos este vídeo que pode te ajudar com sua dúvida: \n ' +
+                                                                                    'Temos um vídeo que explica esse procedimento passo à passo.\nCaso haja alguma dúvida enquanto assiste é só perguntar. \nSegue o Link:\n\n' +
                                                                                     video.url
                                                                                 );
                                                                             }}
