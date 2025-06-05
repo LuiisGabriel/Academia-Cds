@@ -102,16 +102,14 @@ const Valuation = () => {
 
             if (response?.data) {
                 localStorage.removeItem(`filteredQuestions-${valuationId}`);
-                /*navigate(APP_ROUTES.POST_VALUATION, {
+                navigate(APP_ROUTES.POST_VALUATION, {
                     state: {
                         score: correctAnswersCount,
                         totalQuestions: results.length,
                         results: results,
                         valuationId: valuationId,
                     }
-                });*/
-                console.log(results);
-                console.log(correctAnswersCount);
+                });
             }
 
         } catch (error) {
