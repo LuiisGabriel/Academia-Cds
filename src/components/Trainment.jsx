@@ -100,7 +100,24 @@ const Trainment = () => {
                                 />
                             </div>
                             <div>
-                                <h3 className="py-4 text-xl">{videoTitulo}</h3>
+                                <div className='flex items-center justify-between'>
+                                    <h3 className="py-4 text-xl">{videoTitulo}</h3>
+                                    {user.role == 'ADMIN' && (
+                                        <button
+                                            onClick={() => {
+                                                navigator.clipboard.writeText(
+                                                    'Temos um vídeo que explica esse procedimento passo à passo.\nCaso haja alguma dúvida enquanto assiste é só perguntar. \nSegue o Link:\n\n' +
+                                                    videoUrl
+                                                );
+                                                alert('Copiado com sucesso!');
+                                            }}
+                                            className='bg-gray-800 text-white rounded-lg shadow-lg/30 p-2 hover:scale-102 hover:bg-gray-800/70 transition-all duration-300 ease-in-out'
+                                        >
+                                            Copiar mensagem com url
+                                        </button>
+                                    )}
+                                </div>
+
                                 <h1 className='p-2 text-md'>{videoDescricao}</h1>
                             </div>
                         </div>
@@ -116,7 +133,7 @@ const Trainment = () => {
                                             setVideoUrl(video.url);
                                             setVideoDescricao(video.description);
                                         }}
-                                        key={video.id}
+                                        key={index}
                                     >
                                         <a className="text-white flex justify-center items-center gap-4">
                                             <h1>{video.titulo}</h1>
