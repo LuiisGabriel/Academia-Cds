@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_ROUTES } from '../utils/constants';
 import { useLocation } from 'react-router-dom';
+import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 
 const Trainment = () => {
     const { user, authenticated } = useUser();
@@ -22,6 +23,8 @@ const Trainment = () => {
     const [videoTitulo, setVideoTitulo] = useState('');
     const [videoDescricao, setVideoDescricao] = useState('');
     const [videoUrl, setVideoUrl] = useState('');
+
+    const [copySuccess, setCopySuccess] = useState(false);
 
     useEffect(() => {
         if (initialVideo) {
@@ -80,14 +83,50 @@ const Trainment = () => {
         }
     };
 
+    const handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText(
+                'Temos um vídeo que explica esse procedimento passo à passo.\nCaso haja alguma dúvida enquanto assiste é só perguntar. \nSegue o Link:\n\n' +
+                videoUrl
+            );
+            setCopySuccess(true);
+            setTimeout(() => setCopySuccess(false), 500);
+        } catch (err) {
+            console.error("Failed to copy text:", err);
+        }
+    };
+
     return (
         <>
 
             <div className="bg-gray-300 h-auto h-full min-h-screen">
                 <nav className="sticky top-0 z-50"><Navbar /></nav>
                 <div className=' px-8 py-8 justify-center select-none'>
-                    <div className='md:flex gap-8'>
 
+                    <Dialog open={copySuccess} onClose={() => {
+                        setCopySuccess(false);
+                    }}
+                        className="relative z-10 select-none">
+                        <DialogBackdrop
+                            transition
+                            className="fixed inset-0 h-full bg-gray-500/50 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+                        />
+
+                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto ">
+                            <div className="flex min-h-screen justify-center text-center items-center">
+                                <DialogPanel
+                                    transition
+                                    className="relative transform overflow-hidden rounded-lg bg-white p-8 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in my-8 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+                                >
+                                    <h1 className='w-full flex items-center justify-center text-center text-lg font-semibold'>
+                                        Mensagem copiada com sucesso!
+                                    </h1>
+                                </DialogPanel>
+                            </div>
+                        </div>
+                    </Dialog>
+
+                    <div className='md:flex gap-8'>
                         <div className="flex flex-col w-full">
                             <div className="aspect-video" key={videoId}>
                                 <ReactPlayer
@@ -105,11 +144,7 @@ const Trainment = () => {
                                     {user.role == 'ADMIN' && (
                                         <button
                                             onClick={() => {
-                                                navigator.clipboard.writeText(
-                                                    'Temos um vídeo que explica esse procedimento passo à passo.\nCaso haja alguma dúvida enquanto assiste é só perguntar. \nSegue o Link:\n\n' +
-                                                    videoUrl
-                                                );
-                                                alert('Copiado com sucesso!');
+                                                handleCopy();
                                             }}
                                             className='bg-gray-800 text-white rounded-lg shadow-lg/30 p-2 hover:scale-102 hover:bg-gray-800/70 transition-all duration-300 ease-in-out'
                                         >
