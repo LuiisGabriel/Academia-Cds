@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAvaliacoes, useUser } from '../lib/customHooks';
 import Navbar from './Navbar';
-import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { Dialog, DialogBackdrop, DialogPanel, Menu, MenuButton, MenuItems } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { API_ROUTES } from '../utils/constants';
 import axios from 'axios';
@@ -328,14 +328,14 @@ const ValuationReports = () => {
                                                 </h1>
                                             </div>
 
-                                            {valuationQuestions.length > 0 ? (<div className='space-y-4'>
+                                            {valuationQuestions.length > 0 ? (<div className='space-y-4 overflow-y-auto max-h-100'>
                                                 {valuationQuestions?.map((question, index) => (
                                                     <Menu
                                                         key={question.questionTitle}
                                                         as="div"
                                                         className="relative text-left gap-4 w-full bg-gray-300 p-4 rounded-lg flex justify-between items-center"
                                                     >
-                                                        <div className='px-2 w-full'>
+                                                        <div className='px-2 w-full '>
                                                             <MenuButton className="inline-flex w-full justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold ring-inset hover:bg-gray-50">
                                                                 <h1 className='text-left'>
                                                                     {question.questionTitle}
@@ -548,7 +548,7 @@ const ValuationReports = () => {
                                                     style={{
                                                         '--color': answerOption.isCorrect === true ? '#84cc16' : isCorrectColor,
                                                     }}
-                                                    className=' bg-(--color)/40 rounded-lg w-full p-2 flex justify-between items-center'
+                                                    className=' bg-(--color)/40 rounded-lg w-full p-2 flex justify-between items-center '
                                                 >
                                                     <h1>{answerOption.answerTitle}</h1>
                                                     <button
