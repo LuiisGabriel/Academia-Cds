@@ -7,6 +7,7 @@ import axios from 'axios';
 import getVideoId from 'get-video-id';
 import pencilEdit from '../assets/pencil-edit.svg'
 import lixeira from '../assets/lixeira.svg'
+import { DefaultUi, Player, Youtube } from '@vime/react';
 
 const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
@@ -21,6 +22,8 @@ const TrainmentReports = () => {
     const [subModulo, setSubModulo] = useState('');
     const [videoTitle, setVideoTitle] = useState('');
     const [videoUrl, setVideoUrl] = useState('');
+    const [videoId, setVideoId] = useState('');
+    const [isWatchVideo, setIsWatchVideo] = useState(false);
     const [isSetVideoTitle, setIsSetVideoTitle] = useState(false);
     const [videos, setVideos] = useState([]);
     const [stage, setStage] = useState('');
@@ -353,7 +356,8 @@ const TrainmentReports = () => {
                                                 <div className='space-y-4 select-text overflow-y-auto max-h-100'>
                                                     {videos?.map((video, index) => (
                                                         <div className='flex items-center justify-center gap-2 w-full' key={video.videoId}>
-                                                            <div className='bg-gray-300 p-4 w-full rounded-lg flex items-center justify-between gap-4'>
+                                                            <div
+                                                                className='bg-gray-300 p-4 w-full rounded-lg flex items-center justify-between gap-4'>
                                                                 <div className='sm:flex items-center justify-between w-full'>
                                                                     <div className='text-wrap flex items-center'>
                                                                         <h1>
@@ -365,9 +369,19 @@ const TrainmentReports = () => {
                                                                             onClick={() => {
                                                                                 handleCopy(video.url);
                                                                             }}
-                                                                            className='bg-gray-800 text-white text-sm rounded-lg  p-2 hover:scale-102 hover:bg-gray-800/70 transition-all duration-300 ease-in-out'
+                                                                            className='bg-gray-800 text-white w-full text-sm rounded-lg  p-2 hover:scale-102 hover:bg-gray-800/70 transition-all duration-300 ease-in-out'
                                                                         >
                                                                             Copiar mensagem com url
+                                                                        </button>
+                                                                        <button
+                                                                            onClick={() => {
+                                                                                setIsWatchVideo(true);
+                                                                                setVideoId(video.videoId);
+                                                                                setVideoTitle(video.titulo);
+                                                                            }}
+                                                                            className='bg-gray-800 w-full text-white text-sm rounded-lg  p-2 hover:scale-102 hover:bg-gray-800/70 transition-all duration-300 ease-in-out'
+                                                                        >
+                                                                            Assistir ao vídeo
                                                                         </button>
                                                                     </div>
                                                                 </div>
@@ -575,6 +589,49 @@ const TrainmentReports = () => {
                                     <h1 className='w-full flex items-center justify-center text-center text-lg font-semibold'>
                                         Mensagem copiada com sucesso!
                                     </h1>
+                                </DialogPanel>
+                            </div>
+                        </div>
+                    </Dialog>
+
+                    <Dialog open={isWatchVideo} onClose={() => { }}
+                        className="relative z-10 select-none">
+                        <DialogBackdrop
+                            transition
+                            className="fixed inset-0 h-full bg-gray-500/50 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+                        />
+
+                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto ">
+                            <div className="flex min-h-screen justify-center text-center items-center py-15">
+                                <DialogPanel
+                                    transition
+                                    className="relative md:w-3/4 w-8/9 transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in my-8 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+                                >
+                                    <div className='w-full flex items-center justify-end px-2 '>
+                                            <h1
+                                                onClick={() => {
+                                                    setIsWatchVideo(false)
+                                                }}
+                                                className='text-lg font-bold'>
+                                                X
+                                            </h1>
+                                        </div>
+                                    <div className='px-8'>
+                                        
+                                        <div className='aspect-video w-full flex flex-col items-center justify-center gap-2 py-4'>
+                                            <Player className='w-full'>
+                                                <Youtube
+                                                    key={videoId}
+                                                    videoId={videoId} />
+                                                <DefaultUi />
+                                            </Player>
+                                            <div className='w-full flex items-center justify-start'>
+                                                <h1>
+                                                    {videoTitle}
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </DialogPanel>
                             </div>
                         </div>
