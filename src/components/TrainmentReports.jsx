@@ -499,9 +499,7 @@ const TrainmentReports = () => {
                     </Dialog>
 
 
-                    <Dialog open={isAddVideos} onClose={() => {
-                        setIsAddVideos(false);
-                    }}
+                    <Dialog open={isAddVideos} onClose={() => { }}
                         className="relative z-10 select-none">
                         <DialogBackdrop
                             transition
@@ -512,57 +510,67 @@ const TrainmentReports = () => {
                             <div className="flex min-h-screen justify-center text-center items-center">
                                 <DialogPanel
                                     transition
-                                    className="relative transform overflow-hidden rounded-lg bg-white p-8 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in my-8 w-5/6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+                                    className="relative transform overflow-hidden rounded-lg bg-white  text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in my-8 w-5/6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
                                 >
-
-                                    <div className='flex flex-col justify-center items-center w-full gap-8'>
+                                    <div className='w-full flex items-center justify-end p-4'>
+                                        <h1
+                                            onClick={() => {
+                                                setIsAddVideos(false);
+                                            }}
+                                            className='text-lg font-bold hover:scale-115'>
+                                            X
+                                        </h1>
+                                    </div>
+                                    <div className='p-8'>
                                         <div className='flex flex-col justify-center items-center w-full gap-8'>
-                                            <div className="flex flex-col justify-center items-center gap-2 w-full">
-                                                <div className='flex items-center justify-start gap-2 w-full'>
-                                                    <h1>
-                                                        Eu quero escrever o título
-                                                    </h1>
-                                                    <input
-                                                        className='rounded-full size-3'
-                                                        type='checkbox'
-                                                        checked={isSetVideoTitle}
-                                                        onChange={(e) => setIsSetVideoTitle(e.target.checked)}
-                                                    />
+                                            <div className='flex flex-col justify-center items-center w-full gap-8'>
+                                                <div className="flex flex-col justify-center items-center gap-2 w-full">
+                                                    <div className='flex items-center justify-start gap-2 w-full'>
+                                                        <h1>
+                                                            Eu quero escrever o título
+                                                        </h1>
+                                                        <input
+                                                            className='rounded-full size-3'
+                                                            type='checkbox'
+                                                            checked={isSetVideoTitle}
+                                                            onChange={(e) => setIsSetVideoTitle(e.target.checked)}
+                                                        />
+                                                    </div>
+                                                    {isSetVideoTitle && (
+                                                        <input
+                                                            className="border-2 outline-none p-2 rounded-md w-full"
+                                                            type="text"
+                                                            placeholder="Titulo"
+                                                            value={videoTitle}
+                                                            required
+                                                            onChange={(e) => { setVideoTitle(e.target.value); }}
+                                                        />
+                                                    )}
                                                 </div>
-                                                {isSetVideoTitle && (
+
+                                                <div className='w-full md:flex justify-start items-center gap-8'>
                                                     <input
                                                         className="border-2 outline-none p-2 rounded-md w-full"
                                                         type="text"
-                                                        placeholder="Titulo"
-                                                        value={videoTitle}
+                                                        placeholder="Url"
+                                                        value={videoUrl}
                                                         required
-                                                        onChange={(e) => { setVideoTitle(e.target.value); }}
+                                                        onChange={(e) => { setVideoUrl(e.target.value); }}
                                                     />
-                                                )}
-                                            </div>
+                                                </div>
 
-                                            <div className='w-full md:flex justify-start items-center gap-8'>
-                                                <input
-                                                    className="border-2 outline-none p-2 rounded-md w-full"
-                                                    type="text"
-                                                    placeholder="Url"
-                                                    value={videoUrl}
-                                                    required
-                                                    onChange={(e) => { setVideoUrl(e.target.value); }}
-                                                />
-                                            </div>
-
-                                            <div className='w-full flex flex-col items-center justify-center gap-8'>
-                                                <button
-                                                    className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 hover:scale-102 transition-all duration-300 ease-in-out"
-                                                    onClick={() => {
-                                                        addTrainmentVideo();
-                                                    }}
-                                                >
-                                                    <span>
-                                                        Inserir video
-                                                    </span>
-                                                </button>
+                                                <div className='w-full flex flex-col items-center justify-center gap-8'>
+                                                    <button
+                                                        className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 hover:scale-102 transition-all duration-300 ease-in-out"
+                                                        onClick={() => {
+                                                            addTrainmentVideo();
+                                                        }}
+                                                    >
+                                                        <span>
+                                                            Inserir video
+                                                        </span>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -608,16 +616,16 @@ const TrainmentReports = () => {
                                     className="relative md:w-3/4 w-8/9 transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in my-8 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
                                 >
                                     <div className='w-full flex items-center justify-end px-2 '>
-                                            <h1
-                                                onClick={() => {
-                                                    setIsWatchVideo(false)
-                                                }}
-                                                className='text-lg font-bold'>
-                                                X
-                                            </h1>
-                                        </div>
+                                        <h1
+                                            onClick={() => {
+                                                setIsWatchVideo(false)
+                                            }}
+                                            className='text-lg font-bold'>
+                                            X
+                                        </h1>
+                                    </div>
                                     <div className='px-8'>
-                                        
+
                                         <div className='aspect-video w-full flex flex-col items-center justify-center gap-2 py-4'>
                                             <Player className='w-full'>
                                                 <Youtube
