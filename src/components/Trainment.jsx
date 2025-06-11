@@ -62,7 +62,7 @@ const Trainment = () => {
             setVideoEnded(true);
 
             if (watchedVideos?.map((video) => video.videoId).includes(videoId)) {
-                console.log('assistido');
+               
                 if (currentVideo < videos.length - 1) {
                     setCurrentVideo(currentVideo + 1);
                 } else { return }
@@ -86,10 +86,6 @@ const Trainment = () => {
                     email,
                     watchedVideos: mergedWatchedVideos,
                 });
-
-                if (response?.data) {
-                    console.log('cabô');
-                }
 
             } catch (error) {
                 console.error('Error updating watched videos:', error.response?.data || error);
