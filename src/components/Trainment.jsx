@@ -62,6 +62,7 @@ const Trainment = () => {
             setVideoEnded(true);
 
             if (user?.watchedVideos?.map((video) => video.videoId).includes(videoId)) {
+                console.log('assistido');
                 if (currentVideo < videos.length - 1) {
                     setCurrentVideo(currentVideo + 1);
                 } else { return }
