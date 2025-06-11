@@ -236,9 +236,7 @@ const CreateValuation = () => {
                 <nav className="sticky top-0 z-50"><Navbar /></nav>
                 <div className='flex justify-center items-center py-16'>
 
-                    <Dialog open={open} onClose={() => {
-                        setOpen(false);
-                    }}
+                    <Dialog open={open} onClose={() => { }}
                         className="relative z-10 select-none">
                         <DialogBackdrop
                             transition
@@ -249,129 +247,141 @@ const CreateValuation = () => {
                             <div className="flex min-h-screen justify-center text-center items-center">
                                 <DialogPanel
                                     transition
-                                    className="relative transform overflow-hidden rounded-lg bg-white p-8 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in my-8 w-5/6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+                                    className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in my-8 w-5/6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
                                 >
+                                    <div className='w-full flex items-center justify-end p-8'>
+                                        <h1
+                                            onClick={() => {
+                                                setOpen(false);
+                                            }}
+                                            className='text-lg font-bold hover:scale-115 transition-all duration-300 ease-in-out'>
+                                            X
+                                        </h1>
+                                    </div>
 
-                                    <div className='flex flex-col justify-center items-center w-full gap-8'>
+                                    <div className='p-8'>
+
                                         <div className='flex flex-col justify-center items-center w-full gap-8'>
-                                            <div className='w-full'>
-                                                <input
-                                                    className="border-2 outline-none p-2 rounded-md w-full mb-8 sm:mb-0"
-                                                    type="text"
-                                                    placeholder="Enunciado"
-                                                    value={questionTitle}
-                                                    onChange={(e) => {
-                                                        setQuestionTitle(e.target.value);
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className='flex justify-start items-center w-full'>
-                                                <h1 className='px-2'>
-                                                    Esta questão é de multipla escolha?
-                                                </h1>
-                                                <input
-                                                    className='rounded-full size-3'
-                                                    type='checkbox'
-                                                    checked={isMultipleChoice}
-                                                    onChange={(e) => {
-                                                        handleIsMultipleChoiceCheck(e.target.checked);
-                                                    }}
-                                                />
-                                            </div>
-
-                                            <div className='w-full md:flex justify-start items-center gap-8'>
-                                                <input
-                                                    className="border-2 outline-none p-2 rounded-md w-full mb-8 sm:mb-0"
-                                                    type="text"
-                                                    placeholder="Resposta"
-                                                    value={answerTitle}
-                                                    onChange={(e) => {
-                                                        setAnswerTitle(e.target.value);
-                                                    }}
-                                                />
-                                            </div>
-
-                                            <div className='w-full flex flex-col items-center justify-center gap-8'>
-                                                <div className='flex justify-center items-center'>
+                                            <div className='flex flex-col justify-center items-center w-full gap-8'>
+                                                <div className='w-full'>
+                                                    <input
+                                                        className="border-2 outline-none p-2 rounded-md w-full mb-8 sm:mb-0"
+                                                        type="text"
+                                                        placeholder="Enunciado"
+                                                        value={questionTitle}
+                                                        onChange={(e) => {
+                                                            setQuestionTitle(e.target.value);
+                                                        }}
+                                                    />
+                                                </div>
+                                                <div className='flex justify-start items-center w-full'>
                                                     <h1 className='px-2'>
-                                                        É a resposta certa?
+                                                        Esta questão é de multipla escolha?
                                                     </h1>
                                                     <input
                                                         className='rounded-full size-3'
                                                         type='checkbox'
-                                                        checked={isCorrect}
+                                                        checked={isMultipleChoice}
                                                         onChange={(e) => {
-                                                            setIsCorrect(e.target.checked);
+                                                            handleIsMultipleChoiceCheck(e.target.checked);
                                                         }}
                                                     />
                                                 </div>
-                                                <button
-                                                    className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 hover:scale-102 transition-all duration-300 ease-in-out"
-                                                    onClick={addAnswerOption}
-                                                >
-                                                    <span>
-                                                        Inserir resposta
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
 
-                                        <div className='flex flex-col justify-center items-center gap-2 w-full text-center'>
-                                            {answerOptions.length > 0 ? (
-                                                <h1 className='mb-4'>
-                                                    Respostas para esta questão:
-                                                </h1>
-                                            ) : 'As respostas que você cadastrar para esta questão, aparecerão aqui'}
-                                            {answerOptions?.map((answerOption, index) => (
-                                                <div
-                                                    key={index}
-                                                    style={{
-                                                        '--color': answerOption.isCorrect === true ? '#84cc16' : isCorrectColor,
-                                                    }}
-                                                    className=' bg-(--color)/40 rounded-lg w-full p-2 flex justify-between items-center'
-                                                >
-                                                    <h1>{answerOption.answerTitle}</h1>
-                                                    <button
-                                                        className='text-2xl hover:scale-115 transition-all duration-300 ease-in-out'
-                                                        onClick={() => {
-                                                            removeAnswerOption(index)
+                                                <div className='w-full md:flex justify-start items-center gap-8'>
+                                                    <input
+                                                        className="border-2 outline-none p-2 rounded-md w-full mb-8 sm:mb-0"
+                                                        type="text"
+                                                        placeholder="Resposta"
+                                                        value={answerTitle}
+                                                        onChange={(e) => {
+                                                            setAnswerTitle(e.target.value);
                                                         }}
+                                                    />
+                                                </div>
+
+                                                <div className='w-full flex flex-col items-center justify-center gap-8'>
+                                                    <div className='flex justify-center items-center'>
+                                                        <h1 className='px-2'>
+                                                            É a resposta certa?
+                                                        </h1>
+                                                        <input
+                                                            className='rounded-full size-3'
+                                                            type='checkbox'
+                                                            checked={isCorrect}
+                                                            onChange={(e) => {
+                                                                setIsCorrect(e.target.checked);
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <button
+                                                        className="flex justify-center p-2 rounded-md w-1/2 self-center bg-gray-800  text-white hover:bg-gray-700 hover:scale-102 transition-all duration-300 ease-in-out"
+                                                        onClick={addAnswerOption}
                                                     >
-                                                        <img
-                                                            className='size-5'
-                                                            src={lixeira} />
+                                                        <span>
+                                                            Inserir resposta
+                                                        </span>
                                                     </button>
                                                 </div>
-                                            ))}
-                                        </div>
+                                            </div>
 
-                                        <div
-                                            style={{
-                                                '--justify': answerOptions.length < 4 ? "end" : "between",
-                                            }}
-                                            className={`w-full flex items-center ${answerOptions.length < 4 ? 'justify-center' : 'justify-between'}`}>
-                                            {answerOptions.length >= 4 && (
-                                                <button
-                                                    className="flex justify-center w-1/2 sm:w-auto text-xs sm:text-base p-2 rounded-md  self-center bg-gray-800  text-white hover:bg-gray-700 hover:scale-102 transition-all duration-300 ease-in-out"
+                                            <div className='flex flex-col justify-center items-center gap-2 w-full text-center'>
+                                                {answerOptions.length > 0 ? (
+                                                    <h1 className='mb-4'>
+                                                        Respostas para esta questão:
+                                                    </h1>
+                                                ) : 'As respostas que você cadastrar para esta questão, aparecerão aqui'}
+                                                {answerOptions?.map((answerOption, index) => (
+                                                    <div
+                                                        key={index}
+                                                        style={{
+                                                            '--color': answerOption.isCorrect === true ? '#84cc16' : isCorrectColor,
+                                                        }}
+                                                        className=' bg-(--color)/40 rounded-lg w-full p-2 flex justify-between items-center'
+                                                    >
+                                                        <h1>{answerOption.answerTitle}</h1>
+                                                        <button
+                                                            className='text-2xl hover:scale-115 transition-all duration-300 ease-in-out'
+                                                            onClick={() => {
+                                                                removeAnswerOption(index)
+                                                            }}
+                                                        >
+                                                            <img
+                                                                className='size-5'
+                                                                src={lixeira} />
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            <div
+                                                style={{
+                                                    '--justify': answerOptions.length < 4 ? "end" : "between",
+                                                }}
+                                                className={`w-full flex items-center ${answerOptions.length < 4 ? 'justify-center' : 'justify-between'}`}>
+                                                {answerOptions.length >= 4 && (
+                                                    <button
+                                                        className="flex justify-center w-1/2 sm:w-auto text-xs sm:text-base p-2 rounded-md  self-center bg-gray-800  text-white hover:bg-gray-700 hover:scale-102 transition-all duration-300 ease-in-out"
+                                                        onClick={() => {
+                                                            addQuestion(questionTitle);
+                                                        }}
+                                                    >
+                                                        <span>
+                                                            Adicionar questão
+                                                        </span>
+                                                    </button>
+                                                )}
+
+                                                <button className='text-red-500 hover:scale-105 transition-all duration-300 ease-in-out'
                                                     onClick={() => {
-                                                        addQuestion(questionTitle);
+                                                        handleQuestionClear();
                                                     }}
                                                 >
-                                                    <span>
-                                                        Adicionar questão
-                                                    </span>
+                                                    Limpar
                                                 </button>
-                                            )}
+                                            </div>
 
-                                            <button className='text-red-500 hover:scale-105 transition-all duration-300 ease-in-out'
-                                                onClick={() => {
-                                                    handleQuestionClear();
-                                                }}
-                                            >
-                                                Limpar
-                                            </button>
                                         </div>
-
                                     </div>
                                 </DialogPanel>
                             </div>
