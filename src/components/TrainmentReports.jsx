@@ -354,8 +354,8 @@ const TrainmentReports = () => {
                                                     {videos?.map((video, index) => (
                                                         <div className='flex items-center justify-center gap-2 w-full' key={video.videoId}>
                                                             <div className='bg-gray-300 p-4 w-full rounded-lg flex items-center justify-between gap-4'>
-                                                                <div className='sm:flex items-center justify-between space-y-4 w-full'>
-                                                                    <div className='text-wrap flex items-center h-full'>
+                                                                <div className='sm:flex items-center justify-between w-full'>
+                                                                    <div className='text-wrap flex items-center'>
                                                                         <h1>
                                                                             {video.titulo}
                                                                         </h1>
