@@ -34,10 +34,10 @@ const Trainment = () => {
     }, [currentVideo]);
 
     useEffect(() => {
-        if (watchedVideos) {
-            return;
+        if (user?.watchedVideos) {
+            setWatchedVideos(user.watchedVideos);
         }
-    }, [watchedVideos]);
+    }, [user]);
 
     if (!user || !authenticated) {
         return (
@@ -61,7 +61,7 @@ const Trainment = () => {
         ) {
             setVideoEnded(true);
 
-            if (user?.watchedVideos?.map((video) => video.videoId).includes(videoId)) {
+            if (watchedVideos?.map((video) => video.videoId).includes(videoId)) {
                 console.log('assistido');
                 if (currentVideo < videos.length - 1) {
                     setCurrentVideo(currentVideo + 1);
