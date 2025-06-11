@@ -48,13 +48,29 @@ const Valuation = () => {
     };
 
     const handleAnswerOptionClick = (questionIndex, answerIndex, isMultipleChoice) => {
-        if (isMultipleChoice) {
+        setDirty(true);
+        setSelectedAnswers((prev) => {
+            if (isMultipleChoice) {
+                const prevAnswers = prev[questionIndex] || [];
 
-        }
-        setSelectedAnswers((prev) => ({
-            ...prev,
-            [questionIndex]: answerIndex,
-        }));
+                if (prevAnswers.includes(answerIndex)) {
+                    return {
+                        ...prev,
+                        [questionIndex]: prevAnswers.filter(idx => idx !== answerIndex),
+                    };
+                } else {
+                    return {
+                        ...prev,
+                        [questionIndex]: [...prevAnswers, answerIndex],
+                    };
+                }
+            } else {
+                return {
+                    ...prev,
+                    [questionIndex]: [answerIndex],
+                };
+            }
+        });
     };
 
     const handleFormClear = () => {
@@ -71,14 +87,25 @@ const Valuation = () => {
             return;
         }
 
-        const results = valuationQuestions
-            .filter((_, index) => selectedAnswers[index] !== undefined)
-            .map((question, index) => ({
+        const results = filteredQuestions.map((question, index) => {
+            const selected = selectedAnswers[index] || [];
+            const correctIndexes = question.answerOptions
+                .map((opt, idx) => opt.isCorrect ? idx : null)
+                .filter(idx => idx !== null);
+                
+            const isCorrect =
+                selected.length === correctIndexes.length &&
+                correctIndexes.every(idx => selected.includes(idx)) &&
+                selected.every(idx => correctIndexes.includes(idx));
+
+            return {
                 question: question.questionTitle,
-                isCorrect: question.answerOptions[selectedAnswers[index]]?.isCorrect || false,
-            }));
+                isCorrect,
+            };
+        });
 
         const correctAnswersCount = results.filter((result) => result.isCorrect).length;
+
 
         handleFormClear();
         setDirty(false);
@@ -146,13 +173,11 @@ const Valuation = () => {
                                             <div className='flex items-center gap-4' key={answerIndex}>
                                                 <input
                                                     className="border-2 outline-none p-2 size-4 rounded-full"
-                                                    type={`${question.isMultipleChoice ? "checkbox" : 'radio'}`}
+                                                    type={question.isMultipleChoice ? "checkbox" : "radio"}
                                                     name={`question-${questionIndex}`}
                                                     required
-                                                    onClick={() => {
-                                                        setDirty(true);
-                                                        handleAnswerOptionClick(questionIndex, answerIndex, question.isMultipleChoice);
-                                                    }}
+                                                    checked={selectedAnswers[questionIndex]?.includes(answerIndex) || false}
+                                                    onChange={() => handleAnswerOptionClick(questionIndex, answerIndex, question.isMultipleChoice)}
                                                 />
                                                 {answerOption.answerTitle}
                                             </div>
