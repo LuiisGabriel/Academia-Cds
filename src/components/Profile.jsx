@@ -162,7 +162,7 @@ const Profile = () => {
                 onClick={() => {
                   setIsEditUser(true);
                 }}
-                className='size-5 hover:scale-115 transition-all duration-300 ease-in-out'
+                className='size-5 hover:scale-115 transition-all duration-300 ease-in-out cursor-pointer'
                 src={pencilEdit}
               />
 
@@ -191,7 +191,7 @@ const Profile = () => {
                   type='text'
                   value={userFirstname}
                   required
-                  className='px-2 rounded-lg border-2 outline-none w-1/2'
+                  className='px-2 rounded-lg border-2 outline-none w-1/2 text-center'
                   placeholder='Nome'
                 />
 
@@ -217,7 +217,7 @@ const Profile = () => {
                   type='text'
                   value={userLastname}
                   required
-                  className='px-2 rounded-lg border-2 outline-none w-1/2'
+                  className='px-2 rounded-lg border-2 outline-none w-1/2 text-center'
                   placeholder='Sobre-nome'
                 />
               )}
@@ -257,7 +257,7 @@ const Profile = () => {
                       updateUser();
                     }
                   }
-                  className='p-2 text-white rounded-lg bg-gray-800 hover:scale-105 hover:bg-gray-800/70 transition-all duration-300 ease-in-out'>
+                  className='p-2 text-white rounded-lg bg-gray-800 cursor-pointer hover:scale-105 hover:bg-gray-800/70 transition-all duration-300 ease-in-out'>
                   Salvar
                 </button>)}
 
@@ -279,7 +279,7 @@ const Profile = () => {
                       setIsEditUser(false);
                     }
                   }}
-                  className='text-red-500 hover:scale-105 transition-all duration-300 ease-in-out'>
+                  className='text-red-500 hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer'>
                   Cancelar
                 </button>
               </div>
