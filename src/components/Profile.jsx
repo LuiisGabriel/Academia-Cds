@@ -635,7 +635,7 @@ const Profile = () => {
               <div className='w-full flex flex-col items-center justify-center pt-16 select-none backdrop-brightness-40'>
                 <div className=' pb-4 flex items-center justify-center select-none'>
                   <img
-                    className='rounded-full size-25 hover:scale-105 hover:contrast-50 transition-all duration-300 ease-in-out'
+                    className='rounded-full size-25 hover:scale-105 hover:contrast-50 cursor-pointer transition-all duration-300 ease-in-out'
                     src={photoUrl ? photoUrl : defaultProfilePhoto}
                   />
                 </div>
