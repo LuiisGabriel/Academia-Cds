@@ -353,7 +353,7 @@ const TrainmentReports = () => {
                                             </div>
 
                                             {videos?.length > 0 ? (
-                                                <div className='space-y-4 select-text overflow-y-auto max-h-100'>
+                                                <div className='space-y-4 select-text overflow-y-auto max-h-70'>
                                                     {videos?.map((video, index) => (
                                                         <div className='flex items-center justify-center gap-2 w-full' key={video.videoId}>
                                                             <div
