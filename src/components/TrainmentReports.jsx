@@ -610,7 +610,7 @@ const TrainmentReports = () => {
                         />
 
                         <div className="fixed inset-0 z-10 w-screen overflow-y-auto ">
-                            <div className="flex min-h-screen justify-center text-center items-center py-15">
+                            <div className="flex min-h-screen justify-center text-center items-center">
                                 <DialogPanel
                                     transition
                                     className="relative md:w-3/4 w-8/9 transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in my-8 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
