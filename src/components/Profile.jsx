@@ -711,7 +711,7 @@ const Profile = () => {
                   </h1>
                 </div>
 
-                <div className='w-full h-full bg-black/30 flex items-bottom px-4 justify-between transition-all duration-300 ease-in-out select-none overflow-x-auto'>
+                <div className='w-full h-full flex items-bottom px-4 justify-between transition-all duration-300 ease-in-out select-none overflow-x-auto'>
                   {sections.map((section, index) => {
 
                     const isActive = index === page;
