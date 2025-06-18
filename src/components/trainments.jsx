@@ -169,7 +169,7 @@ const Trainments = () => {
 
                         </div>
 
-                        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-4 xl:gap-x-8 py-8 px-8">
+                        {FilteredTreinamentos.length > 0 ? (<div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-4 xl:gap-x-8 py-8 px-8">
                             {FilteredTreinamentos.filter(treinamento => treinamento.documentInStages.length > 0).map((treinamento) => (
                                 <div
                                     key={treinamento.titulo}
@@ -189,7 +189,13 @@ const Trainments = () => {
                                     </div>
                                 </div>
                             ))}
-                        </div>
+                        </div>) : (
+                            <div>
+                                <h1>
+                                    Treinamentos não encontrados
+                                </h1>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
