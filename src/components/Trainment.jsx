@@ -173,7 +173,7 @@ const Trainment = () => {
                             <div className="flex-col flex w-full gap-4">
                                 {videos?.map((video, index) => (
                                     <button
-                                        className={`${user?.watchedVideos?.filter(watchedVideo => watchedVideo.videoId === video.videoId).map(watchedVideo => watchedVideo.videoId).includes(video.videoId) ? 'bg-cdsBlue/70' : 'bg-cdsBlue'} ${video.videoId === videoId ? 'scale-108' : ''} flex items-center p-4 min-h-20 justify-center rounded-md hover:bg-cdsBlue/70 ${video.videoId === videoId ? '' : 'hover:scale-105'} transition-all duration-300 ease-in-out cursor-pointer`}
+                                        className={`${user?.watchedVideos?.filter(watchedVideo => watchedVideo.videoId === video.videoId).map(watchedVideo => watchedVideo.videoId).includes(video.videoId) ? 'bg-cdsBlue/70' : 'bg-cdsBlue'} ${video.videoId === videoId ? 'scale-108' : ''} flex items-center p-4 min-h-20 justify-center rounded-md ${video.videoId === videoId ? '' : 'hover:scale-105'} transition-all duration-300 ease-in-out cursor-pointer`}
                                         onClick={() => {
                                             setCurrentVideo(index);
                                         }}
