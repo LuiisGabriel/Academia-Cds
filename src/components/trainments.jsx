@@ -110,7 +110,7 @@ const Trainments = () => {
                                     }}
                                     required
                                     value={ambiente}
-                                    className="w-1/4 text-center cursor-pointer focus:outline-none">
+                                    className="w-1/3 text-center cursor-pointer focus:outline-none">
                                     <option disabled={true} value="">Ambiente</option>
                                     {filtros.filter(filtro => filtro.tipo === 'ambiente').map((ambiente) => (
                                         <option
@@ -135,7 +135,7 @@ const Trainments = () => {
                                     }}
                                     value={modulo}
                                     required
-                                    className="w-1/4 text-center cursor-pointer focus:outline-none">
+                                    className="w-1/3 text-center cursor-pointer focus:outline-none">
                                     <option disabled={true} value="">Modulo</option>
                                     {filtros.filter(filtro => filtro.tipo === 'modulo').map((modulo) => (
                                         <option
@@ -160,7 +160,7 @@ const Trainments = () => {
                                     }}
                                     required
                                     value={subModulo}
-                                    className="w-1/4 text-center cursor-pointer focus:outline-none">
+                                    className="w-1/3 text-center cursor-pointer focus:outline-none">
                                     <option disabled={true} value="">Sub-modulo</option>
                                     {filtros.filter(filtro => filtro.tipo === 'submodulo').map((subModulo) => (
                                         <option
@@ -170,7 +170,30 @@ const Trainments = () => {
                                         </option>
                                     ))}
                                 </select>
+                            </div>
 
+                        </div>
+
+                        {filters.length > 0 && (
+                            <div className='flex items-center justify-between gap-4'>
+                                {filters.map((filter, index) => (
+                                    <div
+                                        key={index}
+                                        className='flex items-center justify-between gap-2 py-2 px-4 rounded-full bg-white w-full shadow-lg'>
+                                        <h1>
+                                            {filter}
+                                        </h1>
+
+                                        <h1
+                                            onClick={() => {
+                                                setFilters(prev => prev.filter((_, i) => i !== index));
+                                            }}
+                                            className='hover:scale-105 transition-all duration-300 ease-in-out font-semibold cursor-pointer'
+                                        >
+                                            x
+                                        </h1>
+                                    </div>
+                                ))}
                                 <div className='w-1/4 flex items-center justify-center'>
                                     <h1
                                         className='hover:scale-105 text-red-500 transition-all duration-300 ease-in-out cursor-pointer'
@@ -181,29 +204,7 @@ const Trainments = () => {
                                     </h1>
                                 </div>
                             </div>
-
-                        </div>
-
-                        <div className='flex items-center justify-start gap-2'>
-                            {filters.map((filter, index) => (
-                                <div
-                                    key={index}
-                                    className='flex items-center justify-between gap-2 py-2 px-4 rounded-full bg-white w-full shadow-lg'>
-                                    <h1>
-                                        {filter}
-                                    </h1>
-
-                                    <h1
-                                        onClick={() => {
-                                            setFilters(prev => prev.filter((_, i) => i !== index));
-                                        }}
-                                        className='hover:scale-105 transition-all duration-300 ease-in-out font-semibold cursor-pointer'
-                                    >
-                                        x
-                                    </h1>
-                                </div>
-                            ))}
-                        </div>
+                        )}
 
                         {FilteredTreinamentos.length > 0 ? (
                             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-4 xl:gap-x-8 py-8 px-8">
