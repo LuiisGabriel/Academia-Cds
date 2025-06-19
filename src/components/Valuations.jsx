@@ -21,7 +21,7 @@ const Valuations = () => {
   const userWatchedVideos = user?.watchedVideos?.map((video) => video.videoId);
 
   const [filteredValuations, setFilteredValuations] = useState(valuations);
-  
+
   const avaliableValuations = filteredValuations.filter((valuation) => {
     const hasAnswered = user?.answeredValuations?.some(
       (answered) => answered.valuationId === valuation.id
@@ -100,7 +100,7 @@ const Valuations = () => {
         <nav className="sticky top-0 z-5"><Navbar /></nav>
         <div className='flex flex-col justify-center items-center w-full select-none'>
           <div className='flex flex-col justify-center items-center w-full py-28'>
-            <div className=' w-3/4 flex items-center justify-between mb-8 rounded-lg outline shadow-lg'>
+            <div className=' w-3/4 flex items-center justify-between mb-8 rounded-full outline outline-white shadow-lg'>
               <div className='flex items-center justify-between w-full'>
                 <input
                   className='rounded-l-lg w-full focus:outline-none p-2 px-4'
@@ -120,7 +120,7 @@ const Valuations = () => {
                 )}
               </div>
 
-              <div className='p-2 px-4 w-3/4 gap-2 rounded-lg flex items-center justify-center bg-white drop-shadow-lg'>
+              <div className='p-2 px-4 w-3/4 gap-2 rounded-full flex items-center justify-center bg-white'>
                 <select
                   type="text"
                   onChange={(e) => { setAmbiente(e.target.value); }}
