@@ -71,11 +71,11 @@ const Trainments = () => {
                     <Navbar />
                 </nav>
                 <div className="flex flex-col justify-center items-center w-full select-none">
-                    <div className="py-28 flex flex-col justify-center items-center w-full">
+                    <div className="pt-20 flex flex-col justify-center items-center w-full">
 
                         <div className=' w-3/4 flex items-center justify-between mb-8 rounded-full outline-3 outline-white shadow-lg'>
 
-                            <div className='flex items-center justify-between w-full'>
+                            <div className='flex w-1/2 items-center justify-between'>
                                 <input
                                     className='rounded-l-lg w-full focus:outline-none p-2 px-4'
                                     placeholder='Pesquisar'
@@ -87,20 +87,21 @@ const Trainments = () => {
                                             onClick={() => {
                                                 setSearchTitle('');
                                             }}
-                                            className='hover:scale-105 cursor-pointer'>
+                                            className='hover:scale-115 cursor-pointer transition-all duration-300 ease-in-out'>
                                             X
                                         </h1>
                                     </div>
                                 )}
                             </div>
 
-                            <div className='p-2 px-4 w-3/4 gap-2 rounded-full flex items-center justify-center bg-white '>
+                            <div className='p-2 px-4 w-1/2 gap-2 rounded-full flex items-center justify-center bg-white'>
+
                                 <select
                                     type="text"
                                     onChange={(e) => { setAmbiente(e.target.value); }}
                                     value={ambiente}
                                     required
-                                    className="w-1/4 text-center cursor-pointer">
+                                    className="w-1/4 text-center cursor-pointer focus:outline-none">
                                     <option disabled={true} value="">Ambiente</option>
                                     {filtros.filter(filtro => filtro.tipo === 'ambiente').map((ambiente) => (
                                         <option
@@ -116,7 +117,7 @@ const Trainments = () => {
                                     onChange={(e) => { setModulo(e.target.value); }}
                                     value={modulo}
                                     required
-                                    className="w-1/4 text-center cursor-pointer">
+                                    className="w-1/4 text-center cursor-pointer focus:outline-none">
                                     <option disabled={true} value="">Modulo</option>
                                     {filtros.filter(filtro => filtro.tipo === 'modulo').map((modulo) => (
                                         <option
@@ -132,7 +133,7 @@ const Trainments = () => {
                                     onChange={(e) => { setSubModulo(e.target.value); }}
                                     value={subModulo}
                                     required
-                                    className="w-1/4 text-center cursor-pointer">
+                                    className="w-1/4 text-center cursor-pointer focus:outline-none">
                                     <option disabled={true} value="">Sub-modulo</option>
                                     {filtros.filter(filtro => filtro.tipo === 'submodulo').map((subModulo) => (
                                         <option
@@ -150,7 +151,7 @@ const Trainments = () => {
                                             setAmbiente('');
                                             setModulo('');
                                             setSubModulo('');
-                                        }} >
+                                        }}>
                                         Limpar
                                     </h1>
                                 </div>
