@@ -198,7 +198,30 @@ const Valuations = () => {
                     </option>
                   ))}
                 </select>
+              </div>
 
+            </div>
+
+            {filters.length > 0 && (
+              <div className='flex items-center justify-between gap-4'>
+                {filters.map((filter, index) => (
+                  <div
+                    key={index}
+                    className='flex items-center justify-between gap-2 py-2 px-4 rounded-full bg-white w-full shadow-lg'>
+                    <h1>
+                      {filter}
+                    </h1>
+
+                    <h1
+                      onClick={() => {
+                        setFilters(prev => prev.filter((_, i) => i !== index));
+                      }}
+                      className='hover:scale-105 transition-all duration-300 ease-in-out font-semibold cursor-pointer'
+                    >
+                      x
+                    </h1>
+                  </div>
+                ))}
                 <div className='w-1/4 flex items-center justify-center'>
                   <h1
                     className='hover:scale-105 text-red-500 transition-all duration-300 ease-in-out cursor-pointer'
@@ -209,29 +232,7 @@ const Valuations = () => {
                   </h1>
                 </div>
               </div>
-
-            </div>
-
-            <div className='flex items-center justify-start gap-2'>
-              {filters.map((filter, index) => (
-                <div
-                  key={index}
-                  className='flex items-center justify-between gap-2 py-2 px-4 rounded-full bg-white w-full shadow-lg'>
-                  <h1>
-                    {filter}
-                  </h1>
-
-                  <h1
-                    onClick={() => {
-                      setFilters(prev => prev.filter((_, i) => i !== index));
-                    }}
-                    className='hover:scale-105 transition-all duration-300 ease-in-out font-semibold cursor-pointer'
-                  >
-                    x
-                  </h1>
-                </div>
-              ))}
-            </div>
+            )}
 
             {avaliableValuations.length > 0 ? (
               <div className='grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 md:grid-cols-4 xl:gap-x-4 py-8 px-8'>
