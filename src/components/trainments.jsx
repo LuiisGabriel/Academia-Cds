@@ -14,6 +14,7 @@ const Trainments = () => {
     const [subModulo, setSubModulo] = useState('');
     const [ambiente, setAmbiente] = useState('');
     const [searchTitle, setSearchTitle] = useState('');
+    const [filters, setFilters] = useState([]);
     const [FilteredTreinamentos, setFilteredTreinamentos] = useState(treinamentos);
 
     const filtros = [
@@ -30,20 +31,19 @@ const Trainments = () => {
     ];
 
     useEffect(() => {
-        if (!ambiente && !modulo && !subModulo && !searchTitle) {
-            setFilteredTreinamentos(treinamentos.filter(treinamento => treinamento.documentInStages.length > 0));
-        } else {
-            const filterTreinamentos = treinamentos.filter(
-                (treinamento) =>
-                    (!searchTitle || treinamento.titulo.toLowerCase().includes(searchTitle.toLowerCase())) &&
-                    (!ambiente || treinamento.ambiente === ambiente) &&
-                    (!modulo || treinamento.modulo === modulo) &&
-                    (!subModulo || treinamento.subModulo === subModulo) &&
-                    treinamento.documentInStages.length > 0
-            );
-            setFilteredTreinamentos(filterTreinamentos);
+        let filtered = treinamentos.filter(treinamento => treinamento.documentInStages.length > 0);
+        if (searchTitle) {
+            filtered = filtered.filter(treinamento =>
+                treinamento.titulo.toLowerCase().includes(searchTitle.toLowerCase()));
         }
-    }, [ambiente, modulo, subModulo, treinamentos, searchTitle]);
+        if (filters.length > 0) {
+            filtered = filtered.filter(treinamento =>
+                filters.every(filter =>
+                    [treinamento.ambiente, treinamento.modulo, treinamento.subModulo].includes(filter)
+                ));
+        }
+        setFilteredTreinamentos(filtered);
+    }, [filters, searchTitle, treinamentos]);
 
     if (!user || !authenticated) {
         return (
@@ -98,9 +98,18 @@ const Trainments = () => {
 
                                 <select
                                     type="text"
-                                    onChange={(e) => { setAmbiente(e.target.value); }}
-                                    value={ambiente}
+                                    onChange={(e) => {
+                                        if (filters.includes(e.target.value)) {
+                                            return;
+                                        } else {
+                                            setFilters(prev => ([
+                                                ...prev,
+                                                e.target.value
+                                            ]));
+                                        }
+                                    }}
                                     required
+                                    value={ambiente}
                                     className="w-1/4 text-center cursor-pointer focus:outline-none">
                                     <option disabled={true} value="">Ambiente</option>
                                     {filtros.filter(filtro => filtro.tipo === 'ambiente').map((ambiente) => (
@@ -114,7 +123,16 @@ const Trainments = () => {
 
                                 <select
                                     type="text"
-                                    onChange={(e) => { setModulo(e.target.value); }}
+                                    onChange={(e) => {
+                                        if (filters.includes(e.target.value)) {
+                                            return;
+                                        } else {
+                                            setFilters(prev => ([
+                                                ...prev,
+                                                e.target.value
+                                            ]));
+                                        }
+                                    }}
                                     value={modulo}
                                     required
                                     className="w-1/4 text-center cursor-pointer focus:outline-none">
@@ -130,9 +148,18 @@ const Trainments = () => {
 
                                 <select
                                     type="text"
-                                    onChange={(e) => { setSubModulo(e.target.value); }}
-                                    value={subModulo}
+                                    onChange={(e) => {
+                                        if (filters.includes(e.target.value)) {
+                                            return;
+                                        } else {
+                                            setFilters(prev => ([
+                                                ...prev,
+                                                e.target.value
+                                            ]));
+                                        }
+                                    }}
                                     required
+                                    value={subModulo}
                                     className="w-1/4 text-center cursor-pointer focus:outline-none">
                                     <option disabled={true} value="">Sub-modulo</option>
                                     {filtros.filter(filtro => filtro.tipo === 'submodulo').map((subModulo) => (
@@ -148,15 +175,34 @@ const Trainments = () => {
                                     <h1
                                         className='hover:scale-105 text-red-500 transition-all duration-300 ease-in-out cursor-pointer'
                                         onClick={() => {
-                                            setAmbiente('');
-                                            setModulo('');
-                                            setSubModulo('');
+                                            setFilters([])
                                         }}>
                                         Limpar
                                     </h1>
                                 </div>
                             </div>
 
+                        </div>
+
+                        <div className='flex items-center justify-start gap-2'>
+                            {filters.map((filter, index) => (
+                                <div
+                                    key={index}
+                                    className='flex items-center justify-between gap-2 py-2 px-4 rounded-full bg-white w-full shadow-lg'>
+                                    <h1>
+                                        {filter}
+                                    </h1>
+
+                                    <h1
+                                        onClick={() => {
+                                            setFilters(prev => prev.filter((_, i) => i !== index));
+                                        }}
+                                        className='hover:scale-105 transition-all duration-300 ease-in-out font-semibold cursor-pointer'
+                                    >
+                                        x
+                                    </h1>
+                                </div>
+                            ))}
                         </div>
 
                         {FilteredTreinamentos.length > 0 ? (
