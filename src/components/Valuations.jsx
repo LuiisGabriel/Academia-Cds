@@ -138,7 +138,7 @@ const Valuations = () => {
                   }}
                   required
                   value={ambiente}
-                  className="w-1/4 text-center cursor-pointer focus:outline-none">
+                  className="w-1/3 text-center cursor-pointer focus:outline-none">
                   <option disabled={true} value="">Ambiente</option>
                   {filtros.filter(filtro => filtro.tipo === 'ambiente').map((ambiente) => (
                     <option
@@ -163,7 +163,7 @@ const Valuations = () => {
                   }}
                   value={modulo}
                   required
-                  className="w-1/4 text-center cursor-pointer focus:outline-none">
+                  className="w-1/3 text-center cursor-pointer focus:outline-none">
                   <option disabled={true} value="">Modulo</option>
                   {filtros.filter(filtro => filtro.tipo === 'modulo').map((modulo) => (
                     <option
@@ -188,7 +188,7 @@ const Valuations = () => {
                   }}
                   required
                   value={subModulo}
-                  className="w-1/4 text-center cursor-pointer focus:outline-none">
+                  className="w-1/3 text-center cursor-pointer focus:outline-none">
                   <option disabled={true} value="">Sub-modulo</option>
                   {filtros.filter(filtro => filtro.tipo === 'submodulo').map((subModulo) => (
                     <option
