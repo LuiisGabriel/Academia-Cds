@@ -100,7 +100,7 @@ const Valuations = () => {
         <nav className="sticky top-0 z-5"><Navbar /></nav>
         <div className='flex flex-col justify-center items-center w-full select-none'>
           <div className='flex flex-col justify-center items-center w-full py-28'>
-            <div className=' w-3/4 flex items-center justify-between mb-8 rounded-full outline outline-white shadow-lg'>
+            <div className=' w-3/4 flex items-center justify-between mb-8 rounded-full outline-3 outline-white shadow-lg'>
               <div className='flex items-center justify-between w-full'>
                 <input
                   className='rounded-l-lg w-full focus:outline-none p-2 px-4'
