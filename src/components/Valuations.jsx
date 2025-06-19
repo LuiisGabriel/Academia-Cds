@@ -17,6 +17,7 @@ const Valuations = () => {
   const [subModulo, setSubModulo] = useState('');
   const [ambiente, setAmbiente] = useState('');
   const [searchTitle, setSearchTitle] = useState('');
+  const [filters, setFilters] = useState([]);
 
   const userWatchedVideos = user?.watchedVideos?.map((video) => video.videoId);
 
@@ -50,19 +51,19 @@ const Valuations = () => {
   ];
 
   useEffect(() => {
-    if (!ambiente && !modulo && !subModulo && !searchTitle) {
-      setFilteredValuations(valuations);
-    } else {
-      const filterValuations = valuations.filter(
-        (valuation) =>
-          (!searchTitle || valuation.titulo.toLowerCase().includes(searchTitle.toLowerCase())) &&
-          (!ambiente || valuation.ambiente === ambiente) &&
-          (!modulo || valuation.modulo === modulo) &&
-          (!subModulo || valuation.subModulo === subModulo)
-      );
-      setFilteredValuations(filterValuations);
+    let filtered = valuations.filter(valuation => valuation.documentInStages.length > 0);
+    if (searchTitle) {
+      filtered = filtered.filter(valuation =>
+        valuation.titulo.toLowerCase().includes(searchTitle.toLowerCase()));
     }
-  }, [ambiente, modulo, subModulo, valuations, searchTitle]);
+    if (filters.length > 0) {
+      filtered = filtered.filter(valuation =>
+        filters.every(filter =>
+          [valuation.ambiente, valuation.modulo, valuation.subModulo].includes(filter)
+        ));
+    }
+    setFilteredValuations(filtered);
+  }, [filters, searchTitle, valuations]);
 
   if (!user || !authenticated) {
     return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
@@ -101,7 +102,8 @@ const Valuations = () => {
         <div className='flex flex-col justify-center items-center w-full select-none'>
           <div className='flex flex-col justify-center items-center w-full pt-20'>
             <div className=' w-3/4 flex items-center justify-between mb-8 rounded-full outline-3 outline-white shadow-lg'>
-              <div className='flex items-center justify-between w-1/2'>
+
+              <div className='flex w-1/2 items-center justify-between'>
                 <input
                   className='rounded-l-lg w-full focus:outline-none p-2 px-4'
                   placeholder='Pesquisar'
@@ -113,7 +115,7 @@ const Valuations = () => {
                       onClick={() => {
                         setSearchTitle('');
                       }}
-                      className='hover:scale-115 cursor-pointer trasition-all duration-300 ease-in-out'>
+                      className='hover:scale-115 cursor-pointer transition-all duration-300 ease-in-out'>
                       X
                     </h1>
                   </div>
@@ -121,17 +123,27 @@ const Valuations = () => {
               </div>
 
               <div className='p-2 px-4 w-1/2 gap-2 rounded-full flex items-center justify-center bg-white'>
+
                 <select
                   type="text"
-                  onChange={(e) => { setAmbiente(e.target.value); }}
-                  value={ambiente}
+                  onChange={(e) => {
+                    if (filters.includes(e.target.value)) {
+                      return;
+                    } else {
+                      setFilters(prev => ([
+                        ...prev,
+                        e.target.value
+                      ]));
+                    }
+                  }}
                   required
+                  value={ambiente}
                   className="w-1/4 text-center cursor-pointer focus:outline-none">
                   <option disabled={true} value="">Ambiente</option>
                   {filtros.filter(filtro => filtro.tipo === 'ambiente').map((ambiente) => (
                     <option
                       key={ambiente.id}
-                      value={ambiente.titulo}>
+                      value={ambiente.titulo} >
                       {ambiente.titulo}
                     </option>
                   ))}
@@ -139,7 +151,16 @@ const Valuations = () => {
 
                 <select
                   type="text"
-                  onChange={(e) => { setModulo(e.target.value); }}
+                  onChange={(e) => {
+                    if (filters.includes(e.target.value)) {
+                      return;
+                    } else {
+                      setFilters(prev => ([
+                        ...prev,
+                        e.target.value
+                      ]));
+                    }
+                  }}
                   value={modulo}
                   required
                   className="w-1/4 text-center cursor-pointer focus:outline-none">
@@ -155,9 +176,18 @@ const Valuations = () => {
 
                 <select
                   type="text"
-                  onChange={(e) => { setSubModulo(e.target.value); }}
-                  value={subModulo}
+                  onChange={(e) => {
+                    if (filters.includes(e.target.value)) {
+                      return;
+                    } else {
+                      setFilters(prev => ([
+                        ...prev,
+                        e.target.value
+                      ]));
+                    }
+                  }}
                   required
+                  value={subModulo}
                   className="w-1/4 text-center cursor-pointer focus:outline-none">
                   <option disabled={true} value="">Sub-modulo</option>
                   {filtros.filter(filtro => filtro.tipo === 'submodulo').map((subModulo) => (
@@ -173,15 +203,34 @@ const Valuations = () => {
                   <h1
                     className='hover:scale-105 text-red-500 transition-all duration-300 ease-in-out cursor-pointer'
                     onClick={() => {
-                      setAmbiente('');
-                      setModulo('');
-                      setSubModulo('');
-                    }}
-                  >
+                      setFilters([])
+                    }}>
                     Limpar
                   </h1>
                 </div>
               </div>
+
+            </div>
+
+            <div className='flex items-center justify-start gap-2'>
+              {filters.map((filter, index) => (
+                <div
+                  key={index}
+                  className='flex items-center justify-between gap-2 py-2 px-4 rounded-full bg-white w-full shadow-lg'>
+                  <h1>
+                    {filter}
+                  </h1>
+
+                  <h1
+                    onClick={() => {
+                      setFilters(prev => prev.filter((_, i) => i !== index));
+                    }}
+                    className='hover:scale-105 transition-all duration-300 ease-in-out font-semibold cursor-pointer'
+                  >
+                    x
+                  </h1>
+                </div>
+              ))}
             </div>
 
             {avaliableValuations.length > 0 ? (
