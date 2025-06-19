@@ -73,7 +73,7 @@ const Trainments = () => {
                 <div className="flex flex-col justify-center items-center w-full select-none">
                     <div className="py-28 flex flex-col justify-center items-center w-full">
 
-                        <div className=' w-3/4 flex items-center justify-between mb-8 rounded-lg outline shadow-lg'>
+                        <div className=' w-3/4 flex items-center justify-between mb-8 rounded-full outline outline-white shadow-lg'>
 
                             <div className='flex items-center justify-between w-full'>
                                 <input
@@ -87,14 +87,14 @@ const Trainments = () => {
                                             onClick={() => {
                                                 setSearchTitle('');
                                             }}
-                                            className='hover:scale-105 font-semibold cursor-pointer'>
+                                            className='hover:scale-105 cursor-pointer'>
                                             X
                                         </h1>
                                     </div>
                                 )}
                             </div>
 
-                            <div className='p-2 px-4 w-3/4 gap-2 rounded-lg flex items-center justify-center bg-white drop-shadow-lg'>
+                            <div className='p-2 px-4 w-3/4 gap-2 rounded-full flex items-center justify-center bg-white '>
                                 <select
                                     type="text"
                                     onChange={(e) => { setAmbiente(e.target.value); }}
