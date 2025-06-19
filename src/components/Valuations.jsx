@@ -99,9 +99,9 @@ const Valuations = () => {
       <div className="bg-gray-300 h-auto min-h-screen">
         <nav className="sticky top-0 z-5"><Navbar /></nav>
         <div className='flex flex-col justify-center items-center w-full select-none'>
-          <div className='flex flex-col justify-center items-center w-full py-28'>
+          <div className='flex flex-col justify-center items-center w-full pt-20'>
             <div className=' w-3/4 flex items-center justify-between mb-8 rounded-full outline-3 outline-white shadow-lg'>
-              <div className='flex items-center justify-between w-full'>
+              <div className='flex items-center justify-between w-1/2'>
                 <input
                   className='rounded-l-lg w-full focus:outline-none p-2 px-4'
                   placeholder='Pesquisar'
@@ -113,20 +113,20 @@ const Valuations = () => {
                       onClick={() => {
                         setSearchTitle('');
                       }}
-                      className='hover:scale-105 font-semibold cursor-pointer'>
+                      className='hover:scale-115 cursor-pointer trasition-all duration-300 ease-in-out'>
                       X
                     </h1>
                   </div>
                 )}
               </div>
 
-              <div className='p-2 px-4 w-3/4 gap-2 rounded-full flex items-center justify-center bg-white'>
+              <div className='p-2 px-4 w-1/2 gap-2 rounded-full flex items-center justify-center bg-white'>
                 <select
                   type="text"
                   onChange={(e) => { setAmbiente(e.target.value); }}
                   value={ambiente}
                   required
-                  className="w-1/4 text-center cursor-pointer">
+                  className="w-1/4 text-center cursor-pointer focus:outline-none">
                   <option disabled={true} value="">Ambiente</option>
                   {filtros.filter(filtro => filtro.tipo === 'ambiente').map((ambiente) => (
                     <option
@@ -142,7 +142,7 @@ const Valuations = () => {
                   onChange={(e) => { setModulo(e.target.value); }}
                   value={modulo}
                   required
-                  className="w-1/4 text-center cursor-pointer">
+                  className="w-1/4 text-center cursor-pointer focus:outline-none">
                   <option disabled={true} value="">Modulo</option>
                   {filtros.filter(filtro => filtro.tipo === 'modulo').map((modulo) => (
                     <option
@@ -158,7 +158,7 @@ const Valuations = () => {
                   onChange={(e) => { setSubModulo(e.target.value); }}
                   value={subModulo}
                   required
-                  className="w-1/4 text-center cursor-pointer">
+                  className="w-1/4 text-center cursor-pointer focus:outline-none">
                   <option disabled={true} value="">Sub-modulo</option>
                   {filtros.filter(filtro => filtro.tipo === 'submodulo').map((subModulo) => (
                     <option
