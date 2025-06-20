@@ -14,7 +14,8 @@ const Trainments = () => {
     const [subModulo, setSubModulo] = useState('');
     const [ambiente, setAmbiente] = useState('');
     const [searchTitle, setSearchTitle] = useState('');
-    const [filters, setFilters] = useState([]);
+    const [filters, setFilters] = useState(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+        '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']);
     const [FilteredTreinamentos, setFilteredTreinamentos] = useState(treinamentos);
 
     const filtros = [
@@ -171,15 +172,14 @@ const Trainments = () => {
                                     ))}
                                 </select>
                             </div>
-
                         </div>
 
                         {filters.length > 0 && (
-                            <div className='flex items-center justify-between gap-4'>
+                            <div className='flex flex-wrap items-center justify-center gap-4 w-3/4'>
                                 {filters.map((filter, index) => (
                                     <div
                                         key={index}
-                                        className='flex items-center justify-between gap-2 py-2 px-4 rounded-full bg-white w-full shadow-lg'>
+                                        className='flex items-center justify-between gap-2 py-2 px-4 rounded-full bg-white shadow-lg'>
                                         <h1>
                                             {filter}
                                         </h1>
@@ -194,7 +194,7 @@ const Trainments = () => {
                                         </h1>
                                     </div>
                                 ))}
-                                <div className='w-1/4 flex items-center justify-center'>
+                                <div className='w-1/4 flex items-center justify-center '>
                                     <h1
                                         className='hover:scale-105 text-red-500 transition-all duration-300 ease-in-out cursor-pointer'
                                         onClick={() => {
