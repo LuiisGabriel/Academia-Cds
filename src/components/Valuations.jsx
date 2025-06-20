@@ -203,11 +203,11 @@ const Valuations = () => {
             </div>
 
             {filters.length > 0 && (
-              <div className='flex items-center justify-between gap-4'>
+              <div className='flex flex-wrap items-center justify-center gap-4 w-3/4'>
                 {filters.map((filter, index) => (
                   <div
                     key={index}
-                    className='flex items-center justify-between gap-2 py-2 px-4 rounded-full bg-white w-full shadow-lg'>
+                    className='flex items-center justify-center gap-2 py-2 px-4 rounded-full bg-white shadow-lg'>
                     <h1>
                       {filter}
                     </h1>
