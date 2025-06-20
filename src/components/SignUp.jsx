@@ -20,6 +20,8 @@ const SignUp = () => {
   const [validatePasswordResult, setValidatePasswordResult] = useState([]);
 
   let isValidPassword = password && confirmPassword && validatePasswordResult.length === 0 && confirmPassword.localeCompare(password) === 0;
+  let isValidEmail = validator.isEmail(email);
+  let isConfirmPassword = confirmPassword.localeCompare(password) === 0;
 
   function validatePassword(passwordInput) {
     let password = String(passwordInput || "");
@@ -129,7 +131,7 @@ const SignUp = () => {
                   </h1>
                 </div>
                 <input
-                  className="border-2 outline-none p-2 rounded-md w-3/3 "
+                  className={`border-2 outline-none ${!isValidEmail && email && 'border-red-500'} p-2 rounded-md w-3/3 `}
                   type="email"
                   placeholder="Digite seu E-mail"
                   value={email}
@@ -137,7 +139,7 @@ const SignUp = () => {
                   onChange={(e) => { setEmail(e.target.value); }}
                 />
 
-                {!validator.isEmail(email) && email.length > 0 && (
+                {!isValidEmail && email && (
                   <div className='text-[12px] text-red-500 w-full flex flex-col items-start justify-center'>
                     <div className='py-1'>
                       Insira um e-mail válido
@@ -153,7 +155,7 @@ const SignUp = () => {
                   </h1>
                 </div>
                 <input
-                  className="border-2 outline-none p-2 rounded-md w-3/3"
+                  className={`border-2 ${validatePasswordResult?.length > 0 && password && 'border-red-500'} outline-none p-2 rounded-md w-3/3`}
                   type="password"
                   placeholder="Digite sua senha"
                   value={password}
@@ -167,12 +169,14 @@ const SignUp = () => {
                   <div
                     key={index}
                     className='text-[12px] text-red-500 w-full flex flex-col items-start justify-center'>
-                    <div className='py-1'>
-                      {result === 'must contains at least 1 digits.' && 'A senha deve conter ao menos um número.'}
-                      {result === 'must not be less than 8 minimum characters.' && 'A senha deve conter no mínimo 8 caracteres.'}
-                      {result === 'must contain at least 1 uppercase letters.' && 'A senha deve conter uma letra maiúscula.'}
-                      {result === 'must contain at least 1 special characters.' && 'A senha deve conter um caractere especial.'}
-                    </div>
+                    {password && (
+                      <div className='py-1'>
+                        {result === 'must contains at least 1 digits.' && 'A senha deve conter ao menos um número.'}
+                        {result === 'must not be less than 8 minimum characters.' && 'A senha deve conter no mínimo 8 caracteres.'}
+                        {result === 'must contain at least 1 uppercase letters.' && 'A senha deve conter uma letra maiúscula.'}
+                        {result === 'must contain at least 1 special characters.' && 'A senha deve conter um caractere especial.'}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -180,7 +184,7 @@ const SignUp = () => {
               <div>
                 Confirme a senha :
                 <input
-                  className="border-2 outline-none p-2 rounded-md w-3/3"
+                  className={`border-2 ${!isConfirmPassword && confirmPassword && 'border-red-500'} outline-none p-2 rounded-md w-3/3`}
                   type="password"
                   placeholder="Confirme sua senha"
                   value={confirmPassword}
@@ -189,7 +193,7 @@ const SignUp = () => {
                     setConfirmPassword(e.target.value);
                   }}
                 />
-                {confirmPassword.localeCompare(password) != 0 && confirmPassword.length > 0 && (
+                {!isConfirmPassword && confirmPassword && (
                   <div className='text-[12px] text-red-500 w-full flex flex-col items-start justify-center'>
                     <div className='py-1'>
                       As senhas não coincidem!
