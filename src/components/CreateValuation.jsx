@@ -452,7 +452,7 @@ const CreateValuation = () => {
                                                 <button
                                                     onClick={() => {
                                                         setPostCreateValuation(false);
-                                                        navigate(APP_ROUTES.LANDINGPAGE);
+                                                        navigate(APP_ROUTES.VALUATIONS);
                                                     }}
                                                     className='p-2 text-red-500 hover:scale-105 transition-all duration-300 ease-in-out'>
                                                     Sair
